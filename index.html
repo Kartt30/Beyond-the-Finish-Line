@@ -61,125 +61,129 @@
         animation: fadeUp 0.8s forwards;
       }
       /* DELAY */
-      .card:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .card:nth-child(3) {
-        animation-delay: 0.4s;
-      }
-      .card:nth-child(4) {
-        animation-delay: 0.6s;
-      }
-      .card:nth-child(5) {
-  animation-delay: 0.8s;
+      /* DELAY ANIMATION */
+.card:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.10s;
+}
+
+.card:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+.card:nth-child(5) {
+  animation-delay: 0.20s;
 }
 
 .card:nth-child(6) {
-  animation-delay: 1s;
+  animation-delay: 0.25s;
 }
 
 .card:nth-child(7) {
-  animation-delay: 1.2s;
+  animation-delay: 0.30s;
 }
 
 .card:nth-child(8) {
-  animation-delay: 1.4s;
+  animation-delay: 0.35s;
 }
 
 .card:nth-child(9) {
-  animation-delay: 1.6s;
+  animation-delay: 0.40s;
 }
 
 .card:nth-child(10) {
-  animation-delay: 1.8s;
+  animation-delay: 0.45s;
 }
 
 .card:nth-child(11) {
-  animation-delay: 2s;
+  animation-delay: 0.50s;
 }
 
 .card:nth-child(12) {
-  animation-delay: 2.2s;
+  animation-delay: 0.55s;
 }
 
 .card:nth-child(13) {
-  animation-delay: 2.4s;
+  animation-delay: 0.60s;
 }
 
 .card:nth-child(14) {
-  animation-delay: 2.6s;
+  animation-delay: 0.65s;
 }
 
 .card:nth-child(15) {
-  animation-delay: 2.8s;
+  animation-delay: 0.70s;
 }
 
 .card:nth-child(16) {
-  animation-delay: 3s;
+  animation-delay: 0.75s;
 }
 
 .card:nth-child(17) {
-  animation-delay: 3.2s;
+  animation-delay: 0.80s;
 }
 
 .card:nth-child(18) {
-  animation-delay: 3.4s;
+  animation-delay: 0.85s;
 }
 
 .card:nth-child(19) {
-  animation-delay: 3.6s;
+  animation-delay: 0.90s;
 }
 
 .card:nth-child(20) {
-  animation-delay: 3.8s;
+  animation-delay: 0.95s;
 }
 
 .card:nth-child(21) {
-  animation-delay: 4s;
+  animation-delay: 1s;
 }
 
 .card:nth-child(22) {
-  animation-delay: 4.2s;
+  animation-delay: 1.05s;
 }
 
 .card:nth-child(23) {
-  animation-delay: 4.4s;
+  animation-delay: 1.10s;
 }
 
 .card:nth-child(24) {
-  animation-delay: 4.6s;
+  animation-delay: 1.15s;
 }
 
 .card:nth-child(25) {
-  animation-delay: 4.8s;
+  animation-delay: 1.20s;
 }
 
 .card:nth-child(26) {
-  animation-delay: 5s;
+  animation-delay: 1.25s;
 }
 
 .card:nth-child(27) {
-  animation-delay: 5.2s;
+  animation-delay: 1.30s;
 }
 
 .card:nth-child(28) {
-  animation-delay: 5.4s;
+  animation-delay: 1.35s;
 }
 
 .card:nth-child(29) {
-  animation-delay: 5.6s;
+  animation-delay: 1.40s;
 }
 
 .card:nth-child(30) {
-  animation-delay: 5.8s;
+  animation-delay: 1.45s;
 }
 
 .card:nth-child(31) {
-  animation-delay: 6s;
+  animation-delay: 1.50s;
 }
 
 .card:nth-child(32) {
-  animation-delay: 6.2s;
+  animation-delay: 1.55s;
 }
 
       /* CARD INNER (UNTUK HOVER) */
@@ -1307,6 +1311,30 @@
           text-align: center;
         }
       }
+      /* SEARCH */
+.search-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px 0;
+  box-sizing: border-box;
+}
+
+.search-box input {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  outline: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.search-box input:focus {
+  border-color: #900600;
+  box-shadow: 0 0 10px rgba(144, 6, 0, 0.2);
+}
 
       .pagination {
         display: flex;
@@ -1367,6 +1395,14 @@
         </p>
       </div>
     </div>
+    <!-- SEARCH BAR -->
+<div class="search-box">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search character..."
+  />
+</div>
 
     <div class="container">
       <div class="card">
@@ -2048,6 +2084,32 @@ window.addEventListener("resize", function () {
 
 // pertama kali load
 goTo(page);
+/* SEARCH FUNCTION */
+document
+  .getElementById("searchInput")
+  .addEventListener("input", function () {
+    var value = this.value.toLowerCase();
+
+    allCards().forEach(function (card) {
+      var title = card.querySelector("h3").textContent.toLowerCase();
+
+      if (title.includes(value)) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    // sembunyikan pagination saat search
+    var nav = document.querySelector(".pagination");
+
+    if (value.length > 0) {
+      nav.style.display = "none";
+    } else {
+      nav.style.display = "flex";
+      goTo(page);
+    }
+  });
 
         goTo(1);
       })();
