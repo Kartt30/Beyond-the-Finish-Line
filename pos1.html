@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>Demo CSS position</title>
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            
+            body {
+                font-family: Arial;
+                height: 2000px; /biar bisa scroll/
+                margin: 0;
+            }
+
+            h2 {
+                margin-top: 40px;
+            }
+
+            .box {
+                width: 150px;
+                height: 80px;
+                color: white;
+                padding: 10px;
+                margin: 10px;
+            }
+
+            .static {
+                position: static;
+                background: gray;
+            }
+
+            .relative {
+                position: relative;
+                top: 20px;
+                left: 30px;
+                background: blue;
+            }
+
+            .container {
+                position: relative;
+                height: 200px;
+                background: #ddd;
+                margin-top: 20px;
+            }
+
+            .absolute {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: orange;
+            }
+
+            .fixed {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: red;
+            }
+            
+            .sticky {
+                position: sticky;
+                top: 0;
+                background: green;
+                padding: 10px;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="sticky">INI STICKY HEADER(scroll ya)</div>
+        <h2 id="atas">1.Static(default)</h2>
+        <div class="box static">Static</div>
+        <h2>2.Relative</h2>
+        <div class="box relative">Relative(geser)</div>
+        <h2>3.Absolute</h2>
+        <div class="container">
+        <div class="box absolute">absolute</div>
+        </div>
+        <h2>4.Fixed</h2>
+       <a href="#atas"><div class="box fixed">kembali ke atas</div></a>
+
+
+
+        <p style="margin-top: 500px;">Scroll ke bawah untuk lihat efek FIXED & STICKY</p>
+    </body>
+</html>

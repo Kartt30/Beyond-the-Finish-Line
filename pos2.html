@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>Produk Diskon</title>
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #f5f5f5;
+                margin: 0;
+                padding: 20px;
+            
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .container {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            .card {
+                position: relative;/*penting untuk badge*/
+                background-color: white;
+                width: 220px;
+                padding: 15px;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.15,);
+            }
+            .badge {
+position: absolute;
+top: 10px;
+right: 10px;
+background-color: red;
+color: white;
+padding: 5px 10px;
+font-size: 12px;
+border-radius: 5px;
+            }
+            .card image {
+                width: 100%;
+                border-radius: 8px;
+            }
+            .card h3 {
+                margin: 10px 0px;
+            }
+            .price {
+                color: green;
+                font-weight: bold;
+
+            }
+            .card a {
+                display: inline-block;
+                margin-top: 10px;
+                padding: 10px 15px;
+                background-color: #1976d2;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+            .card a:hover {
+                background-color: #0d47a1;
+
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Produk Diskon</h1>
+        <div class="container">
+<div class="card">
+    <div class="badge">Diskon</div>
+    <img
+    src="">
+    <h3>Madrid Cupu</h3>
+    <p class="price">rp300.000</p>
+    <a href="#">beli</a>
+        </div> 
+        
+        <div class="card">
+        <div class="badge">Diskon</div>
+        <img
+        src="https://picsum.photos/200/150?2">
+        <h3>jaket Hoodie</h3>
+        <p class="price">RP300.000</p>
+        <a href="#">Beli</a>
+    <div class="card">
+    <div class="badge">DISKON</div>
+    <img
+    src="https://picsum.photos/200/150?3">
+    <h3>Jam tangan</h3>
+    <p class="price">RP150.000</p>
+    <a href="#">Beli</a>
+    </div>
+    </div>
+    </body>
+</html>

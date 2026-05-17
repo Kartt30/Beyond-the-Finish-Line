@@ -1,0 +1,166 @@
+<html>
+<head>
+    <title>Event Sekolah</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f7;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #1b1b1b;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding: 40px;
+        }
+
+        .card {
+            position: relative;
+            width: 230px;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        /* BADGE UMUM */
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+
+        /* WARNA BADGE */
+        .hot {
+            background-color: red;
+        }
+
+        .baru {
+            background-color: green;
+        }
+
+        .event {
+            background-color: orange;
+        }
+
+        .content {
+            padding: 15px;
+        }
+
+        .content h3 {
+            margin: 10px 0;
+        }
+
+        .content p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #3f51b5;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background-color: #283593;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>TOP 5 BIDAK CATUR</h1>
+        <p>inilah 5 bidak ter hebat menurut saya</p>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+            <div class="badge hot">TOP 1</div>
+            <img src="https://images.pexels.com/photos/5502532/pexels-photo-5502532.jpeg">
+            <div class="content">
+                <h3>KING (Raja)</h3>
+                <p>Uji kemampuan programming kamu!</p>
+                <a href="#" class="btn">SETUJU</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="badge baru">TOP 2</div>
+            <img src="https://images.pexels.com/photos/17158327/pexels-photo-17158327.jpeg">
+            <div class="content">
+                <h3>Queen (Ratu)
+                <p>Belajar desain grafis dari nol.</p>
+                <a href="#" class="btn">SETUJU</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="badge hot">TOP 3</div>
+            <img src="https://images.pexels.com/photos/8222449/pexels-photo-8222449.jpeg">
+            <div class="content">
+                <h3>Knight (kuda)</h3>
+                <p>Kompetisi olahraga antar kelas.</p>
+                <a href="#" class="btn">SETUJU</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="badge baru">TOP 4</div>
+            <img src="https://images.pexels.com/photos/37303761/pexels-photo-37303761.jpeg">
+            <div class="content">
+                <h3>Rook (benteng)</h3>
+                <p>Tingkatkan semangat belajar kamu.</p>
+                <a href="#" class="btn">SETUJU</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="badge event">TOP 5</div>
+            <img src="https://images.pexels.com/photos/7416846/pexels-photo-7416846.jpeg">
+            <div class="content">
+                <h3>Pawn (pion)</h3>
+                <p>Tunjukkan skill gaming terbaikmu.</p>
+                <a href="#" class="btn">SETUJU</a>
+            </div>
+        </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

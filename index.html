@@ -1,0 +1,1755 @@
+<html>
+  <head>
+    <title>Beyond the Finish Line</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #eef2f7;
+        margin: 0;
+        overflow-x: hidden;
+      }
+      /* HEADER */
+      .header {
+        background-color: #0a0000;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 28px 56px;
+        position: relative;
+        min-height: 100px;
+      }
+      .LOGO img {
+        width: 300px;
+        height: 250px;
+        object-fit: contain;
+        flex-shrink: 0;
+        opacity: 0.92;
+        position: relative;
+        z-index: 1;
+      }
+      .text {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+        white-space: nowrap;
+      }
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        justify-items: center;
+        gap: 25px;
+        padding: 40px;
+      }
+      /* CARD (UNTUK ANIMATION) */
+      .card {
+        position: relative;
+        width: 100%;
+        max-width: 320px;
+
+        /* ANIMATION */
+        opacity: 0;
+        animation: fadeUp 0.8s forwards;
+      }
+      /* DELAY */
+      .card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .card:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .card:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+
+      /* CARD INNER (UNTUK HOVER) */
+      .card-inner {
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column; /* penting */
+        height: 100%; /* biar penuh */
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      /* HOVER EFFECT */
+      .card-inner:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+      /* IMAGE */
+      .card-inner {
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .card-inner img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        transition: 0.3s;
+      }
+
+      .card-inner:hover img {
+        transform: scale(1.05);
+      }
+      /* BADGE */
+      .badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 149, 0, 0.47);
+        color: rgba(1, 0, 16, 0.842);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-weight: 800;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .badge2 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(0, 255, 204, 0.999);
+        color: white;
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+      .badge3 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(239, 115, 6);
+        color: white;
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+      .badge4 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge5 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge6 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(131, 102, 27);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge7 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(106, 79, 9, 0.796);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge8 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(14, 251, 6, 0.796);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge9 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: oklch(57.743% 0.23359 28.905 / 0.91);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge10 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(48, 5, 156, 0.796);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge11 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(13, 10, 144, 0.882);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge12 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(13, 218, 232, 0.796);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge13 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(120, 6, 6, 0.71);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge14 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(61, 170, 11, 0.484);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge15 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 184, 6, 0.796);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge16 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(175, 107, 5, 0.558);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge17 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 134, 249, 0.796);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge18 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(238, 255, 3, 0.815);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge19 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(204, 207, 118, 0.564);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 800;
+      }
+
+      .badge20 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(19, 19, 245, 0.796);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 900;
+      }
+
+      .badge21 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(5, 184, 255, 0.796);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 900;
+      }
+
+      .badge22 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(245, 0, 0);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 900;
+      }
+
+      .badge23 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(235, 170, 7, 0.934);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 900;
+      }
+
+      .badge24 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(0, 21, 255, 0.796);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 900;
+      }
+
+      .badge25 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(125, 11, 191, 0.796);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 900;
+      }
+
+      .badge26 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(184, 184, 226);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 900;
+      }
+
+      .badge27 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(221, 45, 241, 0.796);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 900;
+      }
+
+      .badge28 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(192, 90, 7, 0.766);
+        color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        /* font-size: 12px; */
+        border-radius: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 900;
+      }
+
+      /* CONTENT */
+      .content {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; /* isi akan dorong tombol ke bawah */
+      }
+
+      .GEDE {
+        font-family: "Georgia", "Times New Roman", serif;
+        font-size: 1.75rem;
+        font-weight: 400;
+        letter-spacing: 0.5em;
+        text-transform: uppercase;
+        margin: 0;
+        color: #ffffff;
+        line-height: 1.1;
+      }
+      .BESAR {
+        font-family: "Georgia", serif;
+        font-size: 0.75rem;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        color: rgba(255, 255, 255, 0.48);
+        font-style: italic;
+        margin: 0;
+      }
+      /* .YUHU {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    
+
+} */
+
+      .content h3 {
+        margin: 10px 0;
+      }
+
+      .content p {
+        /* font-size: 14px; */
+        color: #3e3c3c;
+        font-style: italic;
+        font-weight: 800;
+      }
+
+      /* BUTTON */
+      .btn {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #ff7b00f7;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn2 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #00e1fffc;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+      .btn3 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #ff9900;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn4 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #0800ff;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn5 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #0b0b0b;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn6 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #665918;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn7 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #71452c;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn8 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #3cff00;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn9 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #ff1e05;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn10 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #3f03a7;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn11 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #0508b3ce;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn12 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #08aaeb;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn13 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #ad0808ce;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn14 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #24780dc5;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn15 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #ff8808;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn16 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #983b05c2;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn17 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #bc44ef;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn18 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #f2ff00;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn19 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #efef44c0;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn20 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #1e30f6;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+      .btn21 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #21c7fafe;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn22 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #ff0000;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn23 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #ff9d00f4;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn24 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #0400ff;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn25 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #c514f699;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn26 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #72748e;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .btn27 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #cf12c9;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+      .btn28 {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: #0c0c0c;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      /* BUTTON HOVER */
+      .btn:hover {
+        background-color: #ea8b16d0;
+      }
+      .btn2:hover {
+        background-color: #16c7eac4;
+      }
+      .btn3:hover {
+        background-color: #ff9900;
+      }
+      .btn4:hover {
+        background-color: #0d20ed;
+      }
+      .btn5:hover {
+        background-color: #070707b6;
+      }
+      .btn6:hover {
+        background-color: #83d14ab6;
+      }
+
+      .btn7:hover {
+        background-color: #71452c;
+      }
+
+      .btn8:hover {
+        background-color: #40ff00;
+      }
+      .btn9:hover {
+        background-color: #ff1e05;
+      }
+
+      .btn10:hover {
+        background-color: #4c0390;
+      }
+      .btn11:hover {
+        background-color: #120fb0b8;
+      }
+
+      .btn12:hover {
+        background-color: #10ffef;
+      }
+
+      .btn13:hover {
+        background-color: #9a0606a5;
+      }
+
+      .btn14:hover {
+        background-color: #1cff077d;
+      }
+
+      .btn15:hover {
+        background-color: #ff9808;
+      }
+
+      .btn16:hover {
+        background-color: #ab590cb3;
+      }
+
+      .btn17:hover {
+        background-color: #e867ff;
+      }
+
+      .btn18:hover {
+        background-color: #ffff67;
+      }
+
+      .btn19:hover {
+        background-color: #c7d85adb;
+      }
+
+      .btn20:hover {
+        background-color: #212cfa;
+      }
+
+      .btn21:hover {
+        background-color: #21c7fafe;
+      }
+
+      .btn22:hover {
+        background-color: #fa21214e;
+      }
+
+      .btn23:hover {
+        background-color: #dea216a8;
+      }
+
+      .btn24:hover {
+        background-color: #0a0f80d4;
+      }
+
+      .btn25:hover {
+        background-color: #c514f699;
+      }
+
+      .btn26:hover {
+        background-color: #b4b3eb;
+      }
+      .btn27:hover {
+        background-color: #ff3ae5;
+      }
+      .btn28:hover {
+        background-color: #ff0000;
+      }
+
+      /* ANIMATION KEYFRAMES */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* responsive hp */
+      @media screen and (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 16px 24px;
+          gap: 0;
+          min-height: unset;
+        }
+        .LOGO img {
+          width: 110px;
+          height: auto;
+          position: static;
+          opacity: 1;
+          margin-bottom: 16px;
+        }
+        .text {
+          position: static;
+          transform: none;
+          white-space: normal;
+          align-items: center;
+          text-align: center;
+          border-top: 1px solid rgba(255, 255, 255, 0.14);
+          padding-top: 16px;
+          width: 100%;
+        }
+        .GEDE {
+          font-size: 1.3rem;
+          letter-spacing: 0.38em;
+        }
+        .BESAR {
+          font-size: 0.7rem;
+          letter-spacing: 0.14em;
+        }
+        .container {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 16px;
+          padding: 16px;
+        }
+        .card {
+          max-width: 100%;
+        }
+        .card-inner img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+        .content {
+          padding: 10px 10px 12px;
+          overflow: hidden;
+        }
+        .content h3 {
+          font-size: 15px;
+        }
+        .content p {
+          font-size: 12px;
+        }
+        .btn,
+        .btn2,
+        .btn3,
+        .btn4,
+        .btn5,
+        .btn6,
+        .btn7,
+        .btn8,
+        .btn9,
+        .btn10,
+        .btn11,
+        .btn12,
+        .btn13,
+        .btn14,
+        .btn15,
+        .btn16,
+        .btn17,
+        .btn18,
+        .btn19,
+        .btn20,
+        .btn21,
+        .btn22,
+        .btn23,
+        .btn24,
+        .btn25,
+        .btn26,
+        .btn27,
+        .btn28 {
+          font-size: 13px;
+          padding: 10px 12px;
+        }
+        .badge,
+        .badge2,
+        .badge3,
+        .badge4,
+        .badge5,
+        .badge6,
+        .badge7,
+        .badge8,
+        .badge9,
+        .badge10,
+        .badge11,
+        .badge12,
+        .badge13,
+        .badge14,
+        .badge15,
+        .badge16,
+        .badge17,
+        .badge18,
+        .badge19,
+        .badge20,
+        .badge21,
+        .badge22,
+        .badge23,
+        .badge24,
+        .badge25,
+        .badge26,
+        .badge27,
+        .badge28 {
+          font-size: 11px;
+          padding: 4px 8px;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .header {
+          padding: 18px 12px 22px;
+        }
+        .LOGO img {
+          width: 90px;
+          height: auto;
+          margin-bottom: 14px;
+        }
+        .GEDE {
+          font-size: 1.1rem;
+          letter-spacing: 0.35em;
+        }
+        .BESAR {
+          font-size: 0.68rem;
+        }
+        .card-inner img {
+          height: 180px;
+        }
+        .btn,
+        .btn2,
+        .btn3,
+        .btn4,
+        .btn5,
+        .btn6,
+        .btn7,
+        .btn8,
+        .btn9,
+        .btn10,
+        .btn11,
+        .btn12,
+        .btn13,
+        .btn14,
+        .btn15,
+        .btn16,
+        .btn17,
+        .btn18,
+        .btn19,
+        .btn20,
+        .btn21,
+        .btn22,
+        .btn23,
+        .btn24,
+        .btn25,
+        .btn26,
+        .btn27,
+        .btn28 {
+          display: block;
+          width: 100%;
+          box-sizing: border-box;
+          text-align: center;
+        }
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        padding: 32px 16px 48px;
+        flex-wrap: wrap;
+      }
+      .pagination a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 12px;
+        border: 1px solid #d0d0d0;
+        border-radius: 4px;
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+        background: white;
+        transition: background 0.2s, color 0.2s, border-color 0.2s;
+        cursor: pointer;
+      }
+      .pagination a:hover {
+        background: #f5f5f5;
+        border-color: #aaa;
+      }
+      .pagination .active {
+        background: #900600;
+        color: white;
+        border-color: #900600;
+        font-weight: 600;
+        pointer-events: none;
+      }
+      .pagination .disabled {
+        opacity: 0.3;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="LOGO">
+        <img
+          src="https://kartt30.github.io/Beyond-the-Finish-Line/Umamusume-Pretty-Derby-Logo%20(1).jpg"
+          alt="Uma Musume Pretty Derby Logo"
+        />
+      </div>
+
+      <div class="text">
+        <h1 class="GEDE">UMA MUSUME</h1>
+        <p class="BESAR">
+          Every race tells a story, and these five are unforgettable.
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge">TOP</div>
+          <img
+            src="https://cdn.dribbble.com/userupload/44358277/file/6418a84a160b0d3c86f87d665966c152.png"
+          />
+          <div class="content">
+            <h3>AGNES TACHYON</h3>
+            <p>Brilliance and madness often run together</p>
+            <a
+              href="https://umamusu.wiki/Agnes_Tachyon"
+              target="_blank"
+              class="btn"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge2">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/58/9b/a1/589ba14665b14d37af179f438a9abc2f.jpg"
+          />
+          <div class="content">
+            <h3>CHERVAL GRAND</h3>
+            <p>Pain fades, but the struggle shapes you</p>
+            <a
+              href="https://umamusu.wiki/Cheval_Grand"
+              target="_blank"
+              class="btn2"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge3">TOP</div>
+          <img
+            src="https://i.ytimg.com/vi/9CYTqIxYNrc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBNEHKfaOu7d-BaVBrZOZ_c8DAFXg"
+          />
+          <div class="content">
+            <h3>T.M OPERA O</h3>
+            <p>A king never stops chasing victory</p>
+            <a
+              href="https://umamusu.wiki/T.M._Opera_O"
+              target="_blank"
+              class="btn3"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge4">TOP</div>
+          <img src="https://i.ytimg.com/vi/r-1zmHovnGI/maxresdefault.jpg" />
+          <div class="content">
+            <h3>OGURI CAP</h3>
+            <p>Oguri Cap proved that hard work can surpass talent.</p>
+            <a
+              href="https://umamusu.wiki/Oguri_Cap"
+              target="_blank"
+              class="btn4"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge5">TOP</div>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaQdOCbOYK3DmfGnMBVdOs2rSFOJJdt-0AZw&s"
+          />
+          <div class="content">
+            <h3>MANHATTAN CAFE</h3>
+            <p>She runs quietly, but leaves a lasting shadow</p>
+            <a
+              href="https://umamusu.wiki/Manhattan_Cafe"
+              target="_blank"
+              class="btn5"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge6">TOP</div>
+          <img src="https://pbs.twimg.com/media/Gu4kxZpWwAALu4d.jpg" />
+          <div class="content">
+            <h3>DREAM JOURNEY</h3>
+            <p>Behind every step lies a dream worth chasing</p>
+            <a
+              href="https://umamusu.wiki/Dream_Journey"
+              target="_blank"
+              class="btn6"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge7">TOP</div>
+          <img
+            src="https://images7.alphacoders.com/130/thumb-1920-1304082.jpg"
+          />
+          <div class="content">
+            <h3>TOKAI TEIO</h3>
+            <p>No matter how many times she falls, she always rises again</p>
+            <a
+              href="https://umamusu.wiki/Tokai_Teio"
+              target="_blank"
+              class="btn7"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge8">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/60/b6/95/60b6959e8bf5abdca347afb980ec4fde.jpg"
+          />
+          <div class="content">
+            <h3>SILENT SUZUKA</h3>
+            <p>She runs toward a horizon only she can see</p>
+            <a
+              href="https://umamusu.wiki/Silent_Suzuka"
+              target="_blank"
+              class="btn8"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge9">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/37/9c/bc/379cbc718fed159dd476f268d01b03d0.jpg"
+          />
+          <div class="content">
+            <h3>GOLD SHIP</h3>
+            <p>Unpredictable, unstoppable, unforgettable</p>
+            <a
+              href="https://umamusu.wiki/Gold_Ship"
+              target="_blank"
+              class="btn9"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge10">TOP</div>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8-qRUQvlwO2IlrsRSGnXs5NhW4ivE52XM9w&s"
+          />
+          <div class="content">
+            <h3>FOREVER YOUNG</h3>
+            <p>A spirit that keeps running beyond every limit</p>
+            <a
+              href="https://umamusu.wiki/Forever_Young"
+              target="_blank"
+              class="btn10"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge11">TOP</div>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiowfEtLtfPnVw9URN4r0Aak_u0n0oacF6ug&s"
+          />
+          <div class="content">
+            <h3>RICE SHOWER</h3>
+            <p>Quiet steps, strong heart—Rice Shower never stops</p>
+            <a href="https://umamusu.wiki/Rice_" target="_blank" class="btn11"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge12">TOP</div>
+          <img
+            src="https://media.tenor.com/PVeFRR0rRfUAAAAe/fuji-kiseki-uma-musume.png"
+          />
+          <div class="content">
+            <h3>FUJI KISEKI</h3>
+            <p>Every step is steady, every breath is purpose</p>
+            <a
+              href="https://umamusu.wiki/Fuji_Kiseki"
+              target="_blank"
+              class="btn12"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge13">TOP</div>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxaY_MWUtA5tgcBQYthNj8sVf5ujdFte_Apw&s"
+          />
+          <div class="content">
+            <h3>KITASAN BLACK</h3>
+            <p>Never stopping, even when the path gets tough</p>
+            <a
+              href="https://umamusu.wiki/Kitasan_Black"
+              target="_blank"
+              class="btn13"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge14">TOP</div>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNuBSkpkohajZSc3ntAcelhj4F8D55tfn_OA&s"
+          />
+          <div class="content">
+            <h3>SATONO DIAMOND</h3>
+            <p>Small steps, big dreams, never giving up</p>
+            <a
+              href="https://umamusu.wiki/Satono_Diamond"
+              target="_blank"
+              class="btn14"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge15">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/a3/28/83/a328837afccf3945f34f9928f0f19eb7.jpg"
+          />
+          <div class="content">
+            <h3>STAY GOLD</h3>
+            <p>Running through pain, still reaching for something beyond.</p>
+            <a
+              href="https://umamusu.wiki/Stay_Gold"
+              target="_blank"
+              class="btn15"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge16">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/ce/b1/43/ceb14329913503abf04bb65fbbc80b61.jpg"
+          />
+          <div class="content">
+            <h3>SYMBOLY RUDOLF</h3>
+            <p>Strength built from discipline and absolute focus</p>
+            <a
+              href="https://umamusu.wiki/Symboli_Rudolf"
+              target="_blank"
+              class="btn16"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge17">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/2b/dd/5a/2bdd5aef8aeaea7a425ad27ca9365ddf.jpg"
+          />
+          <div class="content">
+            <h3>AGNES DIGITAL</h3>
+            <p>Unpredictable speed, driven by pure passion</p>
+            <a
+              href="https://umamusu.wiki/Agnes_Digital"
+              target="_blank"
+              class="btn17"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge18">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/cc/ae/39/ccae3951a4c47c54db43c1c1f116c4b1.jpg"
+          />
+          <div class="content">
+            <h3>JUGLE POCKET</h3>
+            <p>Every race is a chance to prove more</p>
+            <a
+              href="https://umamusu.wiki/Jungle_Pocket"
+              target="_blank"
+              class="btn18"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge19">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/ee/82/59/ee8259190036d7a04370e41f4f6b742d.jpg"
+          />
+          <div class="content">
+            <h3>NARITA TOP ROAD</h3>
+            <p>A steady heart that never loses sight of the goal</p>
+            <a
+              href="https://umamusu.wiki/Narita_Top_Road"
+              target="_blank"
+              class="btn19"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge20">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/f3/40/ba/f340baee9be5db4211e3267b81dbc839.jpg"
+          />
+          <div class="content">
+            <h3>ADMIRE VEGA</h3>
+            <p>Focus so deep, nothing else exists on the track</p>
+            <a
+              href="https://umamusu.wiki/Admire_Vega"
+              target="_blank"
+              class="btn20"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge21">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/1b/91/e6/1b91e675ef8bb2175d9bfca499095e5d.jpg"
+          />
+          <div class="content">
+            <h3>ALMOND EYE</h3>
+            <p>Gentle steps carrying a strong will to keep going</p>
+            <a
+              href="https://umamusu.wiki/Almond_Eye"
+              target="_blank"
+              class="btn21"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge22">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/54/59/ad/5459ad3f91dafe318489918234d7fe42.jpg"
+          />
+          <div class="content">
+            <h3>GENTILDONNA</h3>
+            <p>Graceful steps hiding an unshakable will</p>
+            <a
+              href="https://umamusu.wiki/Gentildonna"
+              target="_blank"
+              class="btn22"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge23">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/0c/02/62/0c0262665fdcb540b4e7dad6f9e3e324.jpg"
+          />
+          <div class="content">
+            <h3>VODKA</h3>
+            <p>Racing with fire, confidence, and pure energy</p>
+            <a href="https://umamusu.wiki/Vodka" target="_blank" class="btn23"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge24">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/d6/86/7a/d6867ab71bef2f0f5756196dcded916e.jpg"
+          />
+          <div class="content">
+            <h3>DAIWA SCARLET</h3>
+            <p>Every race is a chance to prove perfection</p>
+            <a
+              href="https://umamusu.wiki/Daiwa_Scarlet"
+              target="_blank"
+              class="btn24"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge25">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/5f/1c/d4/5f1cd4862de3250ce65b1753b47a9eb5.jpg"
+          />
+          <div class="content">
+            <h3>SPECIAL WEEK</h3>
+            <p>Simple dreams, but strong will to achieve them</p>
+            <a
+              href="https://umamusu.wiki/Special_Week"
+              target="_blank"
+              class="btn25"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge26">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/6b/88/26/6b8826559aec8d42ca32f6e8161935a1.jpg"
+          />
+          <div class="content">
+            <h3>SEIUN SKY</h3>
+            <p>Running for joy, not just for victory</p>
+            <a
+              href="https://umamusu.wiki/Seiun_Sky"
+              target="_blank"
+              class="btn26"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge27">TOP</div>
+          <img
+            src="https://i.pinimg.com/736x/89/fa/66/89fa6624d09a9c2c57db154dfba8fb5e.jpg"
+          />
+          <div class="content">
+            <h3>NISHINO FLOWER</h3>
+            <p>Small and calm, but full of determination</p>
+            <a
+              href="https://umamusu.wiki/Nishino_Flower"
+              target="_blank"
+              class="btn27"
+              >DETAIL</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="badge28">HOT</div>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoAfckbPxBHlsGFEUefTr_069hjXZ_iZibbw&s"
+          />
+          <div class="content">
+            <h3>IJAZAH JOKOWI</h3>
+            <p>DOKSLI ASLI IJAZAH PAKDEE</p>
+            <a
+              href="https://i.pinimg.com/736x/97/f5/ff/97f5fff802744d3498d430af211aa652.jpg"
+              target="_blank"
+              class="btn28"
+              >DOKSLI ASLI</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination"></div>
+
+  <script>
+    (function () {
+      var PER_PAGE = 8;
+      var BREAK = 768;
+      var page = 1;
+
+      function allCards() {
+        return Array.from(document.querySelectorAll('.container .card'));
+      }
+
+      function isMobile() {
+        return window.innerWidth <= BREAK;
+      }
+
+      function totalPages() {
+        return isMobile() ? Math.ceil(allCards().length / PER_PAGE) : 1;
+      }
+
+      function goTo(p) {
+        var t = totalPages();
+        page = Math.max(1, Math.min(p, t));
+
+        allCards().forEach(function (card, i) {
+          if (!isMobile()) {
+            card.style.display = '';
+          } else {
+            var start = (page - 1) * PER_PAGE;
+            card.style.display = (i >= start && i < start + PER_PAGE) ? '' : 'none';
+          }
+        });
+
+        buildPagination();
+      }
+
+      function buildPagination() {
+        var nav = document.querySelector('.pagination');
+        if (!nav) return;
+        var t = totalPages();
+        nav.innerHTML = '';
+
+        if (!isMobile()) return;
+
+        function makeBtn(label, target, isActive, isDisabled) {
+          var a = document.createElement('a');
+          a.href = '#';
+          a.textContent = label;
+          if (isActive) a.className = 'active';
+          if (isDisabled) a.className = 'disabled';
+          a.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (!isDisabled && !isActive) {
+              goTo(target);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          });
+          nav.appendChild(a);
+        }
+
+        makeBtn('«', page - 1, false, page === 1);
+        for (var i = 1; i <= t; i++) {
+          makeBtn(i, i, i === page, false);
+        }
+        makeBtn('»', page + 1, false, page === t);
+      }
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () { goTo(1); }, 150);
+      });
+
+      goTo(1);
+    })();
+  </script>
+  </body>
+</html>

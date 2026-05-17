@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>Produk Diskon</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #f5f5f5;
+                margin: 0;
+                padding: 20px;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .container {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            .card {
+                position: relative; /* penting untuk badge */
+                background-color: white;
+                width: 220px;
+                padding: 15px;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Diperbaiki: koma di akhir dihapus */
+            }
+            .badge {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background-color: red;
+                color: white;
+                padding: 5px 10px;
+                font-size: 12px;
+                border-radius: 5px;
+            }
+            .card img { /* Diperbaiki: 'image' diubah menjadi 'img' */
+                width: 100%;
+                border-radius: 8px;
+            }
+            .card h3 {
+                margin: 10px 0px;
+            }
+            .price {
+                color: green;
+                font-weight: bold;
+            }
+            .card a {
+                display: inline-block;
+                margin-top: 10px;
+                padding: 10px 15px;
+                background-color: #1976d2;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+            .card a:hover {
+                background-color: #0d47a1;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Produk Diskon</h1>
+        
+        <div class="container">
+            <div class="card">
+                <div class="badge">Diskon</div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_iAoFzmBn6A9eIit6CJb1LslfMpSKEuaQDQ&s" alt="Sepatu Sport"> <h3>Jesey</h3>
+                <p class="price">Rp300.000</p>
+                <a href="#">Beli</a>
+            </div> 
+            
+            <div class="card">
+                <div class="badge">Diskon</div>
+                <img src="data:image/jpeg;base64,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" alt="Jaket Hoodie">
+                <h3>Jaket Hoodie</h3>
+                <p class="price">Rp300.000</p>
+                <a href="#">Beli</a>
+            </div> <div class="card">
+                <div class="badge">Diskon</div>
+                <img src="https://i.pinimg.com/236x/48/51/4c/48514c294aef7f955991bf635fa9fd08.jpg" alt="Jam Tangan">
+                <h3>Jam Tangan</h3>
+                <p class="price">Rp150.000</p>
+                <a href="#">Beli</a>
+            </div>
+        </div>
+    </body>
+</html>
