@@ -1379,10 +1379,61 @@
         opacity: 0.3;
         pointer-events: none;
       }
+      /* LOADER */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  transition: opacity 0.5s ease;
+}
+
+#loader h2 {
+  color: white;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.spinner {
+  width: 70px;
+  height: 70px;
+  border: 7px solid rgba(255,255,255,0.2);
+  border-top: 7px solid #ff7b00;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+
+}
     </style>
   </head>
 
   <body>
+    <!-- LOADING SCREEN -->
+<div id="loader">
+
+  <div class="spinner"></div>
+
+  <h2>Loading Beyond The Finish Line...</h2>
+
+</div>
     <div class="header">
       <div class="LOGO">
         <img src="1.png" alt="Uma Musume Pretty Derby Logo" />
@@ -2006,113 +2057,175 @@
     <div class="pagination"></div>
 
     <script>
-      (function () {
-        var PER_PAGE = 8;
-        var BREAK = 768;
-        var page = 1;
+(function () {
 
-        function allCards() {
-          return Array.from(document.querySelectorAll(".container .card"));
-        }
+  var PER_PAGE = 8;
+  var BREAK = 768;
+  var page = 1;
 
-        function isMobile() {
-          return window.innerWidth <= BREAK;
-        }
+  function allCards() {
+    return Array.from(document.querySelectorAll(".container .card"));
+  }
 
-        function totalPages() {
-          return isMobile() ? Math.ceil(allCards().length / PER_PAGE) : 1;
-        }
+  function isMobile() {
+    return window.innerWidth <= BREAK;
+  }
 
-        function goTo(p) {
-          var t = totalPages();
-          page = Math.max(1, Math.min(p, t));
+  function totalPages() {
+    return isMobile()
+      ? Math.ceil(allCards().length / PER_PAGE)
+      : 1;
+  }
 
-          allCards().forEach(function (card, i) {
-            if (!isMobile()) {
-              card.style.display = "";
-            } else {
-              var start = (page - 1) * PER_PAGE;
-              card.style.display =
-                i >= start && i < start + PER_PAGE ? "" : "none";
-            }
-          });
+  function goTo(p) {
 
-          buildPagination();
-        }
+    var cards = allCards();
+    var t = totalPages();
 
-        function buildPagination() {
-          var nav = document.querySelector(".pagination");
-          if (!nav) return;
-          var t = totalPages();
-          nav.innerHTML = "";
+    page = Math.max(1, Math.min(p, t));
 
-          if (!isMobile()) return;
+    cards.forEach(function(card, i) {
 
-          function makeBtn(label, target, isActive, isDisabled) {
-            var a = document.createElement("a");
-            a.href = "#";
-            a.textContent = label;
-            if (isActive) a.className = "active";
-            if (isDisabled) a.className = "disabled";
-            a.addEventListener("click", function (e) {
-              e.preventDefault();
-              if (!isDisabled && !isActive) {
-                goTo(target);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }
-            });
-            nav.appendChild(a);
-          }
+      if (!isMobile()) {
 
-          makeBtn("«", page - 1, false, page === 1);
-          for (var i = 1; i <= t; i++) {
-            makeBtn(i, i, i === page, false);
-          }
-          makeBtn("»", page + 1, false, page === t);
-        }
-
-        var resizeTimer;
-
-window.addEventListener("resize", function () {
-  clearTimeout(resizeTimer);
-
-  resizeTimer = setTimeout(function () {
-    // tetap di halaman sekarang
-    goTo(page);
-  }, 150);
-});
-
-// pertama kali load
-goTo(page);
-/* SEARCH FUNCTION */
-document
-  .getElementById("searchInput")
-  .addEventListener("input", function () {
-    var value = this.value.toLowerCase();
-
-    allCards().forEach(function (card) {
-      var title = card.querySelector("h3").textContent.toLowerCase();
-
-      if (title.includes(value)) {
         card.style.display = "";
+
       } else {
-        card.style.display = "none";
+
+        var start = (page - 1) * PER_PAGE;
+
+        card.style.display =
+          i >= start && i < start + PER_PAGE
+            ? ""
+            : "none";
       }
+
     });
 
-    // sembunyikan pagination saat search
+    buildPagination();
+  }
+
+  function buildPagination() {
+
     var nav = document.querySelector(".pagination");
 
-    if (value.length > 0) {
-      nav.style.display = "none";
-    } else {
-      nav.style.display = "flex";
-      goTo(page);
+    if (!nav) return;
+
+    var t = totalPages();
+
+    nav.innerHTML = "";
+
+    if (!isMobile()) return;
+
+    function makeBtn(label, target, active, disabled) {
+
+      var a = document.createElement("a");
+
+      a.href = "#";
+      a.textContent = label;
+
+      if (active) a.classList.add("active");
+      if (disabled) a.classList.add("disabled");
+
+      a.addEventListener("click", function(e) {
+
+        e.preventDefault();
+
+        if (!active && !disabled) {
+
+          goTo(target);
+
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+
+        }
+
+      });
+
+      nav.appendChild(a);
     }
+
+    makeBtn("«", page - 1, false, page === 1);
+
+    for (var i = 1; i <= t; i++) {
+      makeBtn(i, i, i === page, false);
+    }
+
+    makeBtn("»", page + 1, false, page === t);
+  }
+
+  // SEARCH
+  document
+    .getElementById("searchInput")
+    .addEventListener("input", function () {
+
+      var value = this.value.toLowerCase();
+      var cards = allCards();
+
+      if (value.length > 0) {
+
+        cards.forEach(function(card) {
+
+          var title = card
+            .querySelector("h3")
+            .textContent
+            .toLowerCase();
+
+          if (title.includes(value)) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+
+        });
+
+        document.querySelector(".pagination").style.display = "none";
+
+      } else {
+
+        document.querySelector(".pagination").style.display = "flex";
+
+        goTo(page);
+
+      }
+
+    });
+
+  // resize
+  var resizeTimer;
+
+  window.addEventListener("resize", function () {
+
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(function () {
+      goTo(page);
+    }, 150);
+
   });
 
-        goTo(1);
-      })();
-    </script>
+  // pertama load
+  goTo(1);
+// LOADER
+window.addEventListener("load", function () {
+
+  var loader = document.getElementById("loader");
+
+  setTimeout(function () {
+
+    loader.style.opacity = "0";
+
+    setTimeout(function () {
+      loader.style.display = "none";
+    }, 500);
+
+  }, 1200);
+
+});
+})();
+
+</script>
   </body>
 </html>
