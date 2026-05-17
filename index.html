@@ -1113,7 +1113,10 @@
         font-size: 14px;
         font-family: Arial, sans-serif;
         background: white;
-        transition: background 0.2s, color 0.2s, border-color 0.2s;
+        transition:
+          background 0.2s,
+          color 0.2s,
+          border-color 0.2s;
         cursor: pointer;
       }
       .pagination a:hover {
@@ -1194,7 +1197,7 @@
         <div class="card-inner">
           <div class="badge3">TOP</div>
           <img
-            src="https://i.ytimg.com/vi/9CYTqIxYNrc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBNEHKfaOu7d-BaVBrZOZ_c8DAFXg"
+            src="https://i.pinimg.com/736x/a9/7c/bf/a97cbf297f61499e5e04ea0909bd6ed6.jpg"
           />
           <div class="content">
             <h3>T.M OPERA O</h3>
@@ -1215,7 +1218,7 @@
           <img src="https://i.ytimg.com/vi/r-1zmHovnGI/maxresdefault.jpg" />
           <div class="content">
             <h3>OGURI CAP</h3>
-            <p>Oguri Cap proved that hard work can surpass talent.</p>
+            <p>Oguri Cap proved that hard work can surpass talent</p>
             <a
               href="https://umamusu.wiki/Oguri_Cap"
               target="_blank"
@@ -1677,79 +1680,82 @@
     <!-- PAGINATION -->
     <div class="pagination"></div>
 
-  <script>
-    (function () {
-      var PER_PAGE = 8;
-      var BREAK = 768;
-      var page = 1;
+    <script>
+      (function () {
+        var PER_PAGE = 8;
+        var BREAK = 768;
+        var page = 1;
 
-      function allCards() {
-        return Array.from(document.querySelectorAll('.container .card'));
-      }
+        function allCards() {
+          return Array.from(document.querySelectorAll(".container .card"));
+        }
 
-      function isMobile() {
-        return window.innerWidth <= BREAK;
-      }
+        function isMobile() {
+          return window.innerWidth <= BREAK;
+        }
 
-      function totalPages() {
-        return isMobile() ? Math.ceil(allCards().length / PER_PAGE) : 1;
-      }
+        function totalPages() {
+          return isMobile() ? Math.ceil(allCards().length / PER_PAGE) : 1;
+        }
 
-      function goTo(p) {
-        var t = totalPages();
-        page = Math.max(1, Math.min(p, t));
+        function goTo(p) {
+          var t = totalPages();
+          page = Math.max(1, Math.min(p, t));
 
-        allCards().forEach(function (card, i) {
-          if (!isMobile()) {
-            card.style.display = '';
-          } else {
-            var start = (page - 1) * PER_PAGE;
-            card.style.display = (i >= start && i < start + PER_PAGE) ? '' : 'none';
-          }
-        });
-
-        buildPagination();
-      }
-
-      function buildPagination() {
-        var nav = document.querySelector('.pagination');
-        if (!nav) return;
-        var t = totalPages();
-        nav.innerHTML = '';
-
-        if (!isMobile()) return;
-
-        function makeBtn(label, target, isActive, isDisabled) {
-          var a = document.createElement('a');
-          a.href = '#';
-          a.textContent = label;
-          if (isActive) a.className = 'active';
-          if (isDisabled) a.className = 'disabled';
-          a.addEventListener('click', function (e) {
-            e.preventDefault();
-            if (!isDisabled && !isActive) {
-              goTo(target);
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+          allCards().forEach(function (card, i) {
+            if (!isMobile()) {
+              card.style.display = "";
+            } else {
+              var start = (page - 1) * PER_PAGE;
+              card.style.display =
+                i >= start && i < start + PER_PAGE ? "" : "none";
             }
           });
-          nav.appendChild(a);
+
+          buildPagination();
         }
 
-        makeBtn('«', page - 1, false, page === 1);
-        for (var i = 1; i <= t; i++) {
-          makeBtn(i, i, i === page, false);
+        function buildPagination() {
+          var nav = document.querySelector(".pagination");
+          if (!nav) return;
+          var t = totalPages();
+          nav.innerHTML = "";
+
+          if (!isMobile()) return;
+
+          function makeBtn(label, target, isActive, isDisabled) {
+            var a = document.createElement("a");
+            a.href = "#";
+            a.textContent = label;
+            if (isActive) a.className = "active";
+            if (isDisabled) a.className = "disabled";
+            a.addEventListener("click", function (e) {
+              e.preventDefault();
+              if (!isDisabled && !isActive) {
+                goTo(target);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            });
+            nav.appendChild(a);
+          }
+
+          makeBtn("«", page - 1, false, page === 1);
+          for (var i = 1; i <= t; i++) {
+            makeBtn(i, i, i === page, false);
+          }
+          makeBtn("»", page + 1, false, page === t);
         }
-        makeBtn('»', page + 1, false, page === t);
-      }
 
-      var resizeTimer;
-      window.addEventListener('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () { goTo(1); }, 150);
-      });
+        var resizeTimer;
+        window.addEventListener("resize", function () {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function () {
+            goTo(1);
+          }, 150);
+        });
 
-      goTo(1);
-    })();
-  </script>
+        goTo(1);
+      })();
+    </script>
   </body>
 </html>
