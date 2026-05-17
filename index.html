@@ -3,11 +3,16 @@
     <title>Beyond the Finish Line</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+      html {
+  scroll-behavior: smooth;
+}
       body {
+        
         font-family: Arial, sans-serif;
         background-color: #eef2f7;
         margin: 0;
         overflow-x: hidden;
+        position: relative;
       }
       /* HEADER */
       .header {
@@ -226,6 +231,64 @@
         object-fit: cover;
         transition: 0.3s;
       }
+
+      /* OVERLAY */
+
+.overlay {
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 180px;
+
+  background: rgba(0,0,0,0.55);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  opacity: 0;
+
+  transition: 0.3s;
+
+  pointer-events: none;
+
+}
+
+.overlay span {
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  transform: translateY(20px);
+
+  transition: 0.3s;
+
+}
+
+.card-inner:hover .overlay {
+
+  opacity: 1;
+
+}
+
+.card-inner:hover .overlay span {
+
+  transform: translateY(0);
+
+}
 
       .card-inner:hover img {
         transform: scale(1.05);
@@ -1420,12 +1483,146 @@
   100% {
     transform: rotate(360deg);
   }
+  
+
+}
+/* MODAL */
+
+.modal {
+
+  display: none;
+
+  position: fixed;
+
+  z-index: 9999;
+
+  padding-top: 60px;
+
+  left: 0;
+
+  top: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow: auto;
+
+  background-color: rgba(0,0,0,0.9);
+
+  animation: fadeIn 0.3s;
+
+}
+
+.modal-content {
+
+  display: block;
+
+  margin: auto;
+
+  max-width: 85%;
+
+  max-height: 80vh;
+
+  border-radius: 12px;
+
+  animation: zoomIn 0.3s;
+
+}
+
+.close {
+
+  position: absolute;
+
+  top: 20px;
+
+  right: 35px;
+
+  color: white;
+
+  font-size: 40px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
+
+.close:hover {
+
+  color: #ff9900;
+
+}
+
+@keyframes zoomIn {
+
+  from {
+
+    transform: scale(0.7);
+
+    opacity: 0;
+
+  }
+
+  to {
+
+    transform: scale(1);
+
+    opacity: 1;
+
+  }
+
+}
+
+@keyframes fadeIn {
+
+  from {
+
+    opacity: 0;
+
+  }
+
+  to {
+
+    opacity: 1;
+
+  }
+
+  
+
+}
+
+/* PARTICLES */
+
+#particles-js {
+
+  position: fixed;
+
+  width: 100%;
+
+  height: 100%;
+
+  top: 0;
+
+  left: 0;
+
+  z-index: -1;
+
+  background: linear-gradient(
+    to bottom,
+    #090909,
+    #1a1a2e,
+    #16213e
+  );
 
 }
     </style>
   </head>
 
   <body>
+
+<div id="particles-js"></div>
+
     <!-- LOADING SCREEN -->
 <div id="loader">
 
@@ -1440,7 +1637,7 @@
       </div>
 
       <div class="text">
-        <h1 class="GEDE">UMA MUSUME</h1>
+        <h1 class="GEDE" id="typing"></h1>
         <p class="BESAR">
           Every race tells a story, and these five are unforgettable.
         </p>
@@ -1462,6 +1659,9 @@
           <img
             src="https://cdn.dribbble.com/userupload/44358277/file/6418a84a160b0d3c86f87d665966c152.png"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>AGNES TACHYON</h3>
             <p>Brilliance and madness often run together</p>
@@ -1481,6 +1681,9 @@
           <img
             src="https://i.pinimg.com/736x/58/9b/a1/589ba14665b14d37af179f438a9abc2f.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>CHERVAL GRAND</h3>
             <p>Pain fades, but the struggle shapes you</p>
@@ -1500,6 +1703,9 @@
           <img
             src="https://i.pinimg.com/736x/a9/7c/bf/a97cbf297f61499e5e04ea0909bd6ed6.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>T.M OPERA O</h3>
             <p>A king never stops chasing victory</p>
@@ -1517,6 +1723,9 @@
         <div class="card-inner">
           <div class="badge4">TOP</div>
           <img src="https://i.ytimg.com/vi/r-1zmHovnGI/maxresdefault.jpg" />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>OGURI CAP</h3>
             <p>Oguri Cap proved that hard work can surpass talent</p>
@@ -1536,6 +1745,9 @@
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaQdOCbOYK3DmfGnMBVdOs2rSFOJJdt-0AZw&s"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>MANHATTAN CAFE</h3>
             <p>She runs quietly, but leaves a lasting shadow</p>
@@ -1553,6 +1765,9 @@
         <div class="card-inner">
           <div class="badge6">TOP</div>
           <img src="https://pbs.twimg.com/media/Gu4kxZpWwAALu4d.jpg" />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>DREAM JOURNEY</h3>
             <p>Behind every step lies a dream worth chasing</p>
@@ -1572,6 +1787,9 @@
           <img
             src="https://images7.alphacoders.com/130/thumb-1920-1304082.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>TOKAI TEIO</h3>
             <p>No matter how many times she falls, she always rises again</p>
@@ -1591,6 +1809,9 @@
           <img
             src="https://i.pinimg.com/736x/60/b6/95/60b6959e8bf5abdca347afb980ec4fde.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>SILENT SUZUKA</h3>
             <p>She runs toward a horizon only she can see</p>
@@ -1610,6 +1831,9 @@
           <img
             src="https://i.pinimg.com/736x/37/9c/bc/379cbc718fed159dd476f268d01b03d0.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>GOLD SHIP</h3>
             <p>Unpredictable, unstoppable, unforgettable</p>
@@ -1629,6 +1853,9 @@
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8-qRUQvlwO2IlrsRSGnXs5NhW4ivE52XM9w&s"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>FOREVER YOUNG</h3>
             <p>A spirit that keeps running beyond every limit</p>
@@ -1648,6 +1875,9 @@
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiowfEtLtfPnVw9URN4r0Aak_u0n0oacF6ug&s"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>RICE SHOWER</h3>
             <p>Quiet steps, strong heart—Rice Shower never stops</p>
@@ -1664,6 +1894,9 @@
           <img
             src="https://media.tenor.com/PVeFRR0rRfUAAAAe/fuji-kiseki-uma-musume.png"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>FUJI KISEKI</h3>
             <p>Every step is steady, every breath is purpose</p>
@@ -1683,6 +1916,9 @@
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxaY_MWUtA5tgcBQYthNj8sVf5ujdFte_Apw&s"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>KITASAN BLACK</h3>
             <p>Never stopping, even when the path gets tough</p>
@@ -1702,6 +1938,9 @@
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNuBSkpkohajZSc3ntAcelhj4F8D55tfn_OA&s"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>SATONO DIAMOND</h3>
             <p>Small steps, big dreams, never giving up</p>
@@ -1721,6 +1960,9 @@
           <img
             src="https://i.pinimg.com/736x/a3/28/83/a328837afccf3945f34f9928f0f19eb7.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>STAY GOLD</h3>
             <p>Running through pain, still reaching for something beyond.</p>
@@ -1740,6 +1982,9 @@
           <img
             src="https://i.pinimg.com/736x/ce/b1/43/ceb14329913503abf04bb65fbbc80b61.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>SYMBOLY RUDOLF</h3>
             <p>Strength built from discipline and absolute focus</p>
@@ -1759,6 +2004,9 @@
           <img
             src="https://i.pinimg.com/736x/2b/dd/5a/2bdd5aef8aeaea7a425ad27ca9365ddf.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>AGNES DIGITAL</h3>
             <p>Unpredictable speed, driven by pure passion</p>
@@ -1778,6 +2026,9 @@
           <img
             src="https://i.pinimg.com/736x/cc/ae/39/ccae3951a4c47c54db43c1c1f116c4b1.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>JUNGLE POCKET</h3>
             <p>Every race is a chance to prove more</p>
@@ -1797,6 +2048,9 @@
           <img
             src="https://i.pinimg.com/736x/ee/82/59/ee8259190036d7a04370e41f4f6b742d.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>NARITA TOP ROAD</h3>
             <p>A steady heart that never loses sight of the goal</p>
@@ -1816,6 +2070,9 @@
           <img
             src="https://i.pinimg.com/736x/f3/40/ba/f340baee9be5db4211e3267b81dbc839.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>ADMIRE VEGA</h3>
             <p>Focus so deep, nothing else exists on the track</p>
@@ -1835,6 +2092,9 @@
           <img
             src="https://i.pinimg.com/736x/1b/91/e6/1b91e675ef8bb2175d9bfca499095e5d.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>ALMOND EYE</h3>
             <p>Gentle steps carrying a strong will to keep going</p>
@@ -1854,6 +2114,9 @@
           <img
             src="https://i.pinimg.com/736x/54/59/ad/5459ad3f91dafe318489918234d7fe42.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>GENTILDONNA</h3>
             <p>Graceful steps hiding an unshakable will</p>
@@ -1873,6 +2136,9 @@
           <img
             src="https://i.pinimg.com/736x/0c/02/62/0c0262665fdcb540b4e7dad6f9e3e324.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>VODKA</h3>
             <p>Racing with fire, confidence, and pure energy</p>
@@ -1889,6 +2155,9 @@
           <img
             src="https://i.pinimg.com/736x/d6/86/7a/d6867ab71bef2f0f5756196dcded916e.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>DAIWA SCARLET</h3>
             <p>Every race is a chance to prove perfection</p>
@@ -1908,6 +2177,9 @@
           <img
             src="https://i.pinimg.com/736x/5f/1c/d4/5f1cd4862de3250ce65b1753b47a9eb5.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>SPECIAL WEEK</h3>
             <p>Simple dreams, but strong will to achieve them</p>
@@ -1927,6 +2199,9 @@
           <img
             src="https://i.pinimg.com/736x/6b/88/26/6b8826559aec8d42ca32f6e8161935a1.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>SEIUN SKY</h3>
             <p>Running for joy, not just for victory</p>
@@ -1946,6 +2221,9 @@
           <img
             src="https://i.pinimg.com/736x/89/fa/66/89fa6624d09a9c2c57db154dfba8fb5e.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>NISHINO FLOWER</h3>
             <p>Small and calm, but full of determination</p>
@@ -1964,6 +2242,9 @@
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoAfckbPxBHlsGFEUefTr_069hjXZ_iZibbw&s"
           />
+          <div class="overlay">
+  <span>VIEW CERTIFICATE</span>
+</div>
           <div class="content">
             <h3>IJAZAH JOKOWI</h3>
             <p>DOKSLI ASLI IJAZAH PAKDEE</p>
@@ -1983,6 +2264,9 @@
           <img
             src="https://i.pinimg.com/736x/16/06/e5/1606e5af468b24456bf697872c73161b.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>MEJIRO MCQUEEN</h3>
             <p>Every graceful step hides years of discipline and pride</p>
@@ -2001,6 +2285,9 @@
           <img
             src="https://i.pinimg.com/736x/30/0f/b9/300fb9e3265ed3220d0d597f8a16078a.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>MEISHO DOTO</h3>
             <p>She may stumble, but her heart never stops running</p>
@@ -2020,6 +2307,9 @@
           <img
             src="https://i.pinimg.com/736x/bd/44/42/bd4442a704a6c59aa13fc81671a6b1b1.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>HARU URARA</h3>
             <p>Even without victory, she kept running with a smile</p>
@@ -2039,6 +2329,9 @@
           <img
             src="https://i.pinimg.com/736x/ea/04/bc/ea04bc8c3317df86a15900a957b0a26e.jpg"
           />
+          <div class="overlay">
+  <span>VIEW CHARACTER</span>
+</div>
           <div class="content">
             <h3>BELNO LIGTH</h3>
             <p>A quiet supporter can become the strength behind greatness</p>
@@ -2055,6 +2348,14 @@
 
     <!-- PAGINATION -->
     <div class="pagination"></div>
+    <!-- IMAGE MODAL -->
+<div id="imageModal" class="modal">
+
+  <span class="close">&times;</span>
+
+  <img class="modal-content" id="modalImg">
+
+</div>
 
     <script>
 (function () {
@@ -2208,6 +2509,26 @@
 
   // pertama load
   goTo(1);
+  /* TYPING EFFECT */
+
+var text = "UMA MUSUME";
+var index = 0;
+
+function typingEffect() {
+
+  if (index < text.length) {
+
+    document.getElementById("typing").innerHTML += text.charAt(index);
+
+    index++;
+
+    setTimeout(typingEffect, 150);
+
+  }
+
+}
+
+typingEffect();
 // LOADER
 window.addEventListener("load", function () {
 
@@ -2224,8 +2545,175 @@ window.addEventListener("load", function () {
   }, 1200);
 
 });
+/* IMAGE MODAL */
+
+var modal = document.getElementById("imageModal");
+
+var modalImg = document.getElementById("modalImg");
+
+var images = document.querySelectorAll(".card-inner img");
+
+images.forEach(function(img) {
+
+  img.addEventListener("click", function() {
+
+    modal.style.display = "block";
+
+    modalImg.src = this.src;
+
+  });
+
+});
+
+document.querySelector(".close").onclick = function() {
+
+  modal.style.display = "none";
+
+};
+
+modal.onclick = function(e) {
+
+  if (e.target === modal) {
+
+    modal.style.display = "none";
+
+  }
+
+};
+/* PARTICLES */
+
+particlesJS("particles-js", {
+
+  particles: {
+
+    number: {
+
+      value: 70,
+
+      density: {
+
+        enable: true,
+
+        value_area: 800
+
+      }
+
+    },
+
+    color: {
+
+      value: "#ffffff"
+
+    },
+
+    shape: {
+
+      type: "circle"
+
+    },
+
+    opacity: {
+
+      value: 0.5,
+
+      random: true
+
+    },
+
+    size: {
+
+      value: 3,
+
+      random: true
+
+    },
+
+    line_linked: {
+
+      enable: true,
+
+      distance: 150,
+
+      color: "#ffffff",
+
+      opacity: 0.2,
+
+      width: 1
+
+    },
+
+    move: {
+
+      enable: true,
+
+      speed: 2,
+
+      direction: "none",
+
+      random: false,
+
+      straight: false,
+
+      out_mode: "out",
+
+      bounce: false
+
+    }
+
+  },
+
+  interactivity: {
+
+    detect_on: "canvas",
+
+    events: {
+
+      onhover: {
+
+        enable: true,
+
+        mode: "repulse"
+
+      },
+
+      onclick: {
+
+        enable: true,
+
+        mode: "push"
+
+      }
+
+    },
+
+    modes: {
+
+      repulse: {
+
+        distance: 100
+
+      },
+
+      push: {
+
+        particles_nb: 4
+
+      }
+
+    }
+
+  },
+
+  retina_detect: true
+
+});
+
 })();
 
+
 </script>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
   </body>
 </html>
