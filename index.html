@@ -1520,7 +1520,10 @@
 /* CHARACTER MODAL */
 
 .character-modal {
+
   display: none;
+  transition:
+  background 0.5s ease;
   position: fixed;
   z-index: 99999;
   left: 0;
@@ -1759,6 +1762,154 @@
     rgba(255,255,255,0.25);
 
 }
+.favorite-btn{
+
+  position:absolute;
+
+  top:12px;
+
+  left:12px;
+
+  width:42px;
+
+  height:42px;
+
+  border-radius:50%;
+
+  background:rgba(0,0,0,0.55);
+
+  backdrop-filter:blur(8px);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:white;
+
+  font-size:24px;
+
+  cursor:pointer;
+
+  z-index:10;
+
+  transition:0.3s;
+
+}
+
+.favorite-btn:hover{
+
+  transform:scale(1.15);
+
+}
+
+.favorite-btn.active{
+
+  color:gold;
+
+  text-shadow:
+  0 0 12px gold;
+
+}
+#showFavorites{
+
+  margin-top:15px;
+
+  padding:12px 20px;
+
+  border:none;
+
+  border-radius:50px;
+
+  background:#ffb300;
+
+  color:white;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+
+  box-shadow:
+  0 0 15px rgba(255,179,0,0.4);
+
+}
+
+#showFavorites:hover{
+
+  transform:scale(1.05);
+
+}
+.daily-character{
+
+  width:90%;
+
+  max-width:700px;
+
+  margin:40px auto;
+
+  padding:30px;
+
+  border-radius:24px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(12px);
+
+  text-align:center;
+
+  color:white;
+
+  box-shadow:
+  0 0 30px rgba(255,255,255,0.08);
+
+}
+
+.daily-character h2{
+
+  margin-bottom:20px;
+
+  font-size:28px;
+
+}
+
+.daily-character img{
+
+  width:220px;
+
+  height:220px;
+
+  object-fit:cover;
+
+  border-radius:20px;
+
+  margin-bottom:20px;
+
+  box-shadow:
+  0 0 25px rgba(255,255,255,0.15);
+
+}
+
+.daily-character h3{
+
+  font-size:32px;
+
+  margin-bottom:12px;
+
+}
+
+.daily-character p{
+
+  opacity:0.85;
+
+  font-style:italic;
+
+  line-height:1.6;
+
+}
     </style>
   </head>
 
@@ -1791,12 +1942,28 @@
     id="searchInput"
     placeholder="Search character..."
   />
+  <button id="showFavorites">
+⭐ Show Favorites
+</button>
+</div>
+
+<div class="daily-character">
+
+  <h2>🌟 CHARACTER OF THE DAY</h2>
+
+  <img id="dailyImg">
+
+  <h3 id="dailyName"></h3>
+
+  <p id="dailyQuote"></p>
+
 </div>
 
     <div class="container">
       <div class="card"
 
 data-name="AGNES TACHYON"
+data-bg="linear-gradient(135deg,#ffd700,#2b1a00)"
 data-speed="S"
 data-stamina="B"
 data-power="A"
@@ -1813,6 +1980,7 @@ data-color="#ffd700"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge">TOP</div>
           <img
             src="https://cdn.dribbble.com/userupload/44358277/file/6418a84a160b0d3c86f87d665966c152.png"
@@ -1836,6 +2004,7 @@ data-color="#ffd700"
       <div class="card"
 
 data-name="CHERVAL GRAND"
+data-bg="linear-gradient(135deg,#4da6ff,#111)"
 data-speed="A"
 data-stamina="S"
 data-power="B"
@@ -1851,6 +2020,7 @@ data-desc="A runner who keeps moving forward despite every hardship."
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge2">TOP</div>
           <img
             src="https://i.pinimg.com/736x/58/9b/a1/589ba14665b14d37af179f438a9abc2f.jpg"
@@ -1874,6 +2044,7 @@ data-desc="A runner who keeps moving forward despite every hardship."
       <div class="card"
 
 data-name="T.M OPERA O"
+data-bg="linear-gradient(135deg,#ff7b00,#2b1400)"
 data-speed="SS"
 data-stamina="S"
 data-power="S"
@@ -1890,6 +2061,7 @@ data-color="#ff7b00"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge3">TOP</div>
           <img
             src="https://i.pinimg.com/736x/a9/7c/bf/a97cbf297f61499e5e04ea0909bd6ed6.jpg"
@@ -1913,6 +2085,7 @@ data-color="#ff7b00"
       <div class="card"
 
 data-name="OGURI CAP"
+data-bg="linear-gradient(135deg,#dfe6ff,#333)"
 data-speed="A"
 data-stamina="SS"
 data-power="B"
@@ -1929,6 +2102,7 @@ data-color="#dfe6ff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge4">TOP</div>
           <img src="https://i.ytimg.com/vi/r-1zmHovnGI/maxresdefault.jpg" />
           <div class="overlay">
@@ -1950,6 +2124,7 @@ data-color="#dfe6ff"
 <div class="card"
 
 data-name="MANHATTAN CAFE"
+data-bg="linear-gradient(135deg,#666,#111)"
 data-speed="A"
 data-stamina="SS"
 data-power="B"
@@ -1966,6 +2141,7 @@ data-color="#8a8a8a"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge5">TOP</div>
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaQdOCbOYK3DmfGnMBVdOs2rSFOJJdt-0AZw&s"
@@ -1989,6 +2165,7 @@ data-color="#8a8a8a"
       <div class="card"
 
 data-name="DREAM JOURNEY"
+data-bg="linear-gradient(135deg,#4dff88,#002b12)"
 data-speed="S"
 data-stamina="A"
 data-power="A"
@@ -2005,6 +2182,7 @@ data-color="#4dff88"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge6">TOP</div>
           <img src="https://pbs.twimg.com/media/Gu4kxZpWwAALu4d.jpg" />
           <div class="overlay">
@@ -2026,6 +2204,7 @@ data-color="#4dff88"
       <div class="card"
 
 data-name="TOKAI TEIO"
+data-bg="linear-gradient(135deg,#00d9ff,#1a1a40)"
 data-speed="SS"
 data-stamina="A"
 data-power="A"
@@ -2042,6 +2221,7 @@ data-color="#00d9ff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge7">TOP</div>
           <img
             src="https://images7.alphacoders.com/130/thumb-1920-1304082.jpg"
@@ -2065,6 +2245,7 @@ data-color="#00d9ff"
       <div class="card"
 
 data-name="SILENT SUZUKA"
+data-bg="linear-gradient(135deg,#59ffb4,#003322)"
 data-speed="SS"
 data-stamina="B"
 data-power="A"
@@ -2081,6 +2262,7 @@ data-color="#59ffb4"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge8">TOP</div>
           <img
             src="https://i.pinimg.com/736x/60/b6/95/60b6959e8bf5abdca347afb980ec4fde.jpg"
@@ -2104,6 +2286,7 @@ data-color="#59ffb4"
       <div class="card"
 
 data-name="GOLD SHIP"
+data-bg="linear-gradient(135deg,#ff2b2b,#2b0000)"
 data-speed="A"
 data-stamina="SS"
 data-power="SS"
@@ -2120,6 +2303,7 @@ data-color="#ff2b2b"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge9">TOP</div>
           <img
             src="https://i.pinimg.com/736x/37/9c/bc/379cbc718fed159dd476f268d01b03d0.jpg"
@@ -2143,6 +2327,7 @@ data-color="#ff2b2b"
       <div class="card"
 
 data-name="FOREVER YOUNG"
+data-bg="linear-gradient(135deg,#7a00ff,#190033)"
 data-speed="SS"
 data-stamina="A"
 data-power="SS"
@@ -2159,6 +2344,7 @@ data-color="#7a00ff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge10">TOP</div>
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8-qRUQvlwO2IlrsRSGnXs5NhW4ivE52XM9w&s"
@@ -2182,6 +2368,7 @@ data-color="#7a00ff"
       <div class="card"
 
 data-name="RICE SHOWER"
+data-bg="linear-gradient(135deg,#5b5bff,#111133)"
 data-speed="A"
 data-stamina="SS"
 data-power="A"
@@ -2198,6 +2385,7 @@ data-color="#5b5bff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge11">TOP</div>
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiowfEtLtfPnVw9URN4r0Aak_u0n0oacF6ug&s"
@@ -2218,6 +2406,7 @@ data-color="#5b5bff"
       <div class="card"
 
 data-name="FUJI KISEKI"
+data-bg="linear-gradient(135deg,#00cfff,#002233)"
 data-speed="SS"
 data-stamina="A"
 data-power="A"
@@ -2234,6 +2423,7 @@ data-color="#00cfff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge12">TOP</div>
           <img
             src="https://media.tenor.com/PVeFRR0rRfUAAAAe/fuji-kiseki-uma-musume.png"
@@ -2257,6 +2447,7 @@ data-color="#00cfff"
       <div class="card"
 
 data-name="KITASAN BLACK"
+data-bg="linear-gradient(135deg,#ff6a3d,#331100)"
 data-speed="SS"
 data-stamina="SS"
 data-power="A"
@@ -2274,6 +2465,7 @@ data-color="#ff6a3d"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge13">TOP</div>
           <img
             src="https://i.pinimg.com/736x/29/53/c1/2953c1fdf845b7bf16d796a3ebbb09de.jpg"
@@ -2297,6 +2489,7 @@ data-color="#ff6a3d"
       <div class="card"
 
 data-name="SATONO DIAMOND"
+data-bg="linear-gradient(135deg,#00d084,#002b1f)"
 data-speed="A"
 data-stamina="SS"
 data-power="A"
@@ -2314,6 +2507,7 @@ data-color="#00d084"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge14">TOP</div>
           <img
             src="https://i.pinimg.com/736x/25/de/fb/25defb4d3a59cdfb09286597e8dfed29.jpg"
@@ -2337,6 +2531,7 @@ data-color="#00d084"
       <div class="card"
 
 data-name="STAY GOLD"
+data-bg="linear-gradient(135deg,#ffbf00,#332200)"
 data-speed="A"
 data-stamina="SS"
 data-power="A"
@@ -2353,6 +2548,7 @@ data-color="#ffbf00"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge15">TOP</div>
           <img
             src="https://i.pinimg.com/736x/a3/28/83/a328837afccf3945f34f9928f0f19eb7.jpg"
@@ -2376,6 +2572,7 @@ data-color="#ffbf00"
       <div class="card"
 
 data-name="SYMBOLY RUDOLF"
+data-bg="linear-gradient(135deg,#d6b36f,#2b2411)"
 data-speed="SS"
 data-stamina="SS"
 data-power="SS"
@@ -2393,6 +2590,7 @@ data-color="#d6b36f"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge16">TOP</div>
           <img
             src="https://i.pinimg.com/736x/ce/b1/43/ceb14329913503abf04bb65fbbc80b61.jpg"
@@ -2416,6 +2614,7 @@ data-color="#d6b36f"
       <div class="card"
 
 data-name="AGNES DIGITAL"
+data-bg="linear-gradient(135deg,#d94dff,#2b0033)"
 data-speed="S"
 data-stamina="B"
 data-power="A"
@@ -2433,6 +2632,7 @@ data-color="#d94dff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge17">TOP</div>
           <img
             src="https://i.pinimg.com/736x/2b/dd/5a/2bdd5aef8aeaea7a425ad27ca9365ddf.jpg"
@@ -2456,6 +2656,7 @@ data-color="#d94dff"
       <div class="card"
 
 data-name="JUNGLE POCKET"
+data-bg="linear-gradient(135deg,#e5ff00,#2a3300)"
 data-speed="SS"
 data-stamina="A"
 data-power="SS"
@@ -2472,6 +2673,7 @@ data-color="#e5ff00"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge18">TOP</div>
           <img
             src="https://i.pinimg.com/736x/cc/ae/39/ccae3951a4c47c54db43c1c1f116c4b1.jpg"
@@ -2495,6 +2697,7 @@ data-color="#e5ff00"
       <div class="card"
 
 data-name="NARITA TOP ROAD"
+data-bg="linear-gradient(135deg,#f0e68c,#332f11)"
 data-speed="A"
 data-stamina="SS"
 data-power="A"
@@ -2512,6 +2715,7 @@ data-color="#f0e68c"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge19">TOP</div>
           <img
             src="https://i.pinimg.com/736x/ee/82/59/ee8259190036d7a04370e41f4f6b742d.jpg"
@@ -2532,10 +2736,10 @@ data-color="#f0e68c"
         </div>
       </div>
 
-      <!-- ADMIRE VEGA -->
 <div class="card"
 
 data-name="ADMIRE VEGA"
+data-bg="linear-gradient(135deg,#1f45ff,#000d33)"
 data-speed="S"
 data-stamina="A"
 data-power="B"
@@ -2552,6 +2756,7 @@ data-color="#1f45ff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge20">TOP</div>
           <img
             src="https://i.pinimg.com/736x/f3/40/ba/f340baee9be5db4211e3267b81dbc839.jpg"
@@ -2575,6 +2780,7 @@ data-color="#1f45ff"
       <div class="card"
 
 data-name="ALMOND EYE"
+data-bg="linear-gradient(135deg,#33d6ff,#002233)"
 data-speed="SSS"
 data-stamina="S"
 data-power="SS"
@@ -2591,6 +2797,7 @@ data-color="#33d6ff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge21">TOP</div>
           <img
             src="https://i.pinimg.com/736x/1b/91/e6/1b91e675ef8bb2175d9bfca499095e5d.jpg"
@@ -2614,6 +2821,7 @@ data-color="#33d6ff"
       <div class="card"
 
 data-name="GENTILDONNA"
+data-bg="linear-gradient(135deg,#ff2b2b,#330000)"
 data-speed="SS"
 data-stamina="SS"
 data-power="S"
@@ -2631,6 +2839,7 @@ data-color="#ff2b2b"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge22">TOP</div>
           <img
             src="https://i.pinimg.com/736x/54/59/ad/5459ad3f91dafe318489918234d7fe42.jpg"
@@ -2654,6 +2863,7 @@ data-color="#ff2b2b"
       <div class="card"
 
 data-name="VODKA"
+data-bg="linear-gradient(135deg,#ff9a00,#331a00)"
 data-speed="SS"
 data-stamina="B"
 data-power="SS"
@@ -2670,6 +2880,7 @@ data-color="#ff9a00"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge23">TOP</div>
           <img
             src="https://i.pinimg.com/736x/0c/02/62/0c0262665fdcb540b4e7dad6f9e3e324.jpg"
@@ -2690,6 +2901,7 @@ data-color="#ff9a00"
       <div class="card"
 
 data-name="DAIWA SCARLET"
+data-bg="linear-gradient(135deg,#2b39ff,#000833)"
 data-speed="SS"
 data-stamina="S"
 data-power="SS"
@@ -2706,6 +2918,7 @@ data-color="#2b39ff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge24">TOP</div>
           <img
             src="https://i.pinimg.com/736x/d6/86/7a/d6867ab71bef2f0f5756196dcded916e.jpg"
@@ -2729,6 +2942,7 @@ data-color="#2b39ff"
       <div class="card"
 
 data-name="SPECIAL WEEK"
+data-bg="linear-gradient(135deg,#e66cff,#330033)"
 data-speed="S"
 data-stamina="S"
 data-power="A"
@@ -2745,6 +2959,7 @@ data-color="#e66cff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge25">TOP</div>
           <img
             src="https://i.pinimg.com/736x/5f/1c/d4/5f1cd4862de3250ce65b1753b47a9eb5.jpg"
@@ -2768,6 +2983,7 @@ data-color="#e66cff"
       <div class="card"
 
 data-name="SEIUN SKY"
+data-bg="linear-gradient(135deg,#8b8ba8,#1a1a2b)"
 data-speed="SS"
 data-stamina="A"
 data-power="B"
@@ -2785,6 +3001,7 @@ data-color="#8b8ba8"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge26">TOP</div>
           <img
             src="https://i.pinimg.com/736x/6b/88/26/6b8826559aec8d42ca32f6e8161935a1.jpg"
@@ -2805,10 +3022,11 @@ data-color="#8b8ba8"
         </div>
       </div>
 
-      <!-- NISHINO FLOWER -->
+
 <div class="card"
 
 data-name="NISHINO FLOWER"
+data-bg="linear-gradient(135deg,#ff00d4,#330022)"
 data-speed="A"
 data-stamina="B"
 data-power="B"
@@ -2826,6 +3044,7 @@ data-color="#ff00d4"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge27">TOP</div>
           <img
             src="https://i.pinimg.com/736x/89/fa/66/89fa6624d09a9c2c57db154dfba8fb5e.jpg"
@@ -2848,6 +3067,7 @@ data-color="#ff00d4"
       <div class="card"
 
 data-name="IJAZAH JOKOWI"
+data-bg="linear-gradient(135deg,#ff9d3d,#332000)" 
 data-speed="SSS+"
 data-stamina="SSS+"
 data-power="SSS+"
@@ -2864,6 +3084,7 @@ data-color="#ff9d3d"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge28">HOT</div>
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoAfckbPxBHlsGFEUefTr_069hjXZ_iZibbw&s"
@@ -2887,6 +3108,7 @@ data-color="#ff9d3d"
       <div class="card"
 
 data-name="MEJIRO MCQUEEN"
+data-bg="linear-gradient(135deg,#9b30ff,#1f0033)"
 data-speed="A"
 data-stamina="SSS"
 data-power="A"
@@ -2903,6 +3125,7 @@ data-color="#9b30ff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge29">TOP</div>
           <img
             src="https://i.pinimg.com/736x/16/06/e5/1606e5af468b24456bf697872c73161b.jpg"
@@ -2927,6 +3150,7 @@ data-color="#9b30ff"
       <div class="card"
 
 data-name="MEISHO DOTO"
+data-bg="linear-gradient(135deg,#ff8800,#331400)"
 data-speed="A"
 data-stamina="S"
 data-power="A"
@@ -2943,6 +3167,7 @@ data-color="#ff8800"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge30">TOP</div>
           <img
             src="https://i.pinimg.com/736x/30/0f/b9/300fb9e3265ed3220d0d597f8a16078a.jpg"
@@ -2966,6 +3191,7 @@ data-color="#ff8800"
      <div class="card"
 
 data-name="HARU URARA"
+data-bg="linear-gradient(135deg,#ff00ff,#330033)"
 data-speed="B"
 data-stamina="C"
 data-power="C"
@@ -2982,6 +3208,7 @@ data-color="#ff00ff"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge31">HOT</div>
           <img
             src="https://i.pinimg.com/736x/bd/44/42/bd4442a704a6c59aa13fc81671a6b1b1.jpg"
@@ -3005,6 +3232,7 @@ data-color="#ff00ff"
       <div class="card"
 
 data-name="BELNO LIGHT"
+data-bg="linear-gradient(135deg,#e6e600,#333300)"
 data-speed="B"
 data-stamina="C"
 data-power="C"
@@ -3021,6 +3249,7 @@ data-color="#e6e600"
 
 >
         <div class="card-inner">
+          <div class="favorite-btn">☆</div>
           <div class="badge32">HOT</div>
           <img
             src="https://i.pinimg.com/736x/ea/04/bc/ea04bc8c3317df86a15900a957b0a26e.jpg"
@@ -3506,6 +3735,13 @@ modalWit.textContent =
 modalDate.textContent =
   card.dataset.date;
 
+  if(card.dataset.bg){
+
+  characterModal.style.background =
+  card.dataset.bg;
+
+}
+
     characterModal.style.display =
       "flex";
 
@@ -3529,6 +3765,147 @@ characterModal.addEventListener("click", (e) => {
       "none";
 
   }
+
+});
+/* FAVORITE SYSTEM */
+
+const favoriteButtons =
+document.querySelectorAll(".favorite-btn");
+
+let favorites =
+JSON.parse(localStorage.getItem("favorites")) || [];
+
+favoriteButtons.forEach((btn,index)=>{
+
+  if(favorites.includes(index)){
+
+    btn.classList.add("active");
+    btn.innerHTML = "★";
+
+  }
+
+  btn.addEventListener("click",(e)=>{
+
+    e.stopPropagation();
+
+    btn.classList.toggle("active");
+
+    if(btn.classList.contains("active")){
+
+      btn.innerHTML = "★";
+
+      favorites.push(index);
+
+    }else{
+
+      btn.innerHTML = "☆";
+
+      favorites =
+      favorites.filter(f=>f!==index);
+
+    }
+
+    localStorage.setItem(
+      "favorites",
+      JSON.stringify(favorites)
+    );
+
+  });
+  /* CHARACTER OF THE DAY */
+
+const dailyCharacters = [
+
+{
+  name:"TOKAI TEIO",
+  quote:"No matter how many times she falls, she always rises again",
+  img:"https://images7.alphacoders.com/130/thumb-1920-1304082.jpg"
+},
+
+{
+  name:"CHERVAL GRAND",
+  quote:"Pain fades, but the struggle shapes you",
+  img:"https://i.pinimg.com/736x/58/9b/a1/589ba14665b14d37af179f438a9abc2f.jpg"
+},
+
+{
+  name:"OGURI CAP",
+  quote:"Hard work can surpass talent",
+  img:"https://i.ytimg.com/vi/r-1zmHovnGI/maxresdefault.jpg"
+},
+
+{
+  name:"GOLD SHIP",
+  quote:"Unpredictable, unstoppable, unforgettable",
+  img:"https://i.pinimg.com/736x/37/9c/bc/379cbc718fed159dd476f268d01b03d0.jpg"
+}
+
+];
+
+const randomCharacter =
+
+dailyCharacters[
+  Math.floor(
+    Math.random() *
+    dailyCharacters.length
+  )
+];
+
+document.getElementById("dailyImg").src =
+randomCharacter.img;
+
+document.getElementById("dailyName").textContent =
+randomCharacter.name;
+
+document.getElementById("dailyQuote").textContent =
+randomCharacter.quote;
+  /* SHOW FAVORITES */
+
+const showFavoritesBtn =
+document.getElementById("showFavorites");
+
+let showingFavorites = false;
+
+showFavoritesBtn.addEventListener("click",()=>{
+
+  const cards =
+  document.querySelectorAll(".card");
+
+  showingFavorites =
+  !showingFavorites;
+
+  if(showingFavorites){
+
+    cards.forEach((card,index)=>{
+
+      if(favorites.includes(index)){
+
+        card.style.display = "";
+
+      }else{
+
+        card.style.display = "none";
+
+      }
+
+    });
+
+    showFavoritesBtn.innerHTML =
+    "🌍 Show All";
+
+  }else{
+
+    cards.forEach(card=>{
+
+      card.style.display = "";
+
+    });
+
+    showFavoritesBtn.innerHTML =
+    "⭐ Show Favorites";
+
+  }
+
+});
 
 });
 
