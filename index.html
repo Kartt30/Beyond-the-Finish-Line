@@ -1443,20 +1443,7 @@
         pointer-events: none;
       }
       /* LOADER */
-#loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0a0000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-  transition: opacity 0.5s ease;
-}
+
 
 #loader h2 {
   color: white;
@@ -1486,82 +1473,139 @@
   
 
 }
-/* MODAL */
+/* CHARACTER MODAL */
 
-.modal {
-
+.character-modal {
   display: none;
-
   position: fixed;
-
-  z-index: 9999;
-
-  padding-top: 60px;
-
+  z-index: 99999;
   left: 0;
-
   top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(10px);
+
+  justify-content: center;
+  align-items: center;
+
+  animation: fadeIn 0.3s ease;
+}
+
+.character-modal-content {
+
+  width: 850px;
+  max-width: 92%;
+
+  background: #111;
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  display: flex;
+
+  box-shadow:
+    0 0 40px rgba(0,0,0,0.5);
+
+  animation: popup 0.35s ease;
+}
+
+.character-modal-left {
+
+  width: 45%;
+  position: relative;
+}
+
+.character-modal-left img {
 
   width: 100%;
-
   height: 100%;
 
-  overflow: auto;
-
-  background-color: rgba(0,0,0,0.9);
-
-  animation: fadeIn 0.3s;
-
+  object-fit: cover;
 }
 
-.modal-content {
+.character-modal-right {
 
-  display: block;
+  width: 55%;
 
-  margin: auto;
+  padding: 50px;
 
-  max-width: 85%;
+  color: white;
 
-  max-height: 80vh;
+  position: relative;
 
-  border-radius: 12px;
-
-  animation: zoomIn 0.3s;
-
+  background:
+    linear-gradient(
+      to bottom right,
+      #111,
+      #1a1a1a
+    );
 }
 
-.close {
+.character-modal-right h2 {
+
+  font-size: 46px;
+
+  color: #ffb000;
+
+  margin-bottom: 18px;
+
+  text-shadow:
+    0 0 15px rgba(255,176,0,0.3);
+}
+
+.character-modal-right .quote {
+
+  font-size: 22px;
+
+  font-style: italic;
+
+  opacity: 0.85;
+
+  margin-bottom: 25px;
+
+  line-height: 1.5;
+}
+
+.character-modal-right .desc {
+
+  line-height: 1.8;
+
+  opacity: 0.9;
+
+  font-size: 17px;
+}
+
+.character-close {
 
   position: absolute;
 
   top: 20px;
 
-  right: 35px;
-
-  color: white;
+  right: 25px;
 
   font-size: 40px;
 
-  font-weight: bold;
-
   cursor: pointer;
 
+  transition: 0.3s;
 }
 
-.close:hover {
+.character-close:hover {
 
-  color: #ff9900;
+  transform: scale(1.2);
 
+  color: orange;
 }
 
-@keyframes zoomIn {
+@keyframes popup {
 
   from {
 
-    transform: scale(0.7);
+    transform: scale(0.8);
 
     opacity: 0;
-
   }
 
   to {
@@ -1569,27 +1613,36 @@
     transform: scale(1);
 
     opacity: 1;
-
   }
-
 }
 
-@keyframes fadeIn {
+@media (max-width:768px) {
 
-  from {
+  .character-modal-content {
 
-    opacity: 0;
-
+    flex-direction: column;
   }
 
-  to {
+  .character-modal-left,
+  .character-modal-right {
 
-    opacity: 1;
-
+    width: 100%;
   }
 
-  
+  .character-modal-left img {
 
+    height: 280px;
+  }
+
+  .character-modal-right {
+
+    padding: 30px;
+  }
+
+  .character-modal-right h2 {
+
+    font-size: 32px;
+  }
 }
 
 /* PARTICLES */
@@ -1667,16 +1720,12 @@
 
     
 
-<div id="particles-js"></div>
 
-    <!-- LOADING SCREEN -->
-<div id="loader">
 
-  <div class="spinner"></div>
-
-  <h2>Loading Beyond The Finish Line...</h2>
+  </div>
 
 </div>
+<div id="particles-js"></div>
     <div class="header">
       <div class="LOGO">
         <img src="1.png" alt="Uma Musume Pretty Derby Logo" />
@@ -1699,7 +1748,19 @@
 </div>
 
     <div class="container">
-      <div class="card">
+      <div class="card"
+
+data-name="AGNES TACHYON"
+
+data-quote="Brilliance and madness often run together"
+
+data-img="https://cdn.dribbble.com/userupload/44358277/file/6418a84a160b0d3c86f87d665966c152.png"
+
+data-desc="A genius researcher with an unpredictable mind and unmatched speed."
+
+data-color="#ffd700"
+
+>
         <div class="card-inner">
           <div class="badge">TOP</div>
           <img
@@ -1721,7 +1782,18 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="CHERVAL GRAND"
+data-color="#4da6ff"
+
+data-quote="Pain fades, but the struggle shapes you"
+
+data-img="https://i.pinimg.com/736x/58/9b/a1/589ba14665b14d37af179f438a9abc2f.jpg"
+
+data-desc="A runner who keeps moving forward despite every hardship."
+
+>
         <div class="card-inner">
           <div class="badge2">TOP</div>
           <img
@@ -1743,7 +1815,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="T.M OPERA O"
+
+data-quote="A king never stops chasing victory"
+
+data-img="https://i.pinimg.com/736x/a9/7c/bf/a97cbf297f61499e5e04ea0909bd6ed6.jpg"
+
+data-desc="A charismatic champion who runs with absolute confidence and pride."
+
+data-color="#ff7b00"
+
+>
         <div class="card-inner">
           <div class="badge3">TOP</div>
           <img
@@ -1765,7 +1849,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="OGURI CAP"
+
+data-quote="Oguri Cap proved that hard work can surpass talent"
+
+data-img="https://i.ytimg.com/vi/r-1zmHovnGI/maxresdefault.jpg"
+
+data-desc="A legendary racer whose determination and endless effort inspired everyone."
+
+data-color="#dfe6ff"
+
+>
         <div class="card-inner">
           <div class="badge4">TOP</div>
           <img src="https://i.ytimg.com/vi/r-1zmHovnGI/maxresdefault.jpg" />
@@ -1785,7 +1881,19 @@
         </div>
       </div>
 
-      <div class="card">
+<div class="card"
+
+data-name="MANHATTAN CAFE"
+
+data-quote="She runs quietly, but leaves a lasting shadow"
+
+data-img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaQdOCbOYK3DmfGnMBVdOs2rSFOJJdt-0AZw&s"
+
+data-desc="A mysterious runner surrounded by silence, calmness, and hidden strength."
+
+data-color="#8a8a8a"
+
+>
         <div class="card-inner">
           <div class="badge5">TOP</div>
           <img
@@ -1807,7 +1915,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="DREAM JOURNEY"
+
+data-quote="Behind every step lies a dream worth chasing"
+
+data-img="https://pbs.twimg.com/media/Gu4kxZpWwAALu4d.jpg"
+
+data-desc="A determined racer who continues forward no matter how difficult the path becomes."
+
+data-color="#4dff88"
+
+>
         <div class="card-inner">
           <div class="badge6">TOP</div>
           <img src="https://pbs.twimg.com/media/Gu4kxZpWwAALu4d.jpg" />
@@ -1827,7 +1947,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="TOKAI TEIO"
+
+data-quote="No matter how many times she falls, she always rises again"
+
+data-img="https://images7.alphacoders.com/130/thumb-1920-1304082.jpg"
+
+data-desc="A bright and energetic runner famous for her spirit to never give up."
+
+data-color="#00d9ff"
+
+>
         <div class="card-inner">
           <div class="badge7">TOP</div>
           <img
@@ -1849,7 +1981,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="SILENT SUZUKA"
+
+data-quote="She runs toward a horizon only she can see"
+
+data-img="https://i.pinimg.com/736x/60/b6/95/60b6959e8bf5abdca347afb980ec4fde.jpg"
+
+data-desc="A graceful runner chasing speed itself, leaving everyone behind in silence."
+
+data-color="#59ffb4"
+
+>
         <div class="card-inner">
           <div class="badge8">TOP</div>
           <img
@@ -1871,7 +2015,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="GOLD SHIP"
+
+data-quote="Unpredictable, unstoppable, unforgettable"
+
+data-img="https://i.pinimg.com/736x/37/9c/bc/379cbc718fed159dd476f268d01b03d0.jpg"
+
+data-desc="A chaotic and legendary runner whose wild personality hides incredible talent."
+
+data-color="#ff2b2b"
+
+>
         <div class="card-inner">
           <div class="badge9">TOP</div>
           <img
@@ -1893,7 +2049,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="FOREVER YOUNG"
+
+data-quote="A spirit that keeps running beyond every limit"
+
+data-img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8-qRUQvlwO2IlrsRSGnXs5NhW4ivE52XM9w&s"
+
+data-desc="A passionate runner driven by dreams that never stop growing."
+
+data-color="#7a00ff"
+
+>
         <div class="card-inner">
           <div class="badge10">TOP</div>
           <img
@@ -1915,7 +2083,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="RICE SHOWER"
+
+data-quote="Quiet steps, strong heart—Rice Shower never stops"
+
+data-img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiowfEtLtfPnVw9URN4r0Aak_u0n0oacF6ug&s"
+
+data-desc="A shy but determined racer carrying both loneliness and kindness."
+
+data-color="#5b5bff"
+
+>
         <div class="card-inner">
           <div class="badge11">TOP</div>
           <img
@@ -1934,7 +2114,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="FUJI KISEKI"
+
+data-quote="Every step is steady, every breath is purpose"
+
+data-img="https://media.tenor.com/PVeFRR0rRfUAAAAe/fuji-kiseki-uma-musume.png"
+
+data-desc="A calm and elegant runner known for her intelligence and composure."
+
+data-color="#00cfff"
+
+>
         <div class="card-inner">
           <div class="badge12">TOP</div>
           <img
@@ -1956,11 +2148,23 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="KITASAN BLACK"
+
+data-quote="Never stopping, even when the path gets tough"
+
+data-img="https://i.pinimg.com/736x/29/53/c1/2953c1fdf845b7bf16d796a3ebbb09de.jpg"
+
+data-desc="A hardworking runner whose bright spirit inspires everyone around her."
+
+data-color="#ff6a3d"
+
+>
         <div class="card-inner">
           <div class="badge13">TOP</div>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxaY_MWUtA5tgcBQYthNj8sVf5ujdFte_Apw&s"
+            src="https://i.pinimg.com/736x/29/53/c1/2953c1fdf845b7bf16d796a3ebbb09de.jpg"
           />
           <div class="overlay">
   <span>VIEW CHARACTER</span>
@@ -1978,11 +2182,23 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="SATONO DIAMOND"
+
+data-quote="Small steps, big dreams, never giving up"
+
+data-img="https://i.pinimg.com/736x/25/de/fb/25defb4d3a59cdfb09286597e8dfed29.jpg"
+
+data-desc="A graceful and gentle racer striving to overcome destiny itself."
+
+data-color="#00d084"
+
+>
         <div class="card-inner">
           <div class="badge14">TOP</div>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNuBSkpkohajZSc3ntAcelhj4F8D55tfn_OA&s"
+            src="https://i.pinimg.com/736x/25/de/fb/25defb4d3a59cdfb09286597e8dfed29.jpg"
           />
           <div class="overlay">
   <span>VIEW CHARACTER</span>
@@ -2000,7 +2216,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="STAY GOLD"
+
+data-quote="Running through pain, still reaching for something beyond."
+
+data-img="https://i.pinimg.com/736x/a3/28/83/a328837afccf3945f34f9928f0f19eb7.jpg"
+
+data-desc="A lone soul who keeps chasing dreams despite hardship and uncertainty."
+
+data-color="#ffbf00"
+
+>
         <div class="card-inner">
           <div class="badge15">TOP</div>
           <img
@@ -2022,7 +2250,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="SYMBOLY RUDOLF"
+
+data-quote="Strength built from discipline and absolute focus"
+
+data-img="https://i.pinimg.com/736x/ce/b1/43/ceb14329913503abf04bb65fbbc80b61.jpg"
+
+data-desc="A legendary emperor whose leadership and pride define true greatness."
+
+data-color="#d6b36f"
+
+>
         <div class="card-inner">
           <div class="badge16">TOP</div>
           <img
@@ -2044,7 +2284,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="AGNES DIGITAL"
+
+data-quote="Unpredictable speed, driven by pure passion"
+
+data-img="https://i.pinimg.com/736x/2b/dd/5a/2bdd5aef8aeaea7a425ad27ca9365ddf.jpg"
+
+data-desc="A cheerful and energetic racer obsessed with challenges and excitement."
+
+data-color="#d94dff"
+
+>
         <div class="card-inner">
           <div class="badge17">TOP</div>
           <img
@@ -2066,7 +2318,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="JUNGLE POCKET"
+
+data-quote="Every race is a chance to prove more"
+
+data-img="https://i.pinimg.com/736x/cc/ae/39/ccae3951a4c47c54db43c1c1f116c4b1.jpg"
+
+data-desc="A fierce competitor bursting with energy, confidence, and wild determination."
+
+data-color="#e5ff00"
+
+>
         <div class="card-inner">
           <div class="badge18">TOP</div>
           <img
@@ -2088,7 +2352,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="NARITA TOP ROAD"
+
+data-quote="A steady heart that never loses sight of the goal"
+
+data-img="https://i.pinimg.com/736x/ee/82/59/ee8259190036d7a04370e41f4f6b742d.jpg"
+
+data-desc="A sincere and hardworking runner who believes persistence leads to victory."
+
+data-color="#f0e68c"
+
+>
         <div class="card-inner">
           <div class="badge19">TOP</div>
           <img
@@ -2110,7 +2386,20 @@
         </div>
       </div>
 
-      <div class="card">
+      <!-- ADMIRE VEGA -->
+<div class="card"
+
+data-name="ADMIRE VEGA"
+
+data-quote="Focus so deep, nothing else exists on the track"
+
+data-img="https://i.pinimg.com/736x/f3/40/ba/f340baee9be5db4211e3267b81dbc839.jpg"
+
+data-desc="A quiet and intense runner carrying both loneliness and incredible talent."
+
+data-color="#1f45ff"
+
+>
         <div class="card-inner">
           <div class="badge20">TOP</div>
           <img
@@ -2132,7 +2421,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="ALMOND EYE"
+
+data-quote="Gentle steps carrying a strong will to keep going"
+
+data-img="https://i.pinimg.com/736x/1b/91/e6/1b91e675ef8bb2175d9bfca499095e5d.jpg"
+
+data-desc="A graceful champion whose calm elegance hides overwhelming strength."
+
+data-color="#33d6ff"
+
+>
         <div class="card-inner">
           <div class="badge21">TOP</div>
           <img
@@ -2154,7 +2455,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="GENTILDONNA"
+
+data-quote="Graceful steps hiding an unshakable will"
+
+data-img="https://i.pinimg.com/736x/54/59/ad/5459ad3f91dafe318489918234d7fe42.jpg"
+
+data-desc="A proud and dominant racer who overwhelms rivals with elegance and power."
+
+data-color="#ff2b2b"
+
+>
         <div class="card-inner">
           <div class="badge22">TOP</div>
           <img
@@ -2176,7 +2489,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="VODKA"
+
+data-quote="Racing with fire, confidence, and pure energy"
+
+data-img="https://i.pinimg.com/736x/0c/02/62/0c0262665fdcb540b4e7dad6f9e3e324.jpg"
+
+data-desc="A fearless racer whose rebellious spirit pushes her beyond every limit."
+
+data-color="#ff9a00"
+
+>
         <div class="card-inner">
           <div class="badge23">TOP</div>
           <img
@@ -2195,7 +2520,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="DAIWA SCARLET"
+
+data-quote="Every race is a chance to prove perfection"
+
+data-img="https://i.pinimg.com/736x/d6/86/7a/d6867ab71bef2f0f5756196dcded916e.jpg"
+
+data-desc="A proud perfectionist who races with confidence, elegance, and fiery determination."
+
+data-color="#2b39ff"
+
+>
         <div class="card-inner">
           <div class="badge24">TOP</div>
           <img
@@ -2217,7 +2554,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="SPECIAL WEEK"
+
+data-quote="Simple dreams, but strong will to achieve them"
+
+data-img="https://i.pinimg.com/736x/5f/1c/d4/5f1cd4862de3250ce65b1753b47a9eb5.jpg"
+
+data-desc="A cheerful and sincere runner chasing dreams with all her heart."
+
+data-color="#e66cff"
+
+>
         <div class="card-inner">
           <div class="badge25">TOP</div>
           <img
@@ -2239,7 +2588,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="SEIUN SKY"
+
+data-quote="Running for joy, not just for victory"
+
+data-img="https://i.pinimg.com/736x/6b/88/26/6b8826559aec8d42ca32f6e8161935a1.jpg"
+
+data-desc="A relaxed strategist whose playful attitude hides incredible racing instincts."
+
+data-color="#8b8ba8"
+
+>
         <div class="card-inner">
           <div class="badge26">TOP</div>
           <img
@@ -2261,7 +2622,20 @@
         </div>
       </div>
 
-      <div class="card">
+      <!-- NISHINO FLOWER -->
+<div class="card"
+
+data-name="NISHINO FLOWER"
+
+data-quote="Small and calm, but full of determination"
+
+data-img="https://i.pinimg.com/736x/89/fa/66/89fa6624d09a9c2c57db154dfba8fb5e.jpg"
+
+data-desc="A gentle and adorable racer with a surprisingly strong heart."
+
+data-color="#ff00d4"
+
+>
         <div class="card-inner">
           <div class="badge27">TOP</div>
           <img
@@ -2282,7 +2656,19 @@
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card"
+
+data-name="IJAZAH JOKOWI"
+
+data-quote="DOKSLI ASLI IJAZAH PAKDEE"
+
+data-img="https://i.pinimg.com/736x/97/f5/ff/97f5fff802744d3498d430af211aa652.jpg"
+
+data-desc="Sebuah dokumen legendaris yang keberadaannya selalu menjadi bahan perdebatan netizen 😭"
+
+data-color="#ff9d3d"
+
+>
         <div class="card-inner">
           <div class="badge28">HOT</div>
           <img
@@ -2304,7 +2690,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="MEJIRO MCQUEEN"
+
+data-quote="Every graceful step hides years of discipline and pride"
+
+data-img="https://i.pinimg.com/736x/16/06/e5/1606e5af468b24456bf697872c73161b.jpg"
+
+data-desc="An elegant noble runner whose dignity and perseverance define her legacy."
+
+data-color="#9b30ff"
+
+>
         <div class="card-inner">
           <div class="badge29">TOP</div>
           <img
@@ -2325,7 +2723,21 @@
           </div>
         </div>
       </div>
-      <div class="card">
+
+
+      <div class="card"
+
+data-name="MEISHO DOTO"
+
+data-quote="She may stumble, but her heart never stops running"
+
+data-img="https://i.pinimg.com/736x/30/0f/b9/300fb9e3265ed3220d0d597f8a16078a.jpg"
+
+data-desc="A shy but hardworking runner who keeps moving forward despite fear and doubt."
+
+data-color="#ff8800"
+
+>
         <div class="card-inner">
           <div class="badge30">TOP</div>
           <img
@@ -2347,7 +2759,19 @@
         </div>
       </div>
 
-      <div class="card">
+     <div class="card"
+
+data-name="HARU URARA"
+
+data-quote="Even without victory, she kept running with a smile"
+
+data-img="https://i.pinimg.com/736x/bd/44/42/bd4442a704a6c59aa13fc81671a6b1b1.jpg"
+
+data-desc="A symbol of positivity and endless determination loved by everyone."
+
+data-color="#ff00ff"
+
+>
         <div class="card-inner">
           <div class="badge31">HOT</div>
           <img
@@ -2369,7 +2793,19 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card"
+
+data-name="BELNO LIGHT"
+
+data-quote="A quiet supporter can become the strength behind greatness"
+
+data-img="https://i.pinimg.com/736x/ea/04/bc/ea04bc8c3317df86a15900a957b0a26e.jpg"
+
+data-desc="A soft-hearted and supportive girl whose kindness quietly inspires others."
+
+data-color="#e6e600"
+
+>
         <div class="card-inner">
           <div class="badge32">HOT</div>
           <img
@@ -2379,7 +2815,7 @@
   <span>VIEW CHARACTER</span>
 </div>
           <div class="content">
-            <h3>BELNO LIGTH</h3>
+            <h3>BELNO LIGHT</h3>
             <p>A quiet supporter can become the strength behind greatness</p>
             <a
               href="https://umamusu.wiki/Belno_Light"
@@ -2394,14 +2830,8 @@
 
     <!-- PAGINATION -->
     <div class="pagination"></div>
-    <!-- IMAGE MODAL -->
-<div id="imageModal" class="modal">
+    <!-- CHARACTER MODAL -->
 
-  <span class="close">&times;</span>
-
-  <img class="modal-content" id="modalImg">
-
-</div>
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
@@ -2507,42 +2937,52 @@
     makeBtn("»", page + 1, false, page === t);
   }
 
-  // SEARCH
-  document
-    .getElementById("searchInput")
-    .addEventListener("input", function () {
+  /* SEARCH */
 
-      var value = this.value.toLowerCase();
-      var cards = allCards();
+document
+  .getElementById("searchInput")
+  .addEventListener("input", function () {
 
-      if (value.length > 0) {
+    const value =
+      this.value.toLowerCase();
 
-        cards.forEach(function(card) {
+    const cards =
+      allCards();
 
-          var title = card
-            .querySelector("h3")
-            .textContent
-            .toLowerCase();
+    if (value.length > 0) {
 
-          if (title.includes(value)) {
-            card.style.display = "";
-          } else {
-            card.style.display = "none";
-          }
+      cards.forEach(function(card) {
 
-        });
+        const title =
+          card.querySelector("h3")
+          .textContent
+          .toLowerCase();
 
-        document.querySelector(".pagination").style.display = "none";
+        if (title.includes(value)) {
 
-      } else {
+          card.style.display = "";
 
-        document.querySelector(".pagination").style.display = "flex";
+        } else {
 
-        goTo(page);
+          card.style.display = "none";
 
-      }
+        }
 
-    });
+      });
+
+      document.querySelector(".pagination")
+        .style.display = "none";
+
+    } else {
+
+      document.querySelector(".pagination")
+        .style.display = "flex";
+
+      goTo(page);
+
+    }
+
+});
 
   // resize
   var resizeTimer;
@@ -2579,57 +3019,7 @@ function typingEffect() {
 }
 
 typingEffect();
-// LOADER
-window.addEventListener("load", function () {
 
-  var loader = document.getElementById("loader");
-
-  setTimeout(function () {
-
-    loader.style.opacity = "0";
-
-    setTimeout(function () {
-      loader.style.display = "none";
-    }, 500);
-
-  }, 1200);
-
-});
-/* IMAGE MODAL */
-
-var modal = document.getElementById("imageModal");
-
-var modalImg = document.getElementById("modalImg");
-
-var images = document.querySelectorAll(".card-inner img");
-
-images.forEach(function(img) {
-
-  img.addEventListener("click", function() {
-
-    modal.style.display = "block";
-
-    modalImg.src = this.src;
-
-  });
-
-});
-
-document.querySelector(".close").onclick = function() {
-
-  modal.style.display = "none";
-
-};
-
-modal.onclick = function(e) {
-
-  if (e.target === modal) {
-
-    modal.style.display = "none";
-
-  }
-
-};
 /* PARTICLES */
 
 particlesJS("particles-js", {
@@ -2760,189 +3150,36 @@ particlesJS("particles-js", {
 
 })();
 
-/* PARTICLES */
-
-particlesJS("particles-js", {
-
-  particles: {
-
-    number: {
-
-      value: 70,
-
-      density: {
-
-        enable: true,
-
-        value_area: 800
-
-      }
-
-    },
-
-    color: {
-
-      value: "#ffffff"
-
-    },
-
-    shape: {
-
-      type: "circle"
-
-    },
-
-    opacity: {
-
-      value: 0.5,
-
-      random: true
-
-    },
-
-    size: {
-
-      value: 3,
-
-      random: true
-
-    },
-
-    line_linked: {
-
-      enable: true,
-
-      distance: 150,
-
-      color: "#ffffff",
-
-      opacity: 0.2,
-
-      width: 1
-
-    },
-
-    move: {
-
-      enable: true,
-
-      speed: 2,
-
-      direction: "none",
-
-      random: false,
-
-      straight: false,
-
-      out_mode: "out",
-
-      bounce: false
-
-    }
-
-  },
-
-  interactivity: {
-
-    detect_on: "canvas",
-
-    events: {
-
-      onhover: {
-
-        enable: true,
-
-        mode: "repulse"
-
-      },
-
-      onclick: {
-
-        enable: true,
-
-        mode: "push"
-
-      }
-
-    },
-
-    modes: {
-
-      repulse: {
-
-        distance: 100
-
-      },
-
-      push: {
-
-        particles_nb: 4
-
-      }
-
-    }
-
-  },
-
-  retina_detect: true
-
-  
-
-});
-
 </script>
-<!-- MUSIC -->
-<audio id="bg-music" autoplay loop>
-  <source src="mpoi.mp3" type="audio/mpeg">
-</audio>
 
-<script>
-document.addEventListener("click", function () {
-  document.getElementById("bg-music").play();
-}, { once: true });
-
-/* MUSIC BUTTON */
-
-var music =
-  document.getElementById("bg-music");
-
-var musicBtn =
-  document.getElementById("musicBtn");
-
-var isPlaying = false;
-
-musicBtn.addEventListener("click", function() {
-
-  if (!isPlaying) {
-
-    music.play();
-
-    musicBtn.innerHTML =
-      "⏸ Pause Music";
-
-    isPlaying = true;
-
-  } else {
-
-    music.pause();
-
-    musicBtn.innerHTML =
-      "🎵 Play Music";
-
-    isPlaying = false;
-
-  }
-
-});
-
-</script>
 <!-- MUSIC BUTTON -->
 <button id="musicBtn">🎵 Play Music</button>
 
 <!-- MUSIC -->
 <audio id="bg-music" loop>
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="mpoi.mp3" type="audio/mpeg">
 </audio>
+<div class="character-modal" id="characterModal">
+
+  <div class="character-modal-content">
+
+    <div class="character-modal-left">
+      <img id="modalCharacterImg">
+    </div>
+
+    <div class="character-modal-right">
+
+      <span class="character-close">&times;</span>
+
+      <h2 id="modalCharacterName"></h2>
+
+      <p class="quote" id="modalCharacterQuote"></p>
+
+      <p class="desc" id="modalCharacterDesc"></p>
+
+    </div>
+
+  </div>
 
 <script>
 var music = document.getElementById("bg-music");
@@ -2963,10 +3200,100 @@ musicBtn.addEventListener("click", function () {
     music.pause();
     musicBtn.innerHTML = "🎵 Play Music";
     isPlaying = false;
+    
+
+  }
+    
+});
+
+  const characterModal =
+  document.getElementById("characterModal");
+
+const modalName =
+  document.getElementById("modalCharacterName");
+
+const modalQuote =
+  document.getElementById("modalCharacterQuote");
+
+const modalDesc =
+  document.getElementById("modalCharacterDesc");
+
+const modalImg =
+  document.getElementById("modalCharacterImg");
+
+document.querySelectorAll(".card").forEach(card => {
+
+  card.addEventListener("click", () => {
+
+    modalName.textContent =
+      card.dataset.name;
+
+      if(card.dataset.color){
+
+  modalName.style.color =
+    card.dataset.color;
+    if(card.dataset.color === "#111111"){
+
+  modalName.style.textShadow =
+    "0 0 15px rgba(255,255,255,0.25)";
+
+}
+
+}
+
+if(card.dataset.color){
+
+  modalName.style.textShadow =
+    "0 0 20px " + card.dataset.color;
+
+}
+      
+
+    modalQuote.textContent =
+      card.dataset.quote;
+
+    modalDesc.textContent =
+      card.dataset.desc;
+
+    modalImg.src =
+      card.dataset.img;
+
+    characterModal.style.display =
+      "flex";
+
+  });
+
+});
+
+document.querySelector(".character-close")
+.addEventListener("click", () => {
+
+  characterModal.style.display =
+    "none";
+
+});
+
+characterModal.addEventListener("click", (e) => {
+
+  if (e.target === characterModal) {
+
+    characterModal.style.display =
+      "none";
 
   }
 
 });
+
+
 </script>
+
+
+</div>
+
+
+<script>
+
+</script>
+
   </body>
 </html>
