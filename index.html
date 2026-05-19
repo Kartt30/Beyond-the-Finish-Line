@@ -2,6 +2,8 @@
   <head>
     <title>Beyond the Finish Line</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
     
     <style>
       html {
@@ -1760,25 +1762,71 @@
           text-align: center;
         }
       }
-      /* SEARCH */
-.search-box {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 24px 16px 0;
-  box-sizing: border-box;
+
+
+      /* FILTER MENU */
+
+.filter-menu{
+  position: absolute;
+  top: 360px;
+  left: 20px;
+  z-index: 999;
 }
 
-.search-box input {
-  width: 100%;
-  max-width: 500px;
-  padding: 14px 18px;
-  border-radius: 10px;
-  border: 2px solid #ccc;
-  outline: none;
+#menuToggle{
+  background: linear-gradient(135deg,#ff0000,#4b0000);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
   font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(255,0,0,0.4);
   transition: 0.3s;
 }
+
+#menuToggle:hover{
+  transform: scale(1.05);
+}
+      /* SEARCH */
+.search-box{
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  margin-top: 40px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.search-box input{
+
+  width: 700px;
+
+  max-width: 90%;
+
+  padding: 18px 22px;
+
+  border-radius: 18px;
+
+  border: none;
+
+  outline: none;
+
+  font-size: 18px;
+
+  background: rgba(255,255,255,0.95);
+
+}
+
 
 .search-box input:focus {
   border-color: #900600;
@@ -1916,6 +1964,8 @@
   width: 100%;
   height: 100%;
   overflow-y:auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
   padding:20px;
   background: rgba(0,0,0,0.75);
   backdrop-filter: blur(10px);
@@ -1933,7 +1983,9 @@
   max-height:90vh;
 
   width: 850px;
-  max-width: 92%;
+  max-width: 100%;
+
+  box-sizing: border-box;
 
   background: #111;
 
@@ -1972,6 +2024,8 @@
   width: 55%;
 
   padding: 50px;
+
+  box-sizing: border-box;
 
   color: white;
 
@@ -2017,6 +2071,30 @@
   opacity: 0.9;
 
   font-size: 17px;
+}
+
+.modal-detail-btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #ffb000, #ff6a00);
+  color: #111;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 30px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(255,176,0,0.35);
+}
+
+.modal-detail-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255,176,0,0.5);
+}
+
+.card .content a[class^="btn"] {
+  display: none;
 }
 
 .character-close {
@@ -2355,6 +2433,85 @@
     0 0 15px rgba(255,179,0,0.6);
 
 }
+
+/* FILTER MENU */
+
+.filter-menu{
+
+  position: fixed;
+
+  top: 190px;
+
+  left: 20px;
+
+  z-index: 9999;
+}
+
+#menuToggle{
+  background: linear-gradient(135deg,#ff0000,#4b0000);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(255,0,0,0.4);
+}
+
+/* DROPDOWN */
+
+.filter-dropdown{
+
+  display: none;
+
+  position: absolute;
+
+  top: 60px;
+  left: 0;
+
+  width: 180px;
+
+  padding: 15px;
+
+  border-radius: 16px;
+
+  background: rgba(20,20,40,0.96);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.filter-dropdown.show{
+  display: flex;
+}
+
+/* BUTTON */
+
+.filter-btn{
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #2d325a;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.filter-btn:hover{
+  background: crimson;
+}
+
+.filter-btn.active{
+  background: red;
+}
+
     </style>
   </head>
 
@@ -2380,17 +2537,57 @@
         </p>
       </div>
     </div>
+    
+    <div class="filter-menu">
+
+  <button id="menuToggle">
+    ☰ Filter
+  </button>
+
+  <div class="filter-dropdown" id="filterDropdown">
+
+    <button class="filter-btn active" data-filter="all">
+      ALL
+    </button>
+
+    <button class="filter-btn" data-filter="favorites">
+      FAVORITES
+    </button>
+
+    <button class="filter-btn" data-filter="SS">
+      RANK SS
+    </button>
+
+    <button class="filter-btn" data-filter="S">
+      RANK S
+    </button>
+
+    <button class="filter-btn" data-filter="A">
+      RANK A
+    </button>
+
+    <button class="filter-btn" data-filter="B">
+      RANK B
+    </button>
+
+    <button class="filter-btn" data-filter="C">
+      RANK C
+    </button>
+
+  </div>
+
+</div>
+
     <!-- SEARCH BAR -->
+<!-- SEARCH BAR -->
 <div class="search-box">
   <input
     type="text"
     id="searchInput"
     placeholder="Search character..."
   />
-  <button id="showFavorites">
-⭐ Show Favorites
-</button>
 </div>
+  
 
 <div class="daily-character">
 
@@ -2403,6 +2600,8 @@
   <p id="dailyQuote"></p>
 
 </div>
+
+
 
     <div class="container">
       <div class="card"
@@ -3772,7 +3971,7 @@ class="btn33"
 <div class="card"
 
 data-name="MATIKANE TANHAUSER"
-data-voice="voices/tanhausser.mp3"
+data-voice="mambo1.mp3"
 data-bg="linear-gradient(135deg,#ffcc66,#5b3a00)"
 data-speed="A"
 data-stamina="SS"
@@ -4639,7 +4838,7 @@ particlesJS("particles-js", {
       <p class="quote" id="modalCharacterQuote"></p>
 
       <p class="desc" id="modalCharacterDesc"></p>
-     <div class="character-stats">
+    <div class="character-stats">
 
 <div class="stat">
   <span>Speed</span>
@@ -4683,6 +4882,8 @@ particlesJS("particles-js", {
 
 <p id="modalDate"></p>
 
+<a id="modalDetailBtn" href="#" target="_blank" class="modal-detail-btn">DETAIL</a>
+
 </div>
 
     </div>
@@ -4717,6 +4918,9 @@ musicBtn.addEventListener("click", function () {
   const characterModal =
   document.getElementById("characterModal");
 
+const modalDetailBtn =
+  document.getElementById("modalDetailBtn");
+
 const modalName =
   document.getElementById("modalCharacterName");
 
@@ -4746,6 +4950,9 @@ const modalDate =
 document.querySelectorAll(".card").forEach(card => {
 
   card.addEventListener("click", () => {
+
+    const cardLink = card.querySelector(".content a");
+    modalDetailBtn.href = cardLink ? cardLink.getAttribute("href") : "#";
 
     modalName.textContent =
       card.dataset.name;
@@ -4900,15 +5107,23 @@ favoriteButtons.forEach((btn,index)=>{
 
     e.stopPropagation();
 
+    const card = btn.closest(".card");
+
     btn.classList.toggle("active");
 
     if(btn.classList.contains("active")){
 
+    card.classList.add("favorited");
+
       btn.innerHTML = "★";
 
-      favorites.push(index);
+      if(!favorites.includes(index)){
+        favorites.push(index);
+      }
 
     }else{
+
+      card.classList.remove("favorited");
 
       btn.innerHTML = "☆";
 
@@ -5092,13 +5307,15 @@ const dailyCharacters = [
 
 ];
 
-const randomCharacter =
+const today = new Date();
+const dayIndex =
+  today.getFullYear() * 10000 +
+  (today.getMonth() + 1) * 100 +
+  today.getDate();
 
+const randomCharacter =
 dailyCharacters[
-  Math.floor(
-    Math.random() *
-    dailyCharacters.length
-  )
+  dayIndex % dailyCharacters.length
 ];
 
 document.getElementById("dailyImg").src =
@@ -5109,54 +5326,7 @@ randomCharacter.name;
 
 document.getElementById("dailyQuote").textContent =
 randomCharacter.quote;
-  /* SHOW FAVORITES */
-
-const showFavoritesBtn =
-document.getElementById("showFavorites");
-
-let showingFavorites = false;
-
-showFavoritesBtn.addEventListener("click",()=>{
-
-  const cards =
-  document.querySelectorAll(".card");
-
-  showingFavorites =
-  !showingFavorites;
-
-  if(showingFavorites){
-
-    cards.forEach((card,index)=>{
-
-      if(favorites.includes(index)){
-
-        card.style.display = "";
-
-      }else{
-
-        card.style.display = "none";
-
-      }
-
-    });
-
-    showFavoritesBtn.innerHTML =
-    "🌍 Show All";
-
-  }else{
-
-    cards.forEach(card=>{
-
-      card.style.display = "";
-
-    });
-
-    showFavoritesBtn.innerHTML =
-    "⭐ Show Favorites";
-
-  }
-
-});
+  
 
 });
 
@@ -5172,6 +5342,94 @@ showFavoritesBtn.addEventListener("click",()=>{
 
 
 <script>
+
+/* FILTER SYSTEM */
+
+const filterBtns =
+document.querySelectorAll(".filter-btn");
+
+filterBtns.forEach(btn => {
+
+  btn.addEventListener("click", () => {
+
+    filterBtns.forEach(b =>
+      b.classList.remove("active")
+    );
+
+    btn.classList.add("active");
+
+    const filter =
+      btn.dataset.filter;
+
+    const cards =
+      document.querySelectorAll(".card");
+
+    cards.forEach((card,index) => {
+
+      const speed =
+        card.dataset.speed;
+
+      const isFav =
+        favorites.includes(index);
+
+      /* SHOW ALL */
+      if(filter === "all"){
+
+        card.style.display = "";
+
+      }
+
+      /* FAVORITE */
+      else if(filter === "favorites"){
+
+        if(isFav){
+
+          card.style.display = "";
+
+        }else{
+
+          card.style.display = "none";
+
+        }
+
+      }
+
+      /* SPEED FILTER */
+      else{
+
+        if(speed === filter){
+
+          card.style.display = "";
+
+        }else{
+
+          card.style.display = "none";
+
+        }
+
+      }
+
+    });
+
+  });
+
+});
+
+/* DROPDOWN */
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const filterDropdown =
+document.getElementById("filterDropdown");
+
+menuToggle.addEventListener("click",()=>{
+
+  filterDropdown.classList.toggle("show");
+
+});
+
+
 
 </script>
 
