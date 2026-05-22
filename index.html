@@ -9803,12 +9803,19 @@ document
   var lastWidth = window.innerWidth;
 
   window.addEventListener("resize", function () {
-    if (window.innerWidth === lastWidth) return;
+    // Toleransi perubahan width kecil (misal scrollbar muncul/hilang saat keyboard ditutup)
+    if (Math.abs(window.innerWidth - lastWidth) < 20) return;
     lastWidth = window.innerWidth;
 
     clearTimeout(resizeTimer);
 
     resizeTimer = setTimeout(function () {
+      var searchInput = document.getElementById("searchInput");
+      if (searchInput && searchInput.value.trim().length > 0) {
+        searchInput.dispatchEvent(new Event("input"));
+        return;
+      }
+
       goTo(page);
       var activeFilterBtn = document.querySelector(".filter-btn.active");
       if (activeFilterBtn && activeFilterBtn.dataset.filter !== "all") {
