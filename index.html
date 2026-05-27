@@ -23,7 +23,7 @@
         color: white;
         display: flex;
         align-items: center;
-        padding: 28px 56px;
+        padding: 20px 24px;
         position: relative;
         min-height: 100px;
       }
@@ -49,19 +49,27 @@
       }
       .container {
         width: 100%;
-        max-width: 1200px;
+        max-width: 1440px;
         box-sizing: border-box;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        justify-items: center;
-        gap: 25px;
-        padding: 40px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 24px 20px;
+      }
+      @media (max-width: 1100px) {
+        .container { grid-template-columns: repeat(3, 1fr); }
+      }
+      @media (max-width: 780px) {
+        .container { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 480px) {
+        .container { grid-template-columns: 1fr; }
       }
       /* CARD (UNTUK ANIMATION) */
       .card { content-visibility: auto; contain-intrinsic-size: 320px 450px; position: relative;
         width: 100%;
-        max-width: 320px;
+        max-width: 100%;
 
         /* ANIMATION */
         opacity: 0;
@@ -4468,29 +4476,245 @@
   transform:scale(1.05);
 
 }
+/* ── PAGE NAV TABS ─────────────────────────── */
+.page-nav {
+  display: flex;
+  gap: 0;
+  background: #0d0d1a;
+  border-bottom: 2px solid rgba(255,255,255,0.08);
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+.page-tab {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.45);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 14px 28px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  text-transform: uppercase;
+}
+.page-tab:hover {
+  color: rgba(255,255,255,0.8);
+}
+.page-tab.active {
+  color: #fff;
+  border-bottom: 3px solid #e53935;
+}
+/* ── SUPPORT PAGE ───────────────────────────── */
+.support-header {
+  text-align: center;
+  padding: 36px 20px 20px;
+  color: white;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.support-header h2 {
+  font-size: 26px;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+.support-header p {
+  opacity: 0.55;
+  font-size: 14px;
+}
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 24px 20px 48px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+@media (max-width: 1100px) { .support-grid { grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 780px)  { .support-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px)  { .support-grid { grid-template-columns: 1fr; } }
+
+.support-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.support-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+.support-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  object-position: 50% 28%;
+  background: rgba(20,20,40,0.6);
+}
+
+/* ── Support Hover Tooltip ── */
+.char-tooltip {
+  position: fixed;
+  z-index: 9999;
+  display: none;
+  width: 230px;
+  background: linear-gradient(160deg, rgba(14,10,38,0.97) 0%, rgba(26,18,60,0.97) 100%);
+  border: 1px solid rgba(180,140,255,0.32);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.88), 0 0 0 1px rgba(255,255,255,0.04), inset 0 0 40px rgba(100,60,200,0.07);
+  pointer-events: none;
+}
+.char-tooltip.ct-visible {
+  display: block;
+  animation: ctFadeIn 0.18s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+@keyframes ctFadeIn {
+  from { opacity:0; transform:translateY(10px) scale(0.96); }
+  to   { opacity:1; transform:translateY(0)    scale(1); }
+}
+.char-tooltip-img-wrap {
+  width: 100%;
+  height: 290px;
+  background: linear-gradient(180deg,rgba(30,20,70,0.55) 0%,rgba(8,4,28,0.9) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+.char-tooltip-img {
+  display: block;
+  width: auto;
+  height: 290px;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+}
+.char-tooltip-no-img {
+  width: 100%;
+  height: 110px;
+  background: linear-gradient(135deg,rgba(80,40,160,0.35),rgba(20,10,50,0.6));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  opacity: 0.6;
+}
+.char-tooltip-body {
+  padding: 10px 13px 13px;
+  border-top: 1px solid rgba(180,140,255,0.15);
+}
+.char-tooltip-name {
+  font-size: 10px;
+  font-weight: 800;
+  color: #c9a8ff;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  margin: 0 0 5px;
+}
+.char-tooltip-desc {
+  font-size: 10.5px;
+  color: rgba(230,220,255,0.72);
+  line-height: 1.55;
+  margin: 0;
+}
+.support-info {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.support-info h3 {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  margin: 0;
+}
+.support-info p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+.support-role {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  width: fit-content;
+}
+.support-role.staff       { background: rgba(33,150,243,0.25); color: #90caf9; }
+.support-role.npc         { background: rgba(156,39,176,0.25); color: #ce93d8; }
+.support-role.goddess     { background: rgba(255,193,7,0.25);  color: #ffe082; }
+.support-role.commentator { background: rgba(76,175,80,0.25);  color: #a5d6a7; }
+
+.support-btn {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: rgba(255,255,255,0.75);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: background 0.2s;
+  width: fit-content;
+}
+.support-btn:hover {
+  background: rgba(229,57,53,0.3);
+  border-color: #e53935;
+  color: #fff;
+}
+.support-no-img {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.07) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  gap: 8px;
+}
+.support-no-img span {
+  font-size: 44px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.12);
+  letter-spacing: 2px;
+  font-family: Arial, sans-serif;
+}
+.support-no-img small {
+  font-size: 10px;
+  color: rgba(255,255,255,0.18);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 .daily-character{
 
-  width:90%;
+  width:100%;
 
-  max-width:700px;
+  margin:0;
 
-  margin:40px auto;
-
-  padding:30px;
-
-  border-radius:24px;
-
-  background:
-  rgba(255,255,255,0.08);
-
-  backdrop-filter:blur(12px);
+  padding:36px 20px 28px;
 
   text-align:center;
 
   color:white;
 
-  box-shadow:
-  0 0 30px rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 
 }
 
@@ -5069,7 +5293,16 @@
         </p>
       </div>
     </div>
-    
+
+    <!-- PAGE NAV TABS -->
+    <div class="page-nav">
+      <button class="page-tab active" data-page="characters" onclick="switchPage('characters')">⚡ CHARACTERS</button>
+      <button class="page-tab" data-page="support" onclick="switchPage('support')">🤝 SUPPORT</button>
+    </div>
+
+    <!-- CHARACTERS PAGE -->
+    <div id="page-characters" class="page-section">
+
     <div class="filter-menu">
 
   <button id="menuToggle">
@@ -11244,6 +11477,339 @@ data-color="#295f46"
 
     <!-- PAGINATION -->
     <div class="pagination"></div>
+
+    </div><!-- end #page-characters -->
+
+    <!-- SUPPORT PAGE -->
+    <div id="page-support" class="page-section" style="display:none">
+      <div class="support-header">
+        <h2>🤝 SUPPORT CHARACTERS</h2>
+        <p>The people and companions who stand behind every race victory.</p>
+      </div>
+      <div class="support-grid">
+
+        <!-- TAZUNA HAYAKAWA -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/3a778cbeb7f342d489c98f7d978a68a3/hayakawatazuna_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/10329e7971be44b99741c89492ef9d06/hayakawatazuna_list.png" alt="Tazuna Hayakawa" loading="lazy"/>
+          <div class="support-info">
+            <h3>TAZUNA HAYAKAWA</h3>
+            <span class="support-role staff">STAFF</span>
+            <p>Secretary to Tracen Academy's director. She ensures everyone has the best on-campus experience possible, with a warm smile and boundless dedication.</p>
+            <a href="https://umamusu.wiki/Tazuna_Hayakawa" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- YAYOI AKIKAWA -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/36796474515b4273a1a37f854b36e359/akikawayayoi_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/a3d9111af2c04af1881413f252d0a25d/akikawayayoi_list.png" alt="Yayoi Akikawa" loading="lazy"/>
+          <div class="support-info">
+            <h3>YAYOI AKIKAWA</h3>
+            <span class="support-role staff">STAFF</span>
+            <p>Director and chairwoman of Tracen Academy. Strict yet fair, she almost added a revolving sushi bar to the cafeteria — but was wisely stopped.</p>
+            <a href="https://umamusu.wiki/Yayoi_Akikawa" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- AOI KIRYUIN -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/f573a483d8624844bffe37f7258ef901/kiryuinaoi_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/e23de710d8e14542be1e9b9a1428c8c4/kiryuinaoi_list.png" alt="Aoi Kiryuin" loading="lazy"/>
+          <div class="support-info">
+            <h3>AOI KIRYUIN</h3>
+            <span class="support-role staff">STAFF</span>
+            <p>A motivated new trainer at Tracen Academy, fully committed to learning the ropes and doing her absolute best for every horse girl in her care.</p>
+            <a href="https://umamusu.wiki/Aoi_Kiryuin" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- SASAMI ANSHINZAWA -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/94726b2fd4244282ab61b6a0130f4b1d/anshinzawasasami_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/71783b15668345698f7cc6755b05d0fb/anshinzawasasami_list.png" alt="Sasami Anshinzawa" loading="lazy"/>
+          <div class="support-info">
+            <h3>SASAMI ANSHINZAWA</h3>
+            <span class="support-role staff">STAFF</span>
+            <p>The world's greatest acupuncturist — or so she claims. Her needles are always pointed, and her wit is even sharper.</p>
+            <a href="https://umamusu.wiki/Sasami_Anshinzawa" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- RIKO KASHIMOTO -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/6837fa8a55d24eaf9966dad03cb3675b/kashimotoriko_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/a7eb3c955f444b25ab17259f9de1a58a/kashimotoriko_list.png" alt="Riko Kashimoto" loading="lazy"/>
+          <div class="support-info">
+            <h3>RIKO KASHIMOTO</h3>
+            <span class="support-role staff">STAFF</span>
+            <p>A stern yet compassionate URA professional trainer who takes full responsibility for the health and wellbeing of her horse girl charges.</p>
+            <a href="https://umamusu.wiki/Riko_Kashimoto" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- LIGHT HELLO -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/ed5da1ee8aa4474bbc845aa4dc9c2d10/lighthello_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/5fb25172f3c8483883662c1009695306/lighthello_list.png" alt="Light Hello" loading="lazy"/>
+          <div class="support-info">
+            <h3>LIGHT HELLO</h3>
+            <span class="support-role npc">NPC</span>
+            <p>A gentle horse girl who inherited her grandmother's beautiful singing voice — a hidden talent she rarely shows, but treasures deeply.</p>
+            <a href="https://umamusu.wiki/Light_Hello" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- BEAUTY ANSHINZAWA -->
+        <div class="support-card" data-fullbody="https://media.gametora.com/umamusume/characters/profile/9003.png">
+          <img src="https://media.gametora.com/umamusume/characters/profile/9003.png" alt="Beauty Anshinzawa" loading="lazy"/>
+          <div class="support-info">
+            <h3>BEAUTY ANSHINZAWA</h3>
+            <span class="support-role staff">STAFF</span>
+            <p>Sasami's younger sister and a world-renowned fashion designer specialising in racewear. Sports a sharp blonde bob, giant ahoge, and iconic winged sunglasses.</p>
+            <a href="https://umamusu.wiki/Beauty_Anshinzawa" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- BYERLEY TURK -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/1b3741b5ecef454d8e267ba0d247741d/byerleyturk_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/a49c57bbd91c466c8335e3d879a1ea7c/byerleyturk_list.png" alt="Byerley Turk" loading="lazy"/>
+          <div class="support-info">
+            <h3>BYERLEY TURK</h3>
+            <span class="support-role goddess">GODDESS</span>
+            <p>One of the Three Goddesses — a foundation mare of the thoroughbred line. Elegant and ancient, she harbours a fondness for small accessories shaped like bird feathers and wings.</p>
+            <a href="https://umamusu.wiki/Byerley_Turk" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- CASINO DRIVE -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/91ab89209fbe44cb9e774c86e0ae4769/casinodrive_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/fff5260b6f454d4eaa8204afdd261332/casinodrive_list.png" alt="Casino Drive" loading="lazy"/>
+          <div class="support-info">
+            <h3>CASINO DRIVE</h3>
+            <span class="support-role npc">NPC</span>
+            <p>Companion for the Beyond Dreams scenario. She may look composed, but her sisters used to dress her up as a doll when she was little.</p>
+            <a href="https://umamusu.wiki/Casino_Drive" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- HAISEIKO -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/8973741aed3d4b4a93d179951b50c677/haiseiko_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/9649d25c93c2409a85cd9af0444fa051/haiseiko_list.png" alt="Haiseiko" loading="lazy"/>
+          <div class="support-info">
+            <h3>HAISEIKO</h3>
+            <span class="support-role npc">NPC</span>
+            <p>A legendary figure in the Uma Musume world. Her secret pre-race winning ritual? An all-garlic meal that few dare to replicate.</p>
+            <a href="https://umamusu.wiki/Haiseiko" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- HAPPY MEEK -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/275146773d0e4f7d901c8469c4f255d4/happymik_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/2a04bc169cf4436a93ab79f19c19b966/happymik_list.png" alt="Happy Meek" loading="lazy"/>
+          <div class="support-info">
+            <h3>HAPPY MEEK</h3>
+            <span class="support-role npc">NPC</span>
+            <p>Bright and cheerful, she is a tongue-twister master who can fire off the longest sequences without missing a single syllable.</p>
+            <a href="https://umamusu.wiki/Happy_Meek" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- BITTER GLASSE -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/d9139043fb8444e99f42b44c446436ec/bitterglasse_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/0f00e4c009f44283a6bbef7680c35082/bitterglasse_list.png" alt="Bitter Glasse" loading="lazy"/>
+          <div class="support-info">
+            <h3>BITTER GLASSE</h3>
+            <span class="support-role npc">NPC</span>
+            <p>A content creator who runs a surprisingly popular soba noodle blog, earning recognition among culinary enthusiasts far beyond the track.</p>
+            <a href="https://umamusu.wiki/Bitter_Glasse" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- LITTLE COCON -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/faf1edf00de249589b4610d96d4b59ab/littlecocon_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/55922c4a12ed4fc2a7cb84b158c7ce1d/littlecocon_list.png" alt="Little Cocon" loading="lazy"/>
+          <div class="support-info">
+            <h3>LITTLE COCON</h3>
+            <span class="support-role npc">NPC</span>
+            <p>A petite social media personality who regularly shares fashion and beauty content with her devoted followers.</p>
+            <a href="https://umamusu.wiki/Little_Cocon" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- JUNKO HOSOE -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/35ef4ad693c9469ab4096d64c8bc0426/hosoejunko_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/9a5022f5c7484b20a86870eccce61c45/hosoejunko_list.png" alt="Junko Hosoe" loading="lazy"/>
+          <div class="support-info">
+            <h3>JUNKO HOSOE</h3>
+            <span class="support-role commentator">COMMENTATOR</span>
+            <p>Race commentator based on the real-life Junko Hosoe. Her iconic voice brings every race to life from the commentary booth alongside Misato Akasaka.</p>
+            <a href="https://umamusu.wiki/Junko_Hosoe" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- MISATO AKASAKA -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/a6c7af9137db4727a70d3ee7d8663ae7/akasakamisato_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/69658f1d37444b62a8e451e9b8039fdc/akasakamisato_list.png" alt="Misato Akasaka" loading="lazy"/>
+          <div class="support-info">
+            <h3>MISATO AKASAKA</h3>
+            <span class="support-role commentator">COMMENTATOR</span>
+            <p>Seasoned race commentator who calls every race with sharp insight and passion, always stationed at the booth beside Junko Hosoe.</p>
+            <a href="https://umamusu.wiki/Misato_Akasaka" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- MEI SATAKE -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/6c606d418b024a6bac08f747061e7f60/satakemei_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/55547e52d732465d8ee85d0f5f4b53be/satakemei_list.png" alt="Mei Satake" loading="lazy"/>
+          <div class="support-info">
+            <h3>MEI SATAKE</h3>
+            <span class="support-role staff">STAFF</span>
+            <p>Don't let her looks fool you — Mei possesses surprising, almost unnatural strength in hand-sumo wrestling that has left many challengers speechless.</p>
+            <a href="https://umamusu.wiki/Mei_Satake" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- MONTJEU -->
+        <div class="support-card" data-fullbody="">
+          <img src="https://media.gametora.com/umamusume/characters/profile/9051.png" alt="Montjeu" loading="lazy"/>
+          <div class="support-info">
+            <h3>MONTJEU</h3>
+            <span class="support-role npc">NPC</span>
+            <p>Based on the legendary French stallion, she carries an air of European elegance and royal composure that commands respect from all who meet her.</p>
+            <a href="https://umamusu.wiki/Montjeu" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- RIGANTONA -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/f1d3aedffbd54c599546f7ba20814a15/rigantona_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/829453808b664a469beec3d0def366c9/rigantona_list.png" alt="Rigantona" loading="lazy"/>
+          <div class="support-info">
+            <h3>RIGANTONA</h3>
+            <span class="support-role goddess">GODDESS</span>
+            <p>One of the ancient Three Dams, a foundation dam of the thoroughbred lineage. Her presence carries the weight of racing history across centuries.</p>
+            <a href="https://umamusu.wiki/Rigantona" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- RYOKA TSURUGI -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/6df3571ec9f9417491cd8c0299e96619/tsurugiryoka_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/2f76d29b4f0a4ae5b047f3ed9f1016cf/tsurugiryoka_list.png" alt="Ryoka Tsurugi" loading="lazy"/>
+          <div class="support-info">
+            <h3>RYOKA TSURUGI</h3>
+            <span class="support-role staff">STAFF</span>
+            <p>A unique soul with very particular tastes — she insists on eating sashimi with wasabi only, firmly rejecting any suggestion of soy sauce.</p>
+            <a href="https://umamusu.wiki/Ryoka_Tsurugi" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- SAINT LITE -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/c5e01500be09448a8a202398ba85230a/saintlite_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/6fe1f0532dcb4d7b9afb1f25c21744ee/saintlite_list.png" alt="Saint Lite" loading="lazy"/>
+          <div class="support-info">
+            <h3>SAINT LITE</h3>
+            <span class="support-role npc">NPC</span>
+            <p>Based on the racehorse Saint Lite, she carries a serene and almost divine grace, embodying quiet strength and dignified resolve on and off the track.</p>
+            <a href="https://umamusu.wiki/Saint_Lite" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- SONON ELFIE -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/02f63d394064453b8a33a4e7a52b5c7a/sononelfie_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/f68afd4bf36643139bb7942c80b5be7f/sononelfie_list.png" alt="Sonon Elfie" loading="lazy"/>
+          <div class="support-info">
+            <h3>SONON ELFIE</h3>
+            <span class="support-role npc">NPC</span>
+            <p>A spirited horse girl with an elfin charm who brings lighthearted energy to every interaction. Her enthusiasm is as infectious as her bright smile.</p>
+            <a href="https://umamusu.wiki/Sonon_Elfie" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- SPEED SYMBOLI -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/61371a11b9f94690bda36a702f14c65d/speedsymboli_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/d64cf4d8702648c1bc2aa5c5a6d7afbd/speedsymboli_list.png" alt="Speed Symboli" loading="lazy"/>
+          <div class="support-info">
+            <h3>SPEED SYMBOLI</h3>
+            <span class="support-role npc">NPC</span>
+            <p>A dignified veteran who was known to shed tears of emotion after crossing the finish line. Her passion for racing ran deeper than speed alone.</p>
+            <a href="https://umamusu.wiki/Speed_Symboli" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- ST-2 -->
+        <div class="support-card" data-fullbody="">
+          <img src="https://media.gametora.com/umamusume/characters/profile/9054.png" alt="ST-2" loading="lazy"/>
+          <div class="support-info">
+            <h3>ST-2</h3>
+            <span class="support-role npc">NPC</span>
+            <p>An android support unit stationed at Tracen Academy. Highly efficient and precise, she processes data and assists trainers with mechanical reliability — and a hint of curiosity.</p>
+            <a href="https://umamusu.wiki/ST-2" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- SUGAR LIGHTS -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/e053c7f75c6b4a70a8094b5b87e653ef/sugarlights_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/e1631cf19fec4940ace4e4adb7fbad07/sugarlights_list.png" alt="Sugar Lights" loading="lazy"/>
+          <div class="support-info">
+            <h3>SUGAR LIGHTS</h3>
+            <span class="support-role npc">NPC</span>
+            <p>Sweet and luminous by name and nature. Sugar Lights brightens the atmosphere wherever she goes, carrying warmth and positivity through every interaction.</p>
+            <a href="https://umamusu.wiki/Sugar_Lights" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- TUCKER BRYNE -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/5760a0e1bd8247f487322c661a85be90/tuckerbryne_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/08cdb7dce3a2419e876a1405306d4a0a/tuckerbryne_list.png" alt="Tucker Bryne" loading="lazy"/>
+          <div class="support-info">
+            <h3>TUCKER BRYNE</h3>
+            <span class="support-role npc">NPC</span>
+            <p>She once attempted to wear contact lenses to change her look — but ultimately decided her glasses suited her far better, and she's never looked back.</p>
+            <a href="https://umamusu.wiki/Tucker_Bryne" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- VENUS PAQUES -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/9027d0e8b1f842c8b7fcf7c14c3351d0/venuspark_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/b2cd6bcb61014b5e9f51c1d9c07ffb09/venuspark_list.png" alt="Venus Paques" loading="lazy"/>
+          <div class="support-info">
+            <h3>VENUS PAQUES</h3>
+            <span class="support-role npc">NPC</span>
+            <p>A French-inspired character with an air of refined elegance. She approaches everything with a graceful poise that makes her stand out in any crowd.</p>
+            <a href="https://umamusu.wiki/Venus_Paques" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- KIYOKO HOSHINA -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/b7da205cb41f4dbf899afee790d962b2/hoshinakiyoko_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/d594bf4806a44533a66bef1e96fcf5a4/hoshinakiyoko_list.png" alt="Kiyoko Hoshina" loading="lazy"/>
+          <div class="support-info">
+            <h3>KIYOKO HOSHINA</h3>
+            <span class="support-role staff">STAFF</span>
+            <p>A staff member who secretly attends hula dance lessons every week. Featured in the Yukoma Hot Springs scenario alongside Yunohana Bloom.</p>
+            <a href="https://umamusu.wiki/Kiyoko_Hoshina" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- YUNOHANA BLOOM -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/64f3f3e341d24b5dbe69b32af362c471/yunohanabloom_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/3df80272be754893a01b18c65f022cd8/yunohanabloom_list.png" alt="Yunohana Bloom" loading="lazy"/>
+          <div class="support-info">
+            <h3>YUNOHANA BLOOM</h3>
+            <span class="support-role npc">NPC</span>
+            <p>A warm and blooming presence from the Yukoma Hot Springs scenario. She radiates peaceful energy and tends to leave a lasting impression on all who meet her.</p>
+            <a href="https://umamusu.wiki/Yunohana_Bloom" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- DAUPHIN BARB -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/fb376701ff584a508e07a8a30d4e0df5/godolphinbarb_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/a5ef307acc8f4ee3b88e7d7cffefe9d4/godolphinbarb_list.png" alt="Dauphin Barb" loading="lazy"/>
+          <div class="support-info">
+            <h3>DAUPHIN BARB</h3>
+            <span class="support-role goddess">GODDESS</span>
+            <p>One of the Three Foundation Dams of thoroughbred history. She carries an ancient nobility and quiet strength that echoes through every generation of horse girls.</p>
+            <a href="https://umamusu.wiki/Dauphin_Barb" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+      </div><!-- end .support-grid -->
+    </div><!-- end #page-support -->
+
     <!-- CHARACTER MODAL -->
 
 
@@ -12420,6 +12986,151 @@ const dailyCharacters = [
   name:"SAKURA CHITOSE O",
   quote:"Bloom proudly like a cherry blossom",
   img:"https://i.pinimg.com/736x/9b/8f/9a/9b8f9a10914ee1774aa39d1789d84a41.jpg"
+},
+{
+  name:"ADMIRE GROOVE",
+  quote:"Groove to the rhythm of victory.",
+  img:"https://i.pinimg.com/736x/f2/f3/58/f2f3583d69b8e879292c428cd41efeb7.jpg"
+},
+{
+  name:"AIR MESSIAH",
+  quote:"A messiah born of the sky, soaring ever higher.",
+  img:"https://i.pinimg.com/736x/8d/ba/25/8dba2511b3a37f3be980676623164e35.jpg"
+},
+{
+  name:"BELIEVE",
+  quote:"Believe in the sprint that leads to glory.",
+  img:"https://i.pinimg.com/736x/f3/3e/0e/f33e0eab68db1f384fbffcd5a0c78831.jpg"
+},
+{
+  name:"BLAST ONEPIECE",
+  quote:"A blast of power that shatters all expectations.",
+  img:"https://i.pinimg.com/736x/c5/64/7f/c5647ffce3df82d20ff39f4456dea2eb.jpg"
+},
+{
+  name:"BUBBLE GUM FELLOW",
+  quote:"Pop the bubble of doubt with unstoppable speed.",
+  img:"https://i.pinimg.com/736x/cb/24/cd/cb24cdfeceb5fef1e984a085d9712b51.jpg"
+},
+{
+  name:"CHRONO GENESIS",
+  quote:"Rewriting the genesis of champions with every stride.",
+  img:"https://i.pinimg.com/736x/6d/76/8c/6d768ca50278a6d96f81837b8fce26a7.jpg"
+},
+{
+  name:"COPANO RICKEY",
+  quote:"Luck is on my side, let the feng shui guide the way!",
+  img:"https://i.pinimg.com/736x/56/4d/44/564d44f6ce6fbb2f13eb3c6a4406a0d3.jpg"
+},
+{
+  name:"CURREN BOUQUETD'OR",
+  quote:"A golden bouquet for the one who graces the turf.",
+  img:"https://i.pinimg.com/736x/b2/48/d7/b248d79ba31b187711061f18c84dbca4.jpg"
+},
+{
+  name:"DARING HEART",
+  quote:"A daring heart fears no distance.",
+  img:"https://i.pinimg.com/736x/07/8a/f4/078af4e03a29c0e74e7e3569dc635f85.jpg"
+},
+{
+  name:"DARING TACT",
+  quote:"Unyielding tactics forged by a Triple Crown determination.",
+  img:"https://i.pinimg.com/736x/fd/a2/20/fda2209896531c482d98b609009e689a.jpg"
+},
+{
+  name:"DURAMENTE",
+  quote:"Play it loud, play it tough—a harsh and beautiful melody.",
+  img:"https://i.pinimg.com/736x/bc/24/5a/bc245ad82ea65ad0dfb05de0ca85c2d9.jpg"
+},
+{
+  name:"DURANDAL",
+  quote:"A holy sword cutting through the final stretch.",
+  img:"https://i.pinimg.com/736x/2c/66/27/2c6627c1bc684d25f197b5c82887ca92.jpg"
+},
+{
+  name:"EPIPHANEIA",
+  quote:"A sudden revelation of absolute strength.",
+  img:"https://i.pinimg.com/736x/10/3a/f2/103af2827b9c3576b5b03d01536b9ac6.jpg"
+},
+{
+  name:"ESPOIR CITY",
+  quote:"The city of hope gleams brightest on the dirt.",
+  img:"https://i.pinimg.com/736x/a7/b8/fe/a7b8fe83709d8d0417cfbee8f9a02462.jpg"
+},
+{
+  name:"FURIOSO",
+  quote:"Furious power thundering across the sand.",
+  img:"https://i.pinimg.com/736x/f6/a8/bf/f6a8bf8ddccd19b03d84527b08fa59ca.jpg"
+},
+{
+  name:"FUSAICHI PANDORA",
+  quote:"A genius who plays by her own rules.",
+  img:"https://i.pinimg.com/736x/28/f9/10/28f9107996d21ca22bbdd05fbc034f63.jpg"
+},
+{
+  name:"GRAN ALEGRIA",
+  quote:"I will prove my strength on the grandest stage.",
+  img:"https://i.pinimg.com/736x/2a/24/31/2a2431ec194d89fd1dc9b3d7a028839c.jpg"
+},
+{
+  name:"HISHI MIRACLE",
+  quote:"Miracles happen when you believe, even if you take it easy.",
+  img:"https://i.pinimg.com/736x/95/2a/82/952a82bd924ad5b56f7ea27c5442190f.jpg"
+},
+{
+  name:"HOKKO TARUMAE",
+  quote:"Bringing Tomakomai's charm to the whole world!",
+  img:"https://i.pinimg.com/736x/9c/e2/85/9ce2857aa996a863e04a454e69ea21b3.jpg"
+},
+{
+  name:"K.S. MIRACLE",
+  quote:"Every run is a miracle I cherish with all my heart.",
+  img:"https://i.pinimg.com/736x/18/fd/62/18fd62e84e02878dcec11b8a20d8bcc0.jpg"
+},
+{
+  name:"KATSURAGI ACE",
+  quote:"A brilliant ace that defies expectations.",
+  img:"https://i.pinimg.com/736x/a0/03/aa/a003aab04f5b6b9388a8a8e64a0f5191.jpg"
+},
+{
+  name:"LOGOTYPE",
+  quote:"Leaving my mark with unquestionable strength.",
+  img:"https://i.pinimg.com/736x/51/5a/a4/515aa4c9334acd46d02349fd2a269233.jpg"
+},
+{
+  name:"LUCKY LILAC",
+  quote:"A blooming lilac that carries the luck of the draw.",
+  img:"https://i.pinimg.com/736x/f3/31/aa/f331aae96df62366fcb88c1839a65116.jpg"
+},
+{
+  name:"MARCHE LORRAINE",
+  quote:"Taking on the world, one dirt track at a time.",
+  img:"https://i.pinimg.com/736x/ed/7f/4f/ed7f4ffa2b5ee5ac06073c96f766c6c3.jpg"
+},
+{
+  name:"NEO UNIVERSE",
+  quote:"I can see the entire universe through my eyes.",
+  img:"https://i.pinimg.com/736x/d6/26/d3/d626d343be9a6b1c5a34a9269ccd5068.jpg"
+},
+{
+  name:"NO REASON",
+  quote:"I don't need a reason to win.",
+  img:"https://i.pinimg.com/736x/35/34/69/3534698f0418711280e25e44dedbcdf1.jpg"
+},
+{
+  name:"NORTH FLIGHT",
+  quote:"A beautiful flight that rules the mile.",
+  img:"https://i.pinimg.com/736x/66/a1/c5/66a1c581b10bf067e098472e68ee7ef7.jpg"
+},
+{
+  name:"RED DESIRE",
+  quote:"My blazing desire outshines all rivals.",
+  img:"https://i.pinimg.com/736x/a0/a9/45/a0a945418488796ca8da840b53b45dfe.jpg"
+},
+{
+  name:"ROYCE AND ROYCE",
+  quote:"Perseverance that stands the test of time.",
+  img:"https://i.pinimg.com/736x/f4/98/89/f49889651996963c4866f779654c4e6a.jpg"
 }
 ];
 
@@ -12442,12 +13153,108 @@ randomCharacter.name;
 
 document.getElementById("dailyQuote").textContent =
 randomCharacter.quote;
-  
+
 
 });
 
+/* ── PAGE TAB SWITCH ─────────────────── */
+function switchPage(page) {
+  document.querySelectorAll('.page-section').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.page-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('page-' + page).style.display = 'block';
+  document.querySelector('[data-page="' + page + '"]').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (page === 'support') initSupportImgs();
+}
 
+/* ── Support card image fallback ───────── */
+function initSupportImgs() {
+  document.querySelectorAll('#page-support .support-card img').forEach(function(img) {
+    function showPlaceholder() {
+      var initial = img.alt ? img.alt.charAt(0) : '?';
+      var div = document.createElement('div');
+      div.className = 'support-no-img';
+      div.innerHTML = '<span>' + initial + '</span><small>Art Unavailable</small>';
+      img.parentNode.replaceChild(div, img);
+    }
+    img.addEventListener('error', showPlaceholder);
+    if (img.complete && img.naturalHeight === 0) showPlaceholder();
+  });
+}
 
+/* ── Support Hover Tooltip ─────────────── */
+(function() {
+  var tt = null;
+  var ttImg = null;
+  var ttName = null;
+  var ttDesc = null;
+
+  function buildTooltip() {
+    if (tt) return;
+    tt = document.createElement('div');
+    tt.className = 'char-tooltip';
+    tt.innerHTML =
+      '<div class="char-tooltip-img-wrap"></div>' +
+      '<div class="char-tooltip-body">' +
+        '<p class="char-tooltip-name"></p>' +
+        '<p class="char-tooltip-desc"></p>' +
+      '</div>';
+    document.body.appendChild(tt);
+    ttName = tt.querySelector('.char-tooltip-name');
+    ttDesc = tt.querySelector('.char-tooltip-desc');
+  }
+
+  function positionTT(card) {
+    var r = card.getBoundingClientRect();
+    var tw = 230;
+    var th = tt.offsetHeight || 420;
+    var left = r.left + r.width / 2 - tw / 2;
+    var top  = r.top - th - 14;
+    if (left < 10) left = 10;
+    if (left + tw > window.innerWidth - 10) left = window.innerWidth - tw - 10;
+    if (top < 10) top = r.bottom + 14;
+    tt.style.left = left + 'px';
+    tt.style.top  = top  + 'px';
+  }
+
+  function initSupportTooltips() {
+    buildTooltip();
+    document.querySelectorAll('.support-card[data-fullbody]').forEach(function(card) {
+      card.addEventListener('mouseenter', function() {
+        var fb   = card.getAttribute('data-fullbody');
+        var name = (card.querySelector('h3') || {}).textContent || '';
+        var desc = (card.querySelector('.support-info p') || {}).textContent || '';
+        var wrap = tt.querySelector('.char-tooltip-img-wrap');
+        wrap.innerHTML = '';
+        if (fb) {
+          var img = document.createElement('img');
+          img.className = 'char-tooltip-img';
+          img.alt = name;
+          img.src = fb;
+          img.onerror = function() { wrap.innerHTML = '<div class="char-tooltip-no-img">🐎</div>'; };
+          wrap.appendChild(img);
+        } else {
+          wrap.innerHTML = '<div class="char-tooltip-no-img">🐎</div>';
+        }
+        ttName.textContent = name;
+        ttDesc.textContent = desc;
+        tt.classList.remove('ct-visible');
+        void tt.offsetWidth; /* reflow to restart animation */
+        tt.classList.add('ct-visible');
+        positionTT(card);
+      });
+      card.addEventListener('mouseleave', function() {
+        tt.classList.remove('ct-visible');
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    initSupportImgs();
+    initSupportTooltips();
+  });
+
+})();
 
 </script>
 
