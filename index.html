@@ -4533,7 +4533,15 @@
 }
 @media (max-width: 1100px) { .support-grid { grid-template-columns: repeat(3,1fr); } }
 @media (max-width: 780px)  { .support-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 480px)  { .support-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px)  {
+  .support-grid { grid-template-columns: repeat(2,1fr); gap: 10px; padding: 14px 12px 32px; }
+  .support-card img, .support-card .support-no-img { height: 150px; }
+  .support-info { padding: 8px 9px 10px; gap: 4px; }
+  .support-info h3 { font-size: 9.5px; letter-spacing: 0.4px; }
+  .support-info p { font-size: 10px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .support-btn { padding: 5px 10px; font-size: 9px; margin-top: 2px; }
+  .support-role { font-size: 9px; padding: 2px 7px; }
+}
 
 .support-card {
   background: rgba(255,255,255,0.04);
@@ -4561,64 +4569,96 @@
   position: fixed;
   z-index: 9999;
   display: none;
-  width: 230px;
-  background: linear-gradient(160deg, rgba(14,10,38,0.97) 0%, rgba(26,18,60,0.97) 100%);
-  border: 1px solid rgba(180,140,255,0.32);
-  border-radius: 16px;
+  width: 238px;
+  background: rgba(12,8,32,0.97);
+  border: 1px solid rgba(180,140,255,0.28);
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.88), 0 0 0 1px rgba(255,255,255,0.04), inset 0 0 40px rgba(100,60,200,0.07);
+  box-shadow: 0 28px 64px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.04), 0 0 30px rgba(120,70,220,0.12);
   pointer-events: none;
+  backdrop-filter: blur(4px);
 }
 .char-tooltip.ct-visible {
   display: block;
-  animation: ctFadeIn 0.18s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation: ctFadeIn 0.2s cubic-bezier(0.22,1,0.36,1) forwards;
 }
 @keyframes ctFadeIn {
-  from { opacity:0; transform:translateY(10px) scale(0.96); }
+  from { opacity:0; transform:translateY(12px) scale(0.95); }
   to   { opacity:1; transform:translateY(0)    scale(1); }
 }
 .char-tooltip-img-wrap {
   width: 100%;
-  height: 290px;
-  background: linear-gradient(180deg,rgba(30,20,70,0.55) 0%,rgba(8,4,28,0.9) 100%);
+  height: 300px;
+  position: relative;
+  background: linear-gradient(180deg,rgba(35,20,80,0.6) 0%,rgba(8,4,26,0.95) 100%);
   display: flex;
   align-items: flex-end;
   justify-content: center;
   overflow: hidden;
 }
+.char-tooltip-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, rgba(12,8,32,0.85) 100%);
+  pointer-events: none;
+}
 .char-tooltip-img {
   display: block;
   width: auto;
-  height: 290px;
-  max-width: 100%;
+  height: 310px;
+  max-width: 115%;
   object-fit: contain;
   object-position: bottom center;
+  margin-bottom: -4px;
 }
 .char-tooltip-no-img {
   width: 100%;
-  height: 110px;
-  background: linear-gradient(135deg,rgba(80,40,160,0.35),rgba(20,10,50,0.6));
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 36px;
-  opacity: 0.6;
+  font-size: 40px;
+  opacity: 0.45;
 }
 .char-tooltip-body {
-  padding: 10px 13px 13px;
-  border-top: 1px solid rgba(180,140,255,0.15);
+  padding: 8px 13px 14px;
+  border-top: 1px solid rgba(180,140,255,0.12);
+  background: linear-gradient(180deg, rgba(20,12,50,0.6) 0%, transparent 100%);
+}
+.char-tooltip-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
 }
 .char-tooltip-name {
   font-size: 10px;
   font-weight: 800;
-  color: #c9a8ff;
-  letter-spacing: 1.6px;
+  color: #d8baff;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
-  margin: 0 0 5px;
+  margin: 0;
+  flex: 1;
+  line-height: 1.3;
 }
+.char-tooltip-role {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.char-tooltip-role.staff       { background: rgba(33,150,243,0.25); color: #90caf9; }
+.char-tooltip-role.npc         { background: rgba(156,39,176,0.25); color: #ce93d8; }
+.char-tooltip-role.goddess     { background: rgba(255,193,7,0.25);  color: #ffe082; }
+.char-tooltip-role.commentator { background: rgba(76,175,80,0.25);  color: #a5d6a7; }
 .char-tooltip-desc {
   font-size: 10.5px;
-  color: rgba(230,220,255,0.72);
+  color: rgba(220,210,255,0.68);
   line-height: 1.55;
   margin: 0;
 }
@@ -11587,6 +11627,17 @@ data-color="#295f46"
           </div>
         </div>
 
+        <!-- DARLEY ARABIAN -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/1b6167ad528c49c585112cc3d7444c60/darleyarabian_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/3554c8e804a342c0840890b055643d60/darleyarabian_list.png" alt="Darley Arabian" loading="lazy"/>
+          <div class="support-info">
+            <h3>DARLEY ARABIAN</h3>
+            <span class="support-role goddess">GODDESS</span>
+            <p>One of the Three Foundation Dams of the thoroughbred bloodline. Brave and dignified, her legacy flows through every horse girl racing today.</p>
+            <a href="https://umamusu.wiki/Darley_Arabian" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
         <!-- HAISEIKO -->
         <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/8973741aed3d4b4a93d179951b50c677/haiseiko_01.png">
           <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/9649d25c93c2409a85cd9af0444fa051/haiseiko_list.png" alt="Haiseiko" loading="lazy"/>
@@ -11796,14 +11847,25 @@ data-color="#295f46"
           </div>
         </div>
 
-        <!-- DAUPHIN BARB -->
+        <!-- GODOLPHIN BARB -->
         <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/fb376701ff584a508e07a8a30d4e0df5/godolphinbarb_01.png">
-          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/a5ef307acc8f4ee3b88e7d7cffefe9d4/godolphinbarb_list.png" alt="Dauphin Barb" loading="lazy"/>
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/a5ef307acc8f4ee3b88e7d7cffefe9d4/godolphinbarb_list.png" alt="Godolphin Barb" loading="lazy"/>
           <div class="support-info">
-            <h3>DAUPHIN BARB</h3>
+            <h3>GODOLPHIN BARB</h3>
             <span class="support-role goddess">GODDESS</span>
             <p>One of the Three Foundation Dams of thoroughbred history. She carries an ancient nobility and quiet strength that echoes through every generation of horse girls.</p>
-            <a href="https://umamusu.wiki/Dauphin_Barb" target="_blank" class="support-btn">WIKI</a>
+            <a href="https://umamusu.wiki/Godolphin_Barb" target="_blank" class="support-btn">WIKI</a>
+          </div>
+        </div>
+
+        <!-- ETSUKO OTONASHI -->
+        <div class="support-card" data-fullbody="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/ddb4c516b52e428b9a0a39a26f920c77/otonashietsuko_01.png">
+          <img src="https://images.microcms-assets.io/assets/973fc097984b400db8729642ddff5938/4e17a943ad134d08ae12a4d67ee85114/otonashietsuko_list.png" alt="Etsuko Otonashi" loading="lazy"/>
+          <div class="support-info">
+            <h3>ETSUKO OTONASHI</h3>
+            <span class="support-role staff">STAFF</span>
+            <p>A composed and reliable staff member at Tracen Academy. Her quiet professionalism keeps everything running smoothly behind the scenes of every major race.</p>
+            <a href="https://umamusu.wiki/Etsuko_Otonashi" target="_blank" class="support-btn">WIKI</a>
           </div>
         </div>
 
@@ -13196,7 +13258,10 @@ function initSupportImgs() {
     tt.innerHTML =
       '<div class="char-tooltip-img-wrap"></div>' +
       '<div class="char-tooltip-body">' +
-        '<p class="char-tooltip-name"></p>' +
+        '<div class="char-tooltip-meta">' +
+          '<p class="char-tooltip-name"></p>' +
+          '<span class="char-tooltip-role"></span>' +
+        '</div>' +
         '<p class="char-tooltip-desc"></p>' +
       '</div>';
     document.body.appendChild(tt);
@@ -13221,10 +13286,14 @@ function initSupportImgs() {
     buildTooltip();
     document.querySelectorAll('.support-card[data-fullbody]').forEach(function(card) {
       card.addEventListener('mouseenter', function() {
-        var fb   = card.getAttribute('data-fullbody');
-        var name = (card.querySelector('h3') || {}).textContent || '';
-        var desc = (card.querySelector('.support-info p') || {}).textContent || '';
-        var wrap = tt.querySelector('.char-tooltip-img-wrap');
+        var fb       = card.getAttribute('data-fullbody');
+        var name     = (card.querySelector('h3') || {}).textContent || '';
+        var desc     = (card.querySelector('.support-info p') || {}).textContent || '';
+        var roleEl   = card.querySelector('.support-role');
+        var roleText = roleEl ? roleEl.textContent : '';
+        var roleCls  = roleEl ? (roleEl.className.split(' ')[1] || '') : '';
+        var wrap     = tt.querySelector('.char-tooltip-img-wrap');
+        var ttRole   = tt.querySelector('.char-tooltip-role');
         wrap.innerHTML = '';
         if (fb) {
           var img = document.createElement('img');
@@ -13238,6 +13307,8 @@ function initSupportImgs() {
         }
         ttName.textContent = name;
         ttDesc.textContent = desc;
+        ttRole.textContent  = roleText;
+        ttRole.className    = 'char-tooltip-role ' + roleCls;
         tt.classList.remove('ct-visible');
         void tt.offsetWidth; /* reflow to restart animation */
         tt.classList.add('ct-visible');
