@@ -4482,23 +4482,29 @@
   gap: 0;
   background: #0d0d1a;
   border-bottom: 2px solid rgba(255,255,255,0.08);
-  padding: 0 20px;
+  padding: 0 12px;
   position: sticky;
   top: 0;
   z-index: 900;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.page-nav::-webkit-scrollbar { display: none; }
 .page-tab {
   background: none;
   border: none;
   color: rgba(255,255,255,0.45);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  padding: 14px 28px;
+  letter-spacing: 1.2px;
+  padding: 13px 20px;
   cursor: pointer;
   border-bottom: 3px solid transparent;
   transition: color 0.2s, border-color 0.2s;
   text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .page-tab:hover {
   color: rgba(255,255,255,0.8);
@@ -4506,6 +4512,9 @@
 .page-tab.active {
   color: #fff;
   border-bottom: 3px solid #e53935;
+}
+@media (max-width: 480px) {
+  .page-tab { font-size: 10px; padding: 11px 12px; letter-spacing: 0.7px; }
 }
 /* ── SUPPORT PAGE ───────────────────────────── */
 .support-header {
@@ -4535,12 +4544,11 @@
 @media (max-width: 780px)  { .support-grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 480px)  {
   .support-grid { grid-template-columns: repeat(2,1fr); gap: 10px; padding: 14px 12px 32px; }
-  .support-card img, .support-card .support-no-img { height: 150px; }
-  .support-info { padding: 8px 9px 10px; gap: 4px; }
+  .support-card img, .support-card .support-no-img { height: 140px; }
+  .support-info { padding: 7px 8px 10px; gap: 5px; }
   .support-info h3 { font-size: 9.5px; letter-spacing: 0.4px; }
-  .support-info p { font-size: 10px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .support-btn { padding: 5px 10px; font-size: 9px; margin-top: 2px; }
-  .support-role { font-size: 9px; padding: 2px 7px; }
+  .support-role { font-size: 8.5px; padding: 2px 6px; }
+  .support-btn { padding: 4px 9px; font-size: 8.5px; }
 }
 
 .support-card {
@@ -4558,7 +4566,7 @@
 }
 .support-card img {
   width: 100%;
-  height: 260px;
+  height: 190px;
   object-fit: cover;
   object-position: 50% 28%;
   background: rgba(20,20,40,0.6);
@@ -4663,25 +4671,21 @@
   margin: 0;
 }
 .support-info {
-  padding: 14px 16px 16px;
+  padding: 10px 12px 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  flex: 1;
+  gap: 6px;
 }
 .support-info h3 {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
   color: #fff;
   margin: 0;
 }
+/* description hidden from card — visible only in hover tooltip */
 .support-info p {
-  font-size: 12px;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.6;
-  margin: 0;
-  flex: 1;
+  display: none;
 }
 .support-role {
   display: inline-block;
@@ -4719,7 +4723,7 @@
 }
 .support-no-img {
   width: 100%;
-  height: 200px;
+  height: 190px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -5338,6 +5342,9 @@
     <div class="page-nav">
       <button class="page-tab active" data-page="characters" onclick="switchPage('characters')">⚡ CHARACTERS</button>
       <button class="page-tab" data-page="support" onclick="switchPage('support')">🤝 SUPPORT</button>
+      <button class="page-tab" data-page="anime" onclick="switchPage('anime')">🎬 ANIME</button>
+      <button class="page-tab" data-page="cingray" onclick="switchPage('cingray')">📖 CIN. GRAY</button>
+      <button class="page-tab" data-page="starblossom" onclick="switchPage('starblossom')">🌸 STAR BLOSSOM</button>
     </div>
 
     <!-- CHARACTERS PAGE -->
@@ -5454,6 +5461,7 @@ data-color="#ffd700"
 
 data-name="CHERVAL GRAND"
 data-category="long"
+data-voice="mbg.mp3"
 data-bg="linear-gradient(135deg,#4da6ff,#111)"
 data-speed="A"
 data-stamina="S"
@@ -5536,7 +5544,7 @@ data-color="#ff7b00"
 
 data-name="OGURI CAP"
 data-category="medium"
-data-voice="oguri.mp3"
+data-voice="cap.mp3"
 data-bg="linear-gradient(135deg,#dfe6ff,#333)"
 data-speed="A"
 data-stamina="SS"
@@ -5577,6 +5585,7 @@ data-color="#dfe6ff"
 
 data-name="MANHATTAN CAFE"
 data-category="long"
+data-voice="cafe.mp3"
 data-bg="linear-gradient(135deg,#666,#111)"
 data-speed="A"
 data-stamina="SS"
@@ -5700,6 +5709,7 @@ data-color="#00d9ff"
 
 data-name="SILENT SUZUKA"
 data-category="mile"
+data-voice="suzuka.mp3"
 data-bg="linear-gradient(135deg,#59ffb4,#003322)"
 data-speed="SS"
 data-stamina="B"
@@ -5741,7 +5751,7 @@ data-color="#59ffb4"
 
 data-name="GOLD SHIP"
 data-category="long"
-data-voice="goldship.mp3"
+data-voice="ship.mp3"
 data-bg="linear-gradient(135deg,#ff2b2b,#2b0000)"
 data-speed="A"
 data-stamina="SS"
@@ -6237,6 +6247,7 @@ data-color="#1f45ff"
 
 data-name="ALMOND EYE"
 data-category="mile"
+data-voice="AI.mp3"
 data-bg="linear-gradient(135deg,#33d6ff,#002233)"
 data-speed="SSS"
 data-stamina="S"
@@ -6278,6 +6289,7 @@ data-color="#33d6ff"
 
 data-name="GENTILDONNA"
 data-category="medium"
+data-voice="gentil.mp3"
 data-bg="linear-gradient(135deg,#ff2b2b,#330000)"
 data-speed="SS"
 data-stamina="SS"
@@ -6320,6 +6332,7 @@ data-color="#ff2b2b"
 
 data-name="VODKA"
 data-category="mile"
+data-voice="vodka.mp3"
 data-bg="linear-gradient(135deg,#ff9a00,#331a00)"
 data-speed="SS"
 data-stamina="B"
@@ -6358,6 +6371,7 @@ data-color="#ff9a00"
 
 data-name="DAIWA SCARLET"
 data-category="mile"
+data-voice="daiwa.mp3"
 data-bg="linear-gradient(135deg,#2b39ff,#000833)"
 data-speed="SS"
 data-stamina="S"
@@ -6399,6 +6413,7 @@ data-color="#2b39ff"
 
 data-name="SPECIAL WEEK"
 data-category="medium"
+data-voice="week.mp3"
 data-bg="linear-gradient(135deg,#e66cff,#330033)"
 data-speed="S"
 data-stamina="S"
@@ -6778,7 +6793,7 @@ class="btn33"
 
 data-name="MATIKANE TANHAUSER"
 data-category="long"
-data-voice="mambo1.mp3"
+data-voice="mambo.mp3"
 data-bg="linear-gradient(135deg,#ffcc66,#5b3a00)"
 data-speed="A"
 data-stamina="SS"
@@ -6825,7 +6840,7 @@ class="btn34"
 
 data-name="EL CONDOR PASA"
 data-category="mile"
-data-voice="voices/elcondor.mp3"
+data-voice="condor.mp3"
 data-bg="linear-gradient(135deg,#ff7b00,#3a1200)"
 data-speed="SS"
 data-stamina="A"
@@ -6872,7 +6887,7 @@ class="btn35"
 
 data-name="GRASS WONDER"
 data-category="medium"
-data-voice="voices/grasswonder.mp3"
+data-voice="grass.mp3"
 data-bg="linear-gradient(135deg,#00d084,#00291c)"
 data-speed="S"
 data-stamina="SS"
@@ -6919,7 +6934,7 @@ class="btn36"
 
 data-name="KING HALO"
 data-category="sprint"
-data-voice="voices/kinghalo.mp3"
+data-voice="hallo.mp3"
 data-bg="linear-gradient(135deg,#ff2b6e,#3a0014)"
 data-speed="A"
 data-stamina="B"
@@ -7356,7 +7371,7 @@ class="btn45"
 data-name="WINING TICKET"
 data-category="medium"
 
-data-voice="voices/ticket.mp3"
+data-voice="winning.mp3"
 data-bg="linear-gradient(135deg,#ffb347,#ff5e00)"
 
 data-speed="A"
@@ -7472,7 +7487,7 @@ class="btn47"
 data-name="TWIN TURBO"
 data-category="medium"
 
-data-voice="voices/turbo.mp3"
+data-voice="turbo.mp3"
 data-bg="linear-gradient(135deg,#73e8ff,#0077ff)"
 
 data-speed="SS"
@@ -8044,7 +8059,7 @@ class="btn57"
 data-name="SAKURA BAKUSHIN O"
 data-category="sprint"
 
-data-voice="voices/bakushin.mp3"
+data-voice="bakushin.mp3"
 data-bg="linear-gradient(135deg,#ff9adf,#8b5cff)"
 
 data-speed="SS"
@@ -8611,7 +8626,7 @@ class="btn67"
 data-name="NICE NATURE"
 data-category="medium"
 
-data-voice="voices/nature.mp3"
+data-voice="nice.mp3"
 data-bg="linear-gradient(135deg,#8b5a2b,#3b1f0f)"
 
 data-speed="A"
@@ -9849,7 +9864,7 @@ class="btn89"
 data-name="BIKO PEGASUS"
 data-category="sprint"
 
-data-voice="voices/bikopegasus.mp3"
+data-voice="diko.mp3"
 data-bg="linear-gradient(135deg,#ff1744,#ff9100)"
 
 data-speed="SS"
@@ -9902,7 +9917,7 @@ class="btn90"
 data-name="MATIKANE FUKUKITARU"
 data-category="long"
 
-data-voice="voices/fukukitaru.mp3"
+data-voice="fufutaro.mp3"
 data-bg="linear-gradient(135deg,#ffd54f,#ff7043)"
 
 data-speed="A"
@@ -11716,8 +11731,8 @@ data-color="#295f46"
         </div>
 
         <!-- MONTJEU -->
-        <div class="support-card" data-fullbody="">
-          <img src="https://media.gametora.com/umamusume/characters/profile/9051.png" alt="Montjeu" loading="lazy"/>
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Montjeu_%28Main%29.png&width=270">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Montjeu_%28Icon%29.png&width=140" alt="Montjeu" loading="lazy"/>
           <div class="support-info">
             <h3>MONTJEU</h3>
             <span class="support-role npc">NPC</span>
@@ -11782,8 +11797,8 @@ data-color="#295f46"
         </div>
 
         <!-- ST-2 -->
-        <div class="support-card" data-fullbody="">
-          <img src="https://media.gametora.com/umamusume/characters/profile/9054.png" alt="ST-2" loading="lazy"/>
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=ST-2_v3.png&width=270">
+          <img src="https://static.wikia.nocookie.net/umamusume/images/f/f3/Sugar_Lights.png/revision/latest/smart/width/386/height/259?cb=20241204182638" alt="ST-2" loading="lazy"/>
           <div class="support-info">
             <h3>ST-2</h3>
             <span class="support-role npc">NPC</span>
@@ -11871,6 +11886,579 @@ data-color="#295f46"
 
       </div><!-- end .support-grid -->
     </div><!-- end #page-support -->
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ANIME-EXCLUSIVE PAGE -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="page-anime" class="page-section" style="display:none">
+      <div class="support-header">
+        <h2>🎬 ANIME-EXCLUSIVE</h2>
+        <p>Characters who appear exclusively in the Uma Musume anime series.</p>
+      </div>
+      <div class="support-grid">
+
+        <!-- BROYE -->
+        <div class="support-card" data-fullbody="https://i.pinimg.com/736x/aa/ed/50/aaed5016d6553c03cbde052ba523b70c.jpg">
+          <img src="https://i.pinimg.com/736x/02/71/49/027149a62eda097e1e39b80d8b424835.jpg" alt="BROYE" loading="lazy">
+          <div class="support-info"><h3>BROYE</h3><span class="support-role npc">NPC</span><p>A spirited horse girl who appears in the Uma Musume anime. Energetic and competitive, she races with fierce determination and a passionate love for the sport.</p><a href="https://umamusu.wiki/Broye" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- HANA TOUJOU -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Toujou.Hana.full.2275280.png">
+          <img src="https://otakotaku.com/asset/img/character/2018/04/hana-toujou-5ac306680abe9p.jpg" alt="HANA TOUJOU" loading="lazy">
+          <div class="support-info"><h3>HANA TOUJOU</h3><span class="support-role npc">NPC</span><p>An anime-exclusive horse girl who brings warmth and energy to every scene she appears in throughout the Uma Musume series.</p><a href="https://umamusu.wiki/Hana_Toujou" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- KURONUMA -->
+        <div class="support-card" data-fullbody="https://static.wikia.nocookie.net/umamusume/images/c/cb/Char_Kuronuma.png/revision/latest/thumbnail/width/360/height/450?cb=20251005081735&path-prefix=es">
+          <img src="https://cdn.anidb.net/images/main/256950.jpg" alt="KURONUMA" loading="lazy">
+          <div class="support-info"><h3>KURONUMA</h3><span class="support-role npc">NPC</span><p>A horse girl featuring in the Uma Musume anime, contributing to the rich cast of competitors and companions that populate the racing world.</p><a href="https://umamusu.wiki/Kuronuma" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MAI -->
+        <div class="support-card" data-fullbody="https://cdn.anisearch.com/images/character/cover/130/130462_400.webp">
+          <img src="https://cdn.anisearch.com/images/character/cover/130/130462_400.webp" alt="MAI" loading="lazy">
+          <div class="support-info"><h3>MAI</h3><span class="support-role npc">NPC</span><p>An anime-exclusive horse girl with a bright personality who cheers on her fellow competitors and adds life to the Tracen Academy campus scenes.</p><a href="https://umamusu.wiki/Mai_(anime)" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MINAMIZAKA -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Minamizaka.full.4004484.png">
+          <img src="https://preview.redd.it/are-there-any-fanarts-of-team-canopuss-trainer-i-really-v0-083ptjvmmc0g1.jpeg?auto=webp&s=fa5d56a4302c4bb8c57018cd973394d3ae8421c9" alt="MINAMIZAKA" loading="lazy">
+          <div class="support-info"><h3>MINAMIZAKA</h3><span class="support-role npc">NPC</span><p>A horse girl from the Uma Musume anime series. She appears as part of the vibrant cast of horse girls competing at Tracen Academy.</p><a href="https://umamusu.wiki/Minamizaka" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- NANA IZUMOTO -->
+        <div class="support-card" data-fullbody="https://cdn.anisearch.com/images/character/cover/130/130461_400.webp">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy13lXPN8aOLAjxS45CWaaB-hDFnJBeciHpQ&s" alt="NANA IZUMOTO" loading="lazy">
+          <div class="support-info"><h3>NANA IZUMOTO</h3><span class="support-role npc">NPC</span><p>An anime-exclusive horse girl who graces the Uma Musume world with her presence, contributing to the lively atmosphere of Tracen Academy.</p><a href="https://umamusu.wiki/Nana_Izumoto" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- PERRY STEAM -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Perry_Steam.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Perry_Steam.png&width=405" alt="PERRY STEAM" loading="lazy">
+          <div class="support-info"><h3>PERRY STEAM</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Perry Steam, she is a horse girl from the Uma Musume anime who combines historic legacy with vibrant personality on the track.</p><a href="https://umamusu.wiki/Perry_Steam" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- QUEEN BERRY -->
+        <div class="support-card" data-fullbody="https://cdn.anisearch.com/images/character/cover/73/73185_400.webp">
+          <img src="https://cdn.anisearch.com/images/character/cover/73/73185_400.webp" alt="QUEEN BERRY" loading="lazy">
+          <div class="support-info"><h3>QUEEN BERRY</h3><span class="support-role npc">NPC</span><p>A regal horse girl from the Uma Musume anime with an air of composure and elegance. Based on the real racehorse Queen's Berry, she races with dignified grace.</p><a href="https://umamusu.wiki/Queen_Berry" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- RU -->
+        <div class="support-card" data-fullbody="https://cdn.anisearch.com/images/character/cover/130/130463_400.webp">
+          <img src="https://cdn.anisearch.com/images/character/cover/130/130463_400.webp" alt="RU" loading="lazy">
+          <div class="support-info"><h3>RU</h3><span class="support-role npc">NPC</span><p>A cheerful and enthusiastic horse girl appearing in the Uma Musume anime, known for her lively spirit and dedication to racing at Tracen Academy.</p><a href="https://umamusu.wiki/Ru" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SATONO'S TRAINER -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Satono%27s.Trainer.full.4042010.png">
+          <img src="https://static.zerochan.net/Satono%27s.Trainer.full.4042010.png" alt="SATONO'S TRAINER" loading="lazy">
+          <div class="support-info"><h3>SATONO'S TRAINER</h3><span class="support-role staff">STAFF</span><p>A dedicated trainer in the Uma Musume anime who guides Satono Diamond along her racing journey with steady support and sharp tactical insight.</p><a href="https://umamusu.wiki/Satono%27s_Trainer" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SHIMA -->
+        <div class="support-card" data-fullbody="https://cdn.anisearch.com/images/character/cover/130/130464_400.webp">
+          <img src="https://cdn.anisearch.com/images/character/cover/130/130464_400.webp" alt="SHIMA" loading="lazy">
+          <div class="support-info"><h3>SHIMA</h3><span class="support-role npc">NPC</span><p>An anime-exclusive horse girl with a spirited presence who competes alongside the main cast in the Uma Musume anime series.</p><a href="https://umamusu.wiki/Shima" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SUN VISOR -->
+        <div class="support-card" data-fullbody="https://cdn.anisearch.com/images/character/cover/73/73955_400.webp">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRGxDEvQEQ8gr7Pn11PgDkXlcJoWLsdQwl2g&s" alt="SUN VISOR" loading="lazy">
+          <div class="support-info"><h3>SUN VISOR</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Sun Visor, she is an anime-exclusive horse girl who brings a bright and energetic personality to the Uma Musume races.</p><a href="https://umamusu.wiki/Sun_Visor" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- TRAINER -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Trainer.%28Uma.Musume%29.full.2275279.png">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYwcl7EoojxZIie6f3UIslvTGejdq7e6KNmQ&s" alt="TRAINER" loading="lazy">
+          <div class="support-info"><h3>TRAINER</h3><span class="support-role staff">STAFF</span><p>The protagonist trainer of the Uma Musume anime, entrusted with guiding Special Week toward the dream of becoming the best horse girl in Japan.</p><a href="https://umamusu.wiki/Trainer" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- TRAINER OKITA -->
+        <div class="support-card" data-fullbody="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTQ10Vr0k7JZizEyDMF6B8IIBfkGStlFc1YA&s">
+          <img src="https://static.wikia.nocookie.net/umamusume/images/d/df/Okita.png/revision/latest/thumbnail/width/360/height/360?cb=20240316175209" alt="TRAINER OKITA" loading="lazy">
+          <div class="support-info"><h3>TRAINER OKITA</h3><span class="support-role staff">STAFF</span><p>A skilled and experienced trainer appearing in the Uma Musume anime, known for his methodical approach and deep understanding of horse girl racing.</p><a href="https://umamusu.wiki/Trainer_Okita" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- TRAINER TANABE -->
+        <div class="support-card" data-fullbody="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOK3eIEVwqCr8Vlbq6wr81l_IYR2kB0SFdjg&s">
+          <img src="https://cdn.anisearch.it/images/character/cover/130/130466_400.webp" alt="TRAINER TANABE" loading="lazy">
+          <div class="support-info"><h3>TRAINER TANABE</h3><span class="support-role staff">STAFF</span><p>A dedicated trainer featured in the Uma Musume anime who works tirelessly to bring out the best in his horse girl charges through careful training and encouragement.</p><a href="https://umamusu.wiki/Trainer_Tanabe" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+      </div><!-- end .support-grid -->
+    </div><!-- end #page-anime -->
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- CINDERELLA GRAY PAGE -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="page-cingray" class="page-section" style="display:none">
+      <div class="support-header">
+        <h2>📖 CINDERELLA GRAY</h2>
+        <p>Characters from the Uma Musume: Cinderella Gray manga and its 2025 anime adaptation.</p>
+      </div>
+      <div class="support-grid">
+
+        <!-- AKITSU TEIO -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Akitsu.Teio.full.4588327.jpg">
+          <img src="https://static.zerochan.net/Akitsu.Teio.full.4588327.jpg" alt="AKITSU TEIO" loading="lazy">
+          <div class="support-info"><h3>AKITSU TEIO</h3><span class="support-role npc">NPC</span><p>A horse girl from Cinderella Gray who crosses paths with Oguri Cap during her racing career. Proud and determined, she pushes Oguri to her limits.</p><a href="https://umamusu.wiki/Akitsu_Teio" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- BELNO LIGHT -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Berno.Light.full.4090886.jpg">
+          <img src="https://static.zerochan.net/Berno.Light.full.4090886.jpg" alt="BELNO LIGHT" loading="lazy">
+          <div class="support-info"><h3>BELNO LIGHT</h3><span class="support-role npc">NPC</span><p>A horse girl from the Cinderella Gray manga, competing on the tracks where Oguri Cap's legend was forged in the late 1980s Japanese racing scene.</p><a href="https://umamusu.wiki/Belno_Light" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- BETHE SUGAR -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Bethe_Sugar_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Bethe_Sugar_%28Main%29.png&width=405" alt="BETHE SUGAR" loading="lazy">
+          <div class="support-info"><h3>BETHE SUGAR</h3><span class="support-role npc">NPC</span><p>A horse girl featured in the Cinderella Gray manga, one of the many rivals and companions who shape Oguri Cap's remarkable rise through the racing world.</p><a href="https://umamusu.wiki/Bethe_Sugar" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- BLACK ALE -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Blacky_Yell_%28Main%29.png&width=405">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8stc01tWzq5Mvj8XPoJZc31X5r0UuIECuRQ&s" alt="BLACK ALE" loading="lazy">
+          <div class="support-info"><h3>BLACK ALE</h3><span class="support-role npc">NPC</span><p>A dark and intense horse girl from Cinderella Gray. Her brooding presence on the track makes her one of the most memorable rivals Oguri Cap encounters.</p><a href="https://umamusu.wiki/Black_Ale" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- BRIGHT ROCK -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=CinderellaGray_Volume19_AltCover.jpg&width=800">
+          <img src="https://umamusu.wiki/w/thumb.php?f=CinderellaGray_Volume19_AltCover.jpg&width=800" alt="BRIGHT ROCK" loading="lazy">
+          <div class="support-info"><h3>BRIGHT ROCK</h3><span class="support-role npc">NPC</span><p>A solid and determined horse girl from the Cinderella Gray manga who tests Oguri Cap's resolve with her consistent performances on the racetrack.</p><a href="https://umamusu.wiki/Bright_Rock" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- CARRIE'S ROOM -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Carrie%27s_Room_%28Main%29.png&width=405">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfgbxZYP3_fmJVPd4sB3ckZURq-nhWx7xFZw&s" alt="CARRIE'S ROOM" loading="lazy">
+          <div class="support-info"><h3>CARRIE'S ROOM</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Carrie's Room, she is a horse girl from Cinderella Gray whose presence adds depth to the competitive racing field Oguri Cap faces.</p><a href="https://umamusu.wiki/Carrie%27s_Room" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- CLARIZZA -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/9/90/Clarizza_%28Main%29.png">
+          <img src="https://static.wikia.nocookie.net/umamusume/images/a/a8/Clarizza.png/revision/latest/smart/width/386/height/259?cb=20240420212346" alt="CLARIZZA" loading="lazy">
+          <div class="support-info"><h3>CLARIZZA</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Clarizza, she is a horse girl from Cinderella Gray who brings a unique flair to the competitive races Oguri Cap participates in.</p><a href="https://umamusu.wiki/Clarizza" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- DICTA STRIKER -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Dicta.Striker.full.4090891.jpg">
+          <img src="https://static.zerochan.net/Dicta.Striker.full.4090891.jpg" alt="DICTA STRIKER" loading="lazy">
+          <div class="support-info"><h3>DICTA STRIKER</h3><span class="support-role npc">NPC</span><p>A sharp and aggressive horse girl from the Cinderella Gray manga. Her tactical racing style makes her one of the most dangerous rivals in the story.</p><a href="https://umamusu.wiki/Dicta_Striker" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- DYNAMU HEROINE -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/d/df/Dynamu_Heroine_%28Main%29.png">
+          <img src="https://umamusu.wiki/w/images/d/df/Dynamu_Heroine_%28Main%29.png" alt="DYNAMU HEROINE" loading="lazy">
+          <div class="support-info"><h3>DYNAMU HEROINE</h3><span class="support-role npc">NPC</span><p>An energetic and heroic horse girl from Cinderella Gray who inspires those around her with her bold racing spirit and never-give-up attitude.</p><a href="https://umamusu.wiki/Dynamu_Heroine" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- DYNAMU PAINTER -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Dynamu_Painter_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Dynamu_Painter_%28Main%29.png&width=405" alt="DYNAMU PAINTER" loading="lazy">
+          <div class="support-info"><h3>DYNAMU PAINTER</h3><span class="support-role npc">NPC</span><p>A creative and expressive horse girl from the Cinderella Gray manga who paints vivid memories on the racetrack with every powerful stride she takes.</p><a href="https://umamusu.wiki/Dynamu_Painter" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- ELLERSLIE PRIDE -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Ellerslie.Pride.full.4631793.png">
+          <img src="https://static.zerochan.net/Ellerslie.Pride.full.4631793.png" alt="ELLERSLIE PRIDE" loading="lazy">
+          <div class="support-info"><h3>ELLERSLIE PRIDE</h3><span class="support-role npc">NPC</span><p>A proud horse girl from the Cinderella Gray manga who carries herself with the dignity of her name. Her confidence on the track sets her apart from the competition.</p><a href="https://umamusu.wiki/Ellerslie_Pride" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- EVE BINTI -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Eve.Binti.full.4625325.jpg">
+          <img src="https://static.zerochan.net/Eve.Binti.full.4625325.jpg" alt="EVE BINTI" loading="lazy">
+          <div class="support-info"><h3>EVE BINTI</h3><span class="support-role npc">NPC</span><p>A graceful horse girl from Cinderella Gray with an exotic elegance that draws attention on and off the track during Oguri Cap's early racing career.</p><a href="https://umamusu.wiki/Eve_Binti" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- FACE NO MORE -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/a/ac/Faith_No_More_%28Main%29.png">
+          <img src="https://static.wikia.nocookie.net/umamusume/images/f/f9/Faith_No_More.png/revision/latest/smart/width/386/height/259?cb=20240420213946" alt="FACE NO MORE" loading="lazy">
+          <div class="support-info"><h3>FACE NO MORE</h3><span class="support-role npc">NPC</span><p>A mysterious horse girl from Cinderella Gray whose enigmatic personality and racing style leave a lasting impression on everyone who encounters her.</p><a href="https://umamusu.wiki/Face_No_More" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- FOLKQUEEN -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Folkqueen.full.4663485.png">
+          <img src="https://umamusu.wiki/w/images/4/4b/CinGrayCover14.jpg" alt="FOLKQUEEN" loading="lazy">
+          <div class="support-info"><h3>FOLKQUEEN</h3><span class="support-role npc">NPC</span><p>A horse girl from the Cinderella Gray manga who carries a regal yet folk-spirited energy onto the racetrack, standing out among Oguri Cap's many opponents.</p><a href="https://umamusu.wiki/Folkqueen" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- FUJIMASA MARCH -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Cinderellagray.jpg&width=800">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ_i1EGul0RBqGzonfa3ccPZTi5Fx-EaBU2g&s" alt="FUJIMASA MARCH" loading="lazy">
+          <div class="support-info"><h3>FUJIMASA MARCH</h3><span class="support-role npc">NPC</span><p>A steadfast horse girl from Cinderella Gray who marches forward with unwavering resolve, forming a memorable part of the competitive racing world Oguri Cap inhabits.</p><a href="https://umamusu.wiki/Fujimasa_March" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- FUMINO NASE -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=CinGrayVol20Cov.jpeg&width=800">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfKKRRXl264hToCRBVR848M_q9k0vG29feAQ&s" alt="FUMINO NASE" loading="lazy">
+          <div class="support-info"><h3>FUMINO NASE</h3><span class="support-role staff">STAFF</span><p>A human character from the Cinderella Gray manga who plays a supporting role in the story surrounding Oguri Cap's legendary racing career in the late 1980s.</p><a href="https://umamusu.wiki/Fumino_Nase" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- FUYUNO NAKASUMI -->
+        <div class="support-card" data-fullbody="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZX_Xu63y21GJ8gM_09_9PveJEiBdYQeT8mQ&s">
+          <img src="https://umamusu.wiki/w/images/c/cc/Fuyuno_Nakasumi_%28Main%29.png" alt="FUYUNO NAKASUMI" loading="lazy">
+          <div class="support-info"><h3>FUYUNO NAKASUMI</h3><span class="support-role staff">STAFF</span><p>A character from the Cinderella Gray manga who contributes to the human side of Oguri Cap's story, providing context and support throughout her career.</p><a href="https://umamusu.wiki/Fuyuno_Nakasumi" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- GINJIROU MUSAKA -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Musaka.Ginjirou.full.4419983.png">
+          <img src="https://static.zerochan.net/Musaka.Ginjirou.full.4419983.png" alt="GINJIROU MUSAKA" loading="lazy">
+          <div class="support-info"><h3>GINJIROU MUSAKA</h3><span class="support-role staff">STAFF</span><p>A human character from Cinderella Gray who plays a role in shaping the racing world around Oguri Cap. His presence adds depth to the manga's rich cast.</p><a href="https://umamusu.wiki/Ginjirou_Musaka" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- GOD HANNIBAL -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=CinderellaGray_Volume17_AltCover.jpg&width=800">
+          <img src="https://cdn.myanimelist.net/r/200x268/images/characters/11/593530.jpg?s=316da5b1fc0e95d8e4efabf22e05c26f" alt="GOD HANNIBAL" loading="lazy">
+          <div class="support-info"><h3>GOD HANNIBAL</h3><span class="support-role staff">STAFF</span><p>A commanding human figure from the Cinderella Gray manga whose imposing name reflects his larger-than-life presence in the world of horse girl racing.</p><a href="https://umamusu.wiki/God_Hannibal" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- HIDEHITO NASE -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/5/59/Hidehito_Nase_%28Main%29.png">
+          <img src="https://umamusu.wiki/w/images/5/59/Hidehito_Nase_%28Main%29.png" alt="HIDEHITO NASE" loading="lazy">
+          <div class="support-info"><h3>HIDEHITO NASE</h3><span class="support-role staff">STAFF</span><p>A human character from the Cinderella Gray manga who forms part of the supporting cast witnessing Oguri Cap's extraordinary rise through Japan's racing ranks.</p><a href="https://umamusu.wiki/Hidehito_Nase" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- HIYORI KAWAMURA -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/0/06/Hiyori_Kawamura_%28Main%29.png">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt7Wt3EsW6-MPl64WOUm3Jbn-Gu-rnKFwW7A&s" alt="HIYORI KAWAMURA" loading="lazy">
+          <div class="support-info"><h3>HIYORI KAWAMURA</h3><span class="support-role npc">NPC</span><p>A horse girl from Cinderella Gray who appears during Oguri Cap's journey, adding to the diverse and colourful cast of competitors in the Kasamatsu racing scene.</p><a href="https://umamusu.wiki/Hiyori_Kawamura" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- JO KITAHARA -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Kitahara.Jou.full.4419982.png">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgY5ToFO2bhx8Re2yRxIXcaTMrxa717rrWOg&s" alt="JO KITAHARA" loading="lazy">
+          <div class="support-info"><h3>JO KITAHARA</h3><span class="support-role staff">STAFF</span><p>A human character from the Cinderella Gray manga who serves as part of the racing industry backdrop surrounding Oguri Cap's legendary career.</p><a href="https://umamusu.wiki/Jo_Kitahara" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- JOY MAKER -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Joy_Maker_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Joy_Maker_%28Main%29.png&width=405" alt="JOY MAKER" loading="lazy">
+          <div class="support-info"><h3>JOY MAKER</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Joy Maker, she appeared in Oguri Cap's debut race. A spirited competitor whose early clash with Oguri left a strong impression.</p><a href="https://umamusu.wiki/Joy_Maker" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- KOUICHI SHIBASAKI -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/5/5e/Kouichi_Shibasaki_%28Main%29.png">
+          <img src="https://cdn.myanimelist.net/r/200x268/images/characters/5/588032.jpg?s=1982a8b803711bcfbbded34485e31579" alt="KOUICHI SHIBASAKI" loading="lazy">
+          <div class="support-info"><h3>KOUICHI SHIBASAKI</h3><span class="support-role staff">STAFF</span><p>A human character from Cinderella Gray who forms part of the trainer or owner cast shaping the environment in which Oguri Cap's incredible career unfolds.</p><a href="https://umamusu.wiki/Kouichi_Shibasaki" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- KRAFT UNIVER -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=CinderellaGray_Volume17_AltCover.jpg&width=800">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FQxgSrtlqie2Hb8OroVB5HmFCP49nZMWOA&s" alt="KRAFT UNIVER" loading="lazy">
+          <div class="support-info"><h3>KRAFT UNIVER</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Kraft Universum, she is a horse girl from Cinderella Gray who races fiercely against Oguri Cap on the path to legend.</p><a href="https://umamusu.wiki/Kraft_Univer" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- LONG LIVE FREE -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/6/68/Long_Live_Free_%28Main%29.png">
+          <img src="https://umamusu.wiki/w/images/6/68/Long_Live_Free_%28Main%29.png" alt="LONG LIVE FREE" loading="lazy">
+          <div class="support-info"><h3>LONG LIVE FREE</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Long Live Free, she is a horse girl from Cinderella Gray whose free-spirited nature makes her a memorable presence on the track.</p><a href="https://umamusu.wiki/Long_Live_Free" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- LORD ROYAL -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Lord.Royal.full.4663627.jpg">
+          <img src="https://static.zerochan.net/Lord.Royal.full.4663627.jpg" alt="LORD ROYAL" loading="lazy">
+          <div class="support-info"><h3>LORD ROYAL</h3><span class="support-role npc">NPC</span><p>A regal horse girl from Cinderella Gray who carries an air of aristocratic confidence onto the racetrack, standing among Oguri Cap's notable rivals.</p><a href="https://umamusu.wiki/Lord_Royal" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- LUNA SWALLOW -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/d/d6/Luna_Swallow_%28Main%29.png">
+          <img src="https://umamusu.wiki/w/images/d/d6/Luna_Swallow_%28Main%29.png" alt="LUNA SWALLOW" loading="lazy">
+          <div class="support-info"><h3>LUNA SWALLOW</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Luna Swallow, she is a swift and graceful horse girl from Cinderella Gray who soars across the track with quiet elegance.</p><a href="https://umamusu.wiki/Luna_Swallow" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MASAMI KOMIYAMA -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Far-off_thunder_cover.jpeg&width=800">
+          <img src="https://i.namu.wiki/i/b7xlkuNPViZrMqUkMqrKKYuQVSafa_GfjI4Rv56j4-2mHI6Ur62QXxoF2pl2Wrfo37QjMlVOw2FQDV_RT3hnvg.webp" alt="MASAMI KOMIYAMA" loading="lazy">
+          <div class="support-info"><h3>MASAMI KOMIYAMA</h3><span class="support-role staff">STAFF</span><p>A human trainer or owner character from Cinderella Gray whose expertise and involvement contribute significantly to the horse girl racing world depicted in the story.</p><a href="https://umamusu.wiki/Masami_Komiyama" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MASSIVE VIKING -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Massive_Viking_%28Full%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Massive_Viking_%28Full%29.png&width=405" alt="MASSIVE VIKING" loading="lazy">
+          <div class="support-info"><h3>MASSIVE VIKING</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Massive Viking, she is a powerful horse girl from Cinderella Gray who impresses with raw strength and an imposing racing presence.</p><a href="https://umamusu.wiki/Massive_Viking" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MEIKUN TSUKASA -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Meikun_Tsukasa_%28Main%29.png&width=405">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSqBEVb8bfWzlQfApRIpGHuc0oag83wtfa6w&s" alt="MEIKUN TSUKASA" loading="lazy">
+          <div class="support-info"><h3>MEIKUN TSUKASA</h3><span class="support-role staff">STAFF</span><p>A prominent figure in the Cinderella Gray manga whose influence on the racing environment surrounding Oguri Cap is felt throughout the story.</p><a href="https://umamusu.wiki/Meikun_Tsukasa" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MERRY BEAUTY -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Merry.Beauty.full.4664406.png">
+          <img src="https://static.zerochan.net/Merry.Beauty.full.4664406.png" alt="MERRY BEAUTY" loading="lazy">
+          <div class="support-info"><h3>MERRY BEAUTY</h3><span class="support-role npc">NPC</span><p>A joyful and bright horse girl from Cinderella Gray who brings cheer to those around her while competing with genuine passion on the racetrack.</p><a href="https://umamusu.wiki/Merry_Beauty" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- METEOR SELENUS -->
+        <div class="support-card" data-fullbody="https://static.wikia.nocookie.net/umamusume/images/d/d1/Meteor_Selenus.png/revision/latest?cb=20240420215513">
+          <img src="https://static.wikia.nocookie.net/umamusume/images/d/d1/Meteor_Selenus.png/revision/latest?cb=20240420215513" alt="METEOR SELENUS" loading="lazy">
+          <div class="support-info"><h3>METEOR SELENUS</h3><span class="support-role npc">NPC</span><p>A horse girl from Cinderella Gray who blazes across the track like a shooting star — fast, brilliant, and impossible to ignore during Oguri Cap's era.</p><a href="https://umamusu.wiki/Meteor_Selenus" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MICHELLE MY BABY -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Michelle.My.Baby.full.4597820.png">
+          <img src="https://i.namu.wiki/i/9_s8xhgNoar3I2l1hzsQce5ov3khP98O-jesgsze0a4_-a0AmIVElXQv6G-UvfytsOu2uMMA16BtzHqxDariYg.webp" alt="MICHELLE MY BABY" loading="lazy">
+          <div class="support-info"><h3>MICHELLE MY BABY</h3><span class="support-role npc">NPC</span><p>A horse girl from the Cinderella Gray manga with a charming and endearing name. Her affectionate personality makes her beloved by fans and fellow competitors alike.</p><a href="https://umamusu.wiki/Michelle_My_Baby" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MILL WAKABA -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Mill.Wakaba.full.4664093.jpg">
+          <img src="https://preview.redd.it/mill-wakaba-appreciation-post-cingrey-v0-llbt3namxk9g1.png?width=297&format=png&auto=webp&s=a3533cbd88651cab9ff03240fa183a6d04108d62" alt="MILL WAKABA" loading="lazy">
+          <div class="support-info"><h3>MILL WAKABA</h3><span class="support-role npc">NPC</span><p>A fresh and vibrant horse girl from Cinderella Gray whose youthful energy makes her a standout among the many competitors in Oguri Cap's racing story.</p><a href="https://umamusu.wiki/Mill_Wakaba" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MINI THE LADY -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Cg7.1.jpg&width=800">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnjkXmVzdBCDpF3sL1lTJq9uPmS92NNde3zA&s" alt="MINI THE LADY" loading="lazy">
+          <div class="support-info"><h3>MINI THE LADY</h3><span class="support-role npc">NPC</span><p>A dainty but fierce horse girl from Cinderella Gray. Despite her small stature, she races with tremendous heart and competitive spirit on every track she enters.</p><a href="https://umamusu.wiki/Mini_the_Lady" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MISS ARMAGNAC -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Miss_Armagnac_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Miss_Armagnac_%28Main%29.png&width=405" alt="MISS ARMAGNAC" loading="lazy">
+          <div class="support-info"><h3>MISS ARMAGNAC</h3><span class="support-role npc">NPC</span><p>A refined and sophisticated horse girl from Cinderella Gray whose name evokes French elegance. She races with the poise and power of a true champion.</p><a href="https://umamusu.wiki/Miss_Armagnac" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MOONLIGHT LUNACY -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Moonlight.Lunacy.full.4610231.jpg">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMvPzryqpH9dvCnWpZL4iYkEcVpgbeiOpH9w&s" alt="MOONLIGHT LUNACY" loading="lazy">
+          <div class="support-info"><h3>MOONLIGHT LUNACY</h3><span class="support-role npc">NPC</span><p>A mysterious and unpredictable horse girl from Cinderella Gray who races with a wild, moonlit intensity that makes her one of the most captivating characters in the manga.</p><a href="https://umamusu.wiki/Moonlight_Lunacy" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- NORN ACE -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Cg7.1.jpg&width=800">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlt5vjGgXSr3JVaealJ-pL00FK2GdS3DZxcg&s" alt="NORN ACE" loading="lazy">
+          <div class="support-info"><h3>NORN ACE</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Norn Ace, she is a horse girl from Cinderella Gray whose ace-level talent makes her one of the standout competitors in the story.</p><a href="https://umamusu.wiki/Norn_Ace" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- OBEY YOUR MASTER -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Cg6.jpg&width=800">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQoAFS1ysp7z5-IDZKKbj4aQQLep926j8Vrw&s" alt="OBEY YOUR MASTER" loading="lazy">
+          <div class="support-info"><h3>OBEY YOUR MASTER</h3><span class="support-role npc">NPC</span><p>A horse girl from the Cinderella Gray manga with a commanding presence. Her bold name and personality make her one of the more unforgettable faces in Oguri Cap's story.</p><a href="https://umamusu.wiki/Obey_Your_Master" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- OKAN MAKER -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Okan_Maker_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Okan_Maker_%28Main%29.png&width=405" alt="OKAN MAKER" loading="lazy">
+          <div class="support-info"><h3>OKAN MAKER</h3><span class="support-role npc">NPC</span><p>A horse girl from Cinderella Gray who brings a warm and motherly energy to the racetrack, supporting and challenging those around her in equal measure.</p><a href="https://umamusu.wiki/Okan_Maker" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- ROMANCE BUBBLY -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Romance_Bubbly_%28Main%29.png&width=405">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF5WhiA0ncjuIhH9LF55bm48OJ6sfWoSvmBw&s" alt="ROMANCE BUBBLY" loading="lazy">
+          <div class="support-info"><h3>ROMANCE BUBBLY</h3><span class="support-role npc">NPC</span><p>An effervescent horse girl from Cinderella Gray whose bubbly personality and romantic outlook on racing make her a delightful presence throughout the manga.</p><a href="https://umamusu.wiki/Romance_Bubbly" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- ROYAL CHERRY -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Royal_Cherry_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Royal_Cherry_%28Main%29.png&width=405" alt="ROYAL CHERRY" loading="lazy">
+          <div class="support-info"><h3>ROYAL CHERRY</h3><span class="support-role npc">NPC</span><p>A sweet and regal horse girl from Cinderella Gray who combines elegance with competitive fire, making her a memorable participant in Oguri Cap's racing world.</p><a href="https://umamusu.wiki/Royal_Cherry" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- RUDY LEMONO -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Cg7.1.jpg&width=800">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHMljbQBG9dVIGkjOHVKNzyjBG6j3Z_bDwig&s" alt="RUDY LEMONO" loading="lazy">
+          <div class="support-info"><h3>RUDY LEMONO</h3><span class="support-role npc">NPC</span><p>A zesty and spirited horse girl from the Cinderella Gray manga whose bright personality stands out among the many competitors in Oguri Cap's legendary career.</p><a href="https://umamusu.wiki/Rudy_Lemono" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- RUN TO THE TOP -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Run_to_the_Top_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Run_to_the_Top_%28Main%29.png&width=405" alt="RUN TO THE TOP" loading="lazy">
+          <div class="support-info"><h3>RUN TO THE TOP</h3><span class="support-role npc">NPC</span><p>A horse girl from Cinderella Gray whose name embodies her relentless drive to reach the summit of racing. She pushes herself and those around her to their absolute limits.</p><a href="https://umamusu.wiki/Run_to_the_Top" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SATIAS -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Satias_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Satias_%28Main%29.png&width=405" alt="SATIAS" loading="lazy">
+          <div class="support-info"><h3>SATIAS</h3><span class="support-role npc">NPC</span><p>A horse girl from Cinderella Gray who quietly but consistently leaves a mark on every race she enters throughout Oguri Cap's storied journey in the manga.</p><a href="https://umamusu.wiki/Satias" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SCHOOL ROAD -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/d/d2/School_Road_%28Main%29.png">
+          <img src="https://static.zerochan.net/School.Road.full.4593810.jpg" alt="SCHOOL ROAD" loading="lazy">
+          <div class="support-info"><h3>SCHOOL ROAD</h3><span class="support-role npc">NPC</span><p>A diligent horse girl from Cinderella Gray who approaches racing with a studious mindset, always learning and improving on her path to becoming a formidable competitor.</p><a href="https://umamusu.wiki/School_Road" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SEKAI TOUHA -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Sekai_Touha_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Sekai_Touha_%28Main%29.png&width=405" alt="SEKAI TOUHA" loading="lazy">
+          <div class="support-info"><h3>SEKAI TOUHA</h3><span class="support-role npc">NPC</span><p>A horse girl from Cinderella Gray whose name means "world conqueror". Her ambitions are as grand as her name suggests, making her one of the story's notable rivals.</p><a href="https://umamusu.wiki/Sekai_Touha" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SENSUKE FUJII -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Fujii_Sensuke_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Fujii_Sensuke_%28Main%29.png&width=405" alt="SENSUKE FUJII" loading="lazy">
+          <div class="support-info"><h3>SENSUKE FUJII</h3><span class="support-role staff">STAFF</span><p>A human character from the Cinderella Gray manga whose role in the racing industry contributes to the authentic atmosphere surrounding Oguri Cap's career.</p><a href="https://umamusu.wiki/Sensuke_Fujii" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SHIRLEY SKY -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/8/81/Shirley_Sky_%28Main%29.png">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Shirley_Sky_%28Main%29.png&width=405" alt="SHIRLEY SKY" loading="lazy">
+          <div class="support-info"><h3>SHIRLEY SKY</h3><span class="support-role npc">NPC</span><p>A light-spirited horse girl from Cinderella Gray who races with the freedom of the open sky, leaving a trail of wonder and inspiration wherever she competes.</p><a href="https://umamusu.wiki/Shirley_Sky" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SOUTH HEROINE -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=South_Heroine_%28Main%29.png&width=405">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIb4kdLaqlYGS8VKvoHiorrZcHgwRx0X0UjA&s" alt="SOUTH HEROINE" loading="lazy">
+          <div class="support-info"><h3>SOUTH HEROINE</h3><span class="support-role npc">NPC</span><p>A heroic horse girl from Cinderella Gray who embodies the spirit of the south with passion, warmth, and an indomitable will that shines brightest under pressure.</p><a href="https://umamusu.wiki/South_Heroine" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- TADASHI KOUCHI -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Tadashi_Kouchi_%28Anime%29.png&width=405">
+          <img src="https://static.tvmaze.com/uploads/images/medium_portrait/602/1506771.jpg" alt="TADASHI KOUCHI" loading="lazy">
+          <div class="support-info"><h3>TADASHI KOUCHI</h3><span class="support-role staff">STAFF</span><p>A human figure from the Cinderella Gray manga who plays a role in the training and management side of horse girl racing during Oguri Cap's legendary era.</p><a href="https://umamusu.wiki/Tadashi_Kouchi" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- THIEF CROW -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Thief.Crow.full.4090897.jpg">
+          <img src="https://s1.zerochan.net/Thief.Crow.600.4625376.jpg" alt="THIEF CROW" loading="lazy">
+          <div class="support-info"><h3>THIEF CROW</h3><span class="support-role npc">NPC</span><p>A cunning and quick horse girl from Cinderella Gray who races with the sharpness of a crow's eye, stealing victories with tactical brilliance and blinding speed.</p><a href="https://umamusu.wiki/Thief_Crow" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- TONI BIANCA -->
+        <div class="support-card" data-fullbody="https://static.zerochan.net/Toni.Bianca.full.4621728.png">
+          <img src="https://i.namu.wiki/i/ejwKmUr4lAqNJfz-fHmmDYM8RkM-PlUztg_StVKzsxnr5R7MLBdeiiZx0If-HT6f_nwDXS_tzLyrW0p7SIEaYQ.webp" alt="TONI BIANCA" loading="lazy">
+          <div class="support-info"><h3>TONI BIANCA</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Toni Bianca, she is a horse girl from Cinderella Gray who races with Mediterranean flair and an unforgettable presence on the track.</p><a href="https://umamusu.wiki/Toni_Bianca" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- TOP SHUNBETSU -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/8/89/Top_Shunbetsu_%28Main%29.png">
+          <img src="https://umamusu.wiki/w/images/8/89/Top_Shunbetsu_%28Main%29.png" alt="TOP SHUNBETSU" loading="lazy">
+          <div class="support-info"><h3>TOP SHUNBETSU</h3><span class="support-role npc">NPC</span><p>A horse girl from Cinderella Gray who races at the very top of her ability, consistently delivering performances that mark her as one of the standout competitors of her era.</p><a href="https://umamusu.wiki/Top_Shunbetsu" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- ULTRA ICHIBAN -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Ultra_Ichiban_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Ultra_Ichiban_%28Main%29.png&width=405" alt="ULTRA ICHIBAN" loading="lazy">
+          <div class="support-info"><h3>ULTRA ICHIBAN</h3><span class="support-role npc">NPC</span><p>A horse girl from Cinderella Gray whose name says it all — she aims to be the absolute best, fueling every race with an ultra-competitive spirit and powerful determination.</p><a href="https://umamusu.wiki/Ultra_Ichiban" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- WALK DANCER -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/thumb.php?f=Walk_Dancer_%28Main%29.png&width=405">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Walk_Dancer_%28Main%29.png&width=405" alt="WALK DANCER" loading="lazy">
+          <div class="support-info"><h3>WALK DANCER</h3><span class="support-role npc">NPC</span><p>A graceful horse girl from Cinderella Gray who moves with the fluid elegance of a dancer, translating her natural rhythm into breathtaking performances on the racetrack.</p><a href="https://umamusu.wiki/Walk_Dancer" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- YAMANO THOUSAND -->
+        <div class="support-card" data-fullbody="https://umamusu.wiki/w/images/a/a6/Yamano_Southern_%28Main%29.png">
+          <img src="https://umamusu.wiki/w/thumb.php?f=Yamano_Thousand_%28Main%29.png&width=405" alt="YAMANO THOUSAND" loading="lazy">
+          <div class="support-info"><h3>YAMANO THOUSAND</h3><span class="support-role npc">NPC</span><p>A horse girl from Cinderella Gray with a thousand-fold drive to succeed. Her ambition and resilience make her one of the most determined competitors in Oguri Cap's story.</p><a href="https://umamusu.wiki/Yamano_Thousand" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+      </div><!-- end .support-grid -->
+    </div><!-- end #page-cingray -->
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- STAR BLOSSOM PAGE -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="page-starblossom" class="page-section" style="display:none">
+      <div class="support-header">
+        <h2>🌸 STAR BLOSSOM</h2>
+        <p>Characters from the Uma Musume: Star Blossom manga series.</p>
+      </div>
+      <div class="support-grid">
+
+        <!-- AMAGI HAPPINESS -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>A</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>AMAGI HAPPINESS</h3><span class="support-role npc">NPC</span><p>A joyful and determined horse girl from Star Blossom. Based on the real horse Sakura Super Oh, she spreads happiness wherever she races with boundless enthusiasm.</p><a href="https://umamusu.wiki/Amagi_Happiness" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- CELESTIAL POLE -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>C</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>CELESTIAL POLE</h3><span class="support-role npc">NPC</span><p>A horse girl from Star Blossom with an ethereal presence that commands attention. She races as if guided by the stars, a key rival in the manga's competition arc.</p><a href="https://umamusu.wiki/Celestial_Pole" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- DANCE LIMERICK -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>D</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>DANCE LIMERICK</h3><span class="support-role npc">NPC</span><p>A normally aloof horse girl from Star Blossom who races in legendary dead heats under Team Regulus. Her reserved nature hides a fiercely competitive spirit.</p><a href="https://umamusu.wiki/Dance_Limerick" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- DEAR CHARLOTTE -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>D</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>DEAR CHARLOTTE</h3><span class="support-role npc">NPC</span><p>A charming and affectionate horse girl from Star Blossom whose warm personality makes her beloved by fans and teammates throughout the manga's unfolding story.</p><a href="https://umamusu.wiki/Dear_Charlotte" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- GENUINE -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>G</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>GENUINE</h3><span class="support-role npc">NPC</span><p>Based on the real racehorse Genuine, she is a horse girl from Star Blossom who races with authentic passion and honest effort, earning respect from all who compete against her.</p><a href="https://umamusu.wiki/Genuine" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- GOROU AKEISHI -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>G</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>GOROU AKEISHI</h3><span class="support-role staff">STAFF</span><p>A human trainer from Star Blossom who plays a pivotal role in developing horse girls. His coaching philosophy shapes the competitive dynamics at the heart of the manga.</p><a href="https://umamusu.wiki/Gorou_Akeishi" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- IRIS CIDER -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>I</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>IRIS CIDER</h3><span class="support-role npc">NPC</span><p>Based on the real horse Ines Sauder, she is a horse girl from Star Blossom who races with refreshing spirit and a competitive edge that keeps rivals on their toes.</p><a href="https://umamusu.wiki/Iris_Cider" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- ISHIGAMI ISAO -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>I</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>ISHIGAMI ISAO</h3><span class="support-role staff">STAFF</span><p>A human character from Star Blossom who contributes to the training and support structure surrounding the horse girls. His steady guidance proves vital throughout the story.</p><a href="https://umamusu.wiki/Ishigami_Isao" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MATSUKAZE RYU O -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>M</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>MATSUKAZE RYU O</h3><span class="support-role npc">NPC</span><p>A horse girl from Star Blossom who carries the spirit of the wind, racing with swift and free-flowing energy that makes her one of the manga's most dynamic competitors.</p><a href="https://umamusu.wiki/Matsukaze_Ryu_O" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- MONSIEUR SUCRE -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>M</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>MONSIEUR SUCRE</h3><span class="support-role npc">NPC</span><p>A sweet-tempered horse girl from Star Blossom with a French flair. Her delightful name reflects a personality as charming and irresistible as the finest confection.</p><a href="https://umamusu.wiki/Monsieur_Sucre" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SNOW IN HAZARD -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>S</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>SNOW IN HAZARD</h3><span class="support-role npc">NPC</span><p>A horse girl from Star Blossom who thrives even in dangerous conditions. Her cool composure under pressure makes her a formidable and unpredictable force on the track.</p><a href="https://umamusu.wiki/Snow_in_Hazard" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SUGAR NATION -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>S</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>SUGAR NATION</h3><span class="support-role npc">NPC</span><p>A sweet and passionate horse girl from Star Blossom who races with pride for her team and nation, bringing energy and sweetness to every competition she enters.</p><a href="https://umamusu.wiki/Sugar_Nation" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SUGAR SAFETY -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>S</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>SUGAR SAFETY</h3><span class="support-role npc">NPC</span><p>A careful and considerate horse girl from Star Blossom who balances sweet determination with steady pacing, always racing with both passion and precision.</p><a href="https://umamusu.wiki/Sugar_Safety" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- SUNDANCE BLAZE -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>S</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>SUNDANCE BLAZE</h3><span class="support-role npc">NPC</span><p>A blazing and radiant horse girl from Star Blossom who dances across the track like sunlight on water, dazzling everyone with her electrifying racing style.</p><a href="https://umamusu.wiki/Sundance_Blaze" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- TSUBAKI AKEISHI -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>T</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>TSUBAKI AKEISHI</h3><span class="support-role npc">NPC</span><p>A horse girl from Star Blossom who embodies the beauty of a camellia blossom — elegant, resilient, and striking in her racing performances throughout the manga.</p><a href="https://umamusu.wiki/Tsubaki_Akeishi" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+        <!-- YOSHINO PREVAIL -->
+        <div class="support-card" data-fullbody="">
+          <div class="support-no-img"><span>Y</span><small>Art Unavailable</small></div>
+          <div class="support-info"><h3>YOSHINO PREVAIL</h3><span class="support-role npc">NPC</span><p>A determined horse girl from Star Blossom who prevails against all odds. Her name is a promise — and on the track, she always finds a way to fulfil it.</p><a href="https://umamusu.wiki/Yoshino_Prevail" target="_blank" class="support-btn">WIKI</a></div>
+        </div>
+
+      </div><!-- end .support-grid -->
+    </div><!-- end #page-starblossom -->
 
     <!-- CHARACTER MODAL -->
 
@@ -13226,12 +13814,12 @@ function switchPage(page) {
   document.getElementById('page-' + page).style.display = 'block';
   document.querySelector('[data-page="' + page + '"]').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (page === 'support') initSupportImgs();
+  initSupportImgs();
 }
 
 /* ── Support card image fallback ───────── */
 function initSupportImgs() {
-  document.querySelectorAll('#page-support .support-card img').forEach(function(img) {
+  document.querySelectorAll('.support-card img').forEach(function(img) {
     function showPlaceholder() {
       var initial = img.alt ? img.alt.charAt(0) : '?';
       var div = document.createElement('div');
@@ -13270,14 +13858,26 @@ function initSupportImgs() {
   }
 
   function positionTT(card) {
-    var r = card.getBoundingClientRect();
-    var tw = 230;
-    var th = tt.offsetHeight || 420;
+    var r   = card.getBoundingClientRect();
+    var tw  = 238;
+    var th  = tt.offsetHeight || 420;
+    var vw  = window.innerWidth;
+    var vh  = window.innerHeight;
+    var pad = 12;
+
+    /* prefer: above card, centred */
     var left = r.left + r.width / 2 - tw / 2;
-    var top  = r.top - th - 14;
-    if (left < 10) left = 10;
-    if (left + tw > window.innerWidth - 10) left = window.innerWidth - tw - 10;
-    if (top < 10) top = r.bottom + 14;
+    var top  = r.top - th - pad;
+
+    /* clamp horizontal so it never leaves viewport */
+    left = Math.max(pad, Math.min(left, vw - tw - pad));
+
+    /* if no room above → try below; still no room → best fit */
+    if (top < pad) {
+      var belowTop = r.bottom + pad;
+      top = (belowTop + th <= vh - pad) ? belowTop : Math.max(pad, vh - th - pad);
+    }
+
     tt.style.left = left + 'px';
     tt.style.top  = top  + 'px';
   }
