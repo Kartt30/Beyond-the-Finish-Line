@@ -5681,6 +5681,47 @@
   transform: scale(1.05);
 }
 
+
+/* ---- MOBILE TWEAKS ---- */
+@media (max-width: 768px) {
+  /* Fix Character of the Day texts overflowing */
+  .daily-character h2 {
+    font-size: 22px !important;
+    white-space: normal;
+    word-break: break-word;
+    letter-spacing: 1px !important;
+  }
+  .daily-character h3 {
+    font-size: 24px !important;
+    white-space: normal;
+    word-break: break-word;
+  }
+  
+  /* Fix Filter menu position overlapping image */
+  .filter-menu {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 20px auto !important;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  /* Dropdown wrapper positioning fix for relative parent */
+  .filter-dropdown {
+    top: 50px !important;
+    left: auto !important;
+  }
+  
+  /* Fix search box input width */
+  .search-box input {
+    width: 90% !important;
+    font-size: 16px !important;
+  }
+}
+
 </style>
   </head>
 
