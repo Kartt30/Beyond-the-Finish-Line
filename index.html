@@ -3506,34 +3506,33 @@
         .header {
           flex-direction: column;
           align-items: center;
-          padding: 20px 16px 24px;
-          gap: 0;
-          min-height: unset;
+          padding: 40px 20px;
+          min-height: auto;
+          text-align: center;
         }
         .LOGO img {
-          width: 110px;
+          width: 120px;
           height: auto;
-          position: static;
+          margin-bottom: 20px;
           opacity: 1;
-          margin-bottom: 16px;
         }
         .text {
           position: static;
           transform: none;
-          white-space: normal;
-          align-items: center;
-          text-align: center;
-          border-top: 1px solid rgba(255, 255, 255, 0.14);
-          padding-top: 16px;
+          padding: 20px 0;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
           width: 100%;
         }
         .GEDE {
-          font-size: 1.3rem;
-          letter-spacing: 0.38em;
+          font-size: 1.8rem !important;
+          letter-spacing: 0.2rem !important;
+          margin: 0 auto;
         }
         .BESAR {
-          font-size: 0.7rem;
-          letter-spacing: 0.14em;
+          font-size: 0.9rem !important;
+          letter-spacing: 0.05rem !important;
+          opacity: 0.7;
+          margin-top: 10px;
         }
         .container {
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3789,25 +3788,19 @@
 
       @media screen and (max-width: 480px) {
         .header {
-          padding: 18px 12px 22px;
+          padding: 30px 15px;
         }
         .LOGO img {
-          width: 90px;
-          height: auto;
-          margin-bottom: 14px;
+          width: 100px;
+          margin-bottom: 15px;
         }
         .GEDE {
-          font-size: 3.2rem;
-          letter-spacing: 0.45em;
-          font-weight: 900;
-          text-transform: uppercase;
+          font-size: 1.5rem !important;
+          letter-spacing: 0.15rem !important;
         }
         .BESAR {
-          font-size: 1.15rem;
-          opacity: 0.85;
-          letter-spacing: 1px;
-          margin-top: 10px;
-          text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+          font-size: 0.8rem !important;
+          opacity: 0.65;
         }
         .card-inner img {
           height: 180px;
@@ -5745,26 +5738,40 @@
 
   /* Character of the Day centering */
   .daily-character {
-    padding: 30px 15px 20px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   .daily-character h2 {
-    font-size: 20px !important;
-    margin-bottom: 20px;
-    letter-spacing: 1px !important;
+    font-size: 1.4rem !important;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
   }
   .daily-character img {
-    width: 180px;
-    height: 180px;
-    border-radius: 15px;
-    margin-bottom: 15px;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    margin: 0 auto 20px;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
   .daily-character h3 {
-    font-size: 22px !important;
-    margin-bottom: 8px;
+    font-size: 1.6rem !important;
+    margin-bottom: 10px;
+    width: 100%;
   }
   .daily-character p {
-    font-size: 13px;
-    padding: 0 10px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 90%;
+    margin: 0 auto;
+    opacity: 0.8;
   }
   
   /* Filter & Search alignment */
