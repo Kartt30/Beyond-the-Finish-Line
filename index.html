@@ -4934,6 +4934,19 @@
   background: red;
 }
 
+.filter-btn-secret{
+  background: linear-gradient(135deg, #2b1a4d, #000);
+  color: #ffd700;
+  border: 1px solid #ffd700;
+}
+.filter-btn-secret:hover{
+  background: linear-gradient(135deg, #4d2f80, #1a0d33);
+}
+.filter-btn-secret.active{
+  background: linear-gradient(135deg, #ffd700, #ff9d00);
+  color: #1a0d33;
+}
+
     
 /* NEW CARDS FROM 118 */
 
@@ -5813,6 +5826,34 @@
   transform: scale(1.05);
 }
 
+.badge145 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color:rgba(107,142,35,0.92);
+  color:white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 900;
+}
+.btn145 {
+  display: inline-block;
+  margin-top: auto;
+  padding: 10px 15px;
+  background-color: #6b8e23;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 900;
+  transition: background-color 0.3s, transform 0.3s;
+}
+.btn145:hover {
+  background-color: #4e6a1a;
+  transform: scale(1.05);
+}
+
 
 /* ---- MOBILE TWEAKS ---- */
 @media (max-width: 768px) {
@@ -5996,6 +6037,10 @@
 
     <button class="filter-btn" data-filter="dirt">
       DIRT
+    </button>
+
+    <button class="filter-btn filter-btn-secret" data-filter="secret">
+      ⭐ SECRET
     </button>
   </div>
 
@@ -7150,7 +7195,7 @@ data-color="#ff00d4"
       <div class="card"
 
 data-name="IJAZAH JOKOWI"
-data-category="sprint"
+data-category="secret"
 data-bg="linear-gradient(135deg,#ff9d3d,#332000)" 
 data-speed="SSS+"
 data-stamina="SSS+"
@@ -7169,7 +7214,7 @@ data-color="#ff9d3d"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge28">SPRINT</div>
+          <div class="badge28">SECRET</div>
           <img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoAfckbPxBHlsGFEUefTr_069hjXZ_iZibbw&s"
           />
           <div class="overlay">
@@ -12507,6 +12552,35 @@ data-color="#008080"
       <h3>KISEKI</h3>
       <p>A miracle waiting to unfold.</p>
       <a href="https://umamusu.wiki/Kiseki" target="_blank" class="btn144">DETAIL</a>
+    </div>
+  </div>
+</div>
+<div class="card"
+data-name="DON QUIXOTE"
+data-category="secret"
+data-voice=""
+data-bg="linear-gradient(135deg, #6b8e23, #241f14)"
+data-speed="A"
+data-stamina="A"
+data-power="S"
+data-wit="B"
+data-date="Unknown"
+data-quote="Too much sanity may be madness, and maddest of all is to see life as it is, not as it should be."
+data-img="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT_kZoMoQYuwDhwqdcT0UGS6nQv38_T_wHOb5F-mOo5Rxqb0U5E"
+data-desc="A knight of La Mancha who chose her own delusion over a world without honor — and swings just as hard at a windmill as she does at a giant."
+data-color="#6b8e23"
+>
+  <div class="card-inner">
+    <div class="favorite-btn">☆</div>
+    <div class="badge145">SECRET</div>
+    <img loading="lazy" src="https://i.ytimg.com/vi/701to1fST70/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCMPpn4BLow746JQbZ7tAG3YNryOQ" />
+    <div class="overlay">
+      <span>VIEW CHARACTER</span>
+    </div>
+    <div class="content">
+      <h3>DON QUIXOTE</h3>
+      <p>Too much sanity may be madness, and maddest of all is to see life as it is, not as it should be.</p>
+      <a href="https://limbuscompany.fandom.com/wiki/Don_Quixote" target="_blank" class="btn145">DETAIL</a>
     </div>
   </div>
 </div>
