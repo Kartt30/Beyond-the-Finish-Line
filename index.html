@@ -5035,6 +5035,50 @@
   z-index: 10;
   text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+/* ── PEDIGREE MODAL TIDY-UP ───────────── */
+.pedigree-modal .character-modal-left {
+  transition: background 0.5s ease;
+}
+.pedigree-modal .character-modal-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background 0.5s ease;
+}
+.pedigree-modal .character-modal-right h2 {
+  font-size: 28px;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+.pedigree-modal .character-modal-right .quote {
+  display: inline-block;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.14);
+  margin-bottom: 22px;
+  opacity: 1;
+}
+.pedigree-modal .character-modal-right .desc {
+  font-size: 15.5px;
+  line-height: 1.75;
+  opacity: 0.92;
+}
+.pedigree-modal .character-modal-right::-webkit-scrollbar {
+  width: 6px;
+}
+.pedigree-modal .character-modal-right::-webkit-scrollbar-track {
+  background: transparent;
+}
+.pedigree-modal .character-modal-right::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
+}
 .pedigree-modal-body {
   display: flex;
   flex-direction: column;
@@ -13364,10 +13408,10 @@ data-color="#008080"
         </div>
 
         <!-- SPECIAL-SUZUKA BOND -->
-        <div class="support-card pedigree-trigger" data-title="SILENCE & SPELL" data-bg="linear-gradient(135deg, rgba(100,0,180,0.92), rgba(180,20,120,0.90))" data-fullbody="https://i.pinimg.com/736x/93/5d/e7/935de753837a1a19634189ebeb5c3bc7.jpg">
-          <img src="https://i.pinimg.com/736x/9d/42/39/9d4239f6a0b8f8ea425831211ebf0bdf.jpg" alt="Shared Stars" style="background: linear-gradient(135deg, #5f1c9d, #2196f3)">
+        <div class="support-card pedigree-trigger" data-title="SILENCE & SPELL" data-bg="linear-gradient(135deg, rgba(255,99,154,0.92), rgba(255,179,0,0.90))" data-fullbody="https://i.pinimg.com/736x/93/5d/e7/935de753837a1a19634189ebeb5c3bc7.jpg">
+          <img src="https://i.pinimg.com/736x/9d/42/39/9d4239f6a0b8f8ea425831211ebf0bdf.jpg" alt="Shared Stars" style="background: linear-gradient(135deg, #ff6f9c, #ffb300)">
           <div class="support-info">
-            <h3 style="color:#a5d6a7">SILENCE & SPELL</h3>
+            <h3 style="color:#ffb74d">SILENCE & SPELL</h3>
             <span class="support-role npc">FATED BOND</span>
             <p>Special Week and Silence Suzuka. While not direct blood relatives in common pedigree charts, their bond is fated through their shared sire, Sunday Silence. In Umamusume, this manifests as a deep sisterly and competitive connection that defines an era.</p>
             <a href="https://i.pinimg.com/736x/93/5d/e7/935de753837a1a19634189ebeb5c3bc7.jpg" target="_blank" class="support-btn">VIEW LINEAGE</a>
@@ -13806,7 +13850,7 @@ function typingEffect() {
 typingEffect();
 
   /* ── PEDIGREE MODAL ────────────────── */
-  {
+  document.addEventListener('DOMContentLoaded', function() {
     const pModal = document.getElementById('pedigreeModal');
     const pImg = document.getElementById('pedigreeModalImg');
     const pPlaceholder = document.getElementById('pedigreePlaceholder');
@@ -13841,7 +13885,6 @@ typingEffect();
         if (pRole) {
           pRole.textContent = roleText;
           pRole.style.color = themeColor;
-          pRole.style.opacity = '0.85';
         }
 
         const displayImg = fullImg || thumbImg;
@@ -13855,34 +13898,45 @@ typingEffect();
           pPlaceholder.style.display = 'block';
         }
 
+        const pRightPanel = pModal.querySelector('.character-modal-right');
+        const pLeftPanel  = pModal.querySelector('.character-modal-left');
+
         pModal.style.background = bg;
+        if (pRightPanel) pRightPanel.style.background = bg;
+        if (pLeftPanel)  pLeftPanel.style.background = bg;
         pModal.classList.add('active');
       }
 
-      /* Single delegated listener — catches both card clicks and button clicks */
+      function closePedigreeCard() {
+        pModal.classList.remove('active');
+        pModal.style.background = '';
+        const rightPanel = pModal.querySelector('.character-modal-right');
+        const leftPanel  = pModal.querySelector('.character-modal-left');
+        if (rightPanel) rightPanel.style.background = '';
+        if (leftPanel)  leftPanel.style.background = '';
+      }
+
+      /* Single delegated listener — catches both close and VIEW LINEAGE clicks */
       document.addEventListener('click', function(e) {
         /* Close on backdrop click */
         if (e.target === pModal) {
-          pModal.classList.remove('active');
-          pModal.style.background = '';
+          closePedigreeCard();
           return;
         }
         /* Close button */
         if (e.target.closest('.pedigree-close')) {
-          pModal.classList.remove('active');
-          pModal.style.background = '';
+          closePedigreeCard();
           return;
         }
-        /* VIEW LINEAGE button or card body */
-        const btn  = e.target.closest('.pedigree-trigger .support-btn');
-        const card = e.target.closest('.pedigree-trigger');
-        if (btn || card) {
+        /* VIEW LINEAGE button only — clicking elsewhere on the card does nothing */
+        const btn = e.target.closest('.pedigree-trigger .support-btn');
+        if (btn) {
           e.preventDefault();
-          openPedigreeCard(btn ? btn.closest('.pedigree-trigger') : card);
+          openPedigreeCard(btn.closest('.pedigree-trigger'));
         }
       });
     }
-  }
+  });
 
 })();
 /* PARTICLES */
@@ -14090,10 +14144,12 @@ particlesJS("particles-js", {
 
   </div>
 
+</div>
+
   <div class="pedigree-modal" id="pedigreeModal" style="transition: background 0.5s ease;">
     <div class="character-modal-content">
       <div class="character-modal-left">
-        <img id="pedigreeModalImg" src="" alt="" style="background:#000;">
+        <img id="pedigreeModalImg" src="" alt="">
         <div id="pedigreePlaceholder" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:rgba(255,255,255,0.3);display:none;">
           <div style="font-size:60px;">🐎</div>
         </div>
@@ -15184,7 +15240,7 @@ function initSupportImgs() {
 
   function initSupportTooltips() {
     buildTooltip();
-    document.querySelectorAll('.support-card[data-fullbody]').forEach(function(card) {
+    document.querySelectorAll('.support-card[data-fullbody]:not(.pedigree-trigger)').forEach(function(card) {
       card.addEventListener('mouseenter', function() {
         var fb       = card.getAttribute('data-fullbody');
         var name     = (card.querySelector('h3') || {}).textContent || '';
