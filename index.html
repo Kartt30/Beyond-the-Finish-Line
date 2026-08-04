@@ -1,11 +1,11 @@
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
     <title>Beyond the Finish Line</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    
-    
-    <style>
+<style>
       html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -48,6 +48,7 @@
         gap: 8px;
         text-align: center;
         width: 100%;
+        min-width: 0;
         padding: 0 15px;
         box-sizing: border-box;
       }
@@ -57,18 +58,18 @@
         box-sizing: border-box;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 20px;
         padding: 24px 20px;
       }
       @media (max-width: 1100px) {
-        .container { grid-template-columns: repeat(3, 1fr); }
+        .container { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       }
       @media (max-width: 780px) {
-        .container { grid-template-columns: repeat(2, 1fr); }
+        .container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       }
       @media (max-width: 480px) {
-        .container { grid-template-columns: 1fr; }
+        .container { grid-template-columns: minmax(0, 1fr); }
       }
       /* CARD (UNTUK ANIMATION) */
       .card { content-visibility: auto; contain-intrinsic-size: 320px 450px; position: relative;
@@ -293,6 +294,38 @@
         transition: 0.3s;
       }
 
+      /* BADGE */
+      .badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), var(--accent, #ff7b00);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-weight: 800;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+      }
+      /* BUTTON */
+      .btn {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 15px;
+        background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), var(--accent, #ff7b00);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 700;
+        transition: filter 0.2s ease, transform 0.2s ease;
+      }
+      .btn:hover {
+        filter: brightness(1.12);
+        transform: translateY(-1px);
+      }
+
       /* OVERLAY */
 
 .overlay {
@@ -355,1444 +388,17 @@
         transform: scale(1.05);
       }
       /* BADGE */
-      .badge {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(255, 149, 0, 0.47);
-        color: rgba(1, 0, 16, 0.842);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-weight: 800;
-        font-family: "Times New Roman", Times, serif;
-      }
+      /* SYMBOLI KRIS S */
 
-      .badge2 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(0, 255, 204, 0.999);
-        color: white;
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-      .badge3 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgb(239, 115, 6);
-        color: white;
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-      .badge4 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgb(255, 255, 255);
-        color: rgb(0, 0, 0);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge5 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgb(0, 0, 0);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge6 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgb(131, 102, 27);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge7 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(106, 79, 9, 0.796);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge8 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(14, 251, 6, 0.796);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge9 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: oklch(57.743% 0.23359 28.905 / 0.91);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge10 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(255, 132, 0, 0.787);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge11 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(13, 10, 144, 0.882);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge12 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(13, 218, 232, 0.796);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge13 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(120, 6, 6, 0.71);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge14 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(61, 170, 11, 0.484);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge15 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(255, 184, 6, 0.796);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge16 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(28, 175, 5, 0.356);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge17 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(255, 134, 249, 0.796);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge18 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(238, 255, 3, 0.815);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge19 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(204, 207, 118, 0.564);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 800;
-      }
-
-      .badge20 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(19, 19, 245, 0.796);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-
-      .badge21 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(5, 184, 255, 0.796);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-
-      .badge22 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgb(245, 0, 0);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-
-      .badge23 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(235, 170, 7, 0.934);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-
-      .badge24 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(0, 21, 255, 0.796);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-
-      .badge25 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(125, 11, 191, 0.796);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-
-      .badge26 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgb(184, 184, 226);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-
-      .badge27 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(221, 45, 241, 0.796);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-
-      .badge28 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(192, 90, 7, 0.766);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-
-      .badge29 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(144, 0, 255, 0.766);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-
-      .badge30 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(247, 114, 6, 0.867);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-
-      .badge31 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(255, 0, 204, 0.766);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-      .badge32 {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(248, 252, 1, 0.766);
-        color: rgb(255, 255, 255);
-        padding: 5px 10px;
-        /* font-size: 12px; */
-        border-radius: 5px;
-        font-family: "Times New Roman", Times, serif;
-        font-weight: 900;
-      }
-      .badge33 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(0, 224, 255, 0.8);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge34 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(241, 130, 34, 0.8);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge35 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(230, 106, 18, 0.834);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge36 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(110, 255, 0, 0.8);
-  color: black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge37 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(255, 43, 110, 0.8);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge38 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(255, 179, 71, 0.8);
-  color: black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge39 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(255, 102, 0, 0.8);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge40 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(77, 255, 116, 0.7);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge41 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(0, 255, 170, 0.8);
-  color: black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge42 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(0,207,255,0.8);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge43 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(255, 0, 60, 0.8);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge44 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(139,90,43,0.85);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.badge45 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(70,130,180,0.85);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge46 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,140,0,0.85);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge47 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(220,20,60,0.85);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge48 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(138,43,226,0.85);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge49 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(237, 64, 64, 0.85);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge50 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(199,21,133,0.85);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge51 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(70,70,70,0.88);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-/* SYMBOLI KRIS S */
-
-.badge52 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,105,180,0.88);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
 /* TOSEN JORDAN */
 
-.badge53 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(111,99,217,0.88);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
 /* MEJIRO DOBER */
 
-.badge54 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(179,140,255,0.88);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
 /* MEJIRO RAMONU */
 
-.badge55 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(216,184,78,0.90);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
 /* MEJIRO BRIGHT */
 
-.badge56 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(115,215,245,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge57 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,182,193,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge58 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(200, 10, 206, 0.771);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge59 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(202, 10, 26, 0.841);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge60 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255, 251, 0, 0.968);
-  color:rgb(0, 0, 0);
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge61 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(134, 3, 210, 0.661);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge62 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(10, 244, 112, 0.634);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge63 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255, 11, 231, 0.88);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge64 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(180,255,220,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge65 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(120,255,180,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge66 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(23, 0, 139, 0.739);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge67 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(70,70,70,0.88);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge68 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(139,90,43,0.88);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge69 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(0,191,255,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge70 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,140,60,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge71 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,80,160,0.88);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge72 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(180,180,180,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge73 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,140,0,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge74 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(120,0,0,0.90);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge75 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(150,80,255,0.88);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge76 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(90,0,0,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge77 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(70,100,150,0.88);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge78 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(140,220,255,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge79 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(90,90,90,0.90);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge80 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,140,190,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge81 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(60,90,140,0.90);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge82 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,215,80,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge83 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(200,160,255,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge84 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,140,90,0.88);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge85 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,92,138,0.90);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge86 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(0,170,255,0.90);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge87 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(138,108,255,0.90);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge88 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,107,53,0.90);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge89 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(76,175,80,0.90);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge90 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,87,34,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge91 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,183,77,0.92);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge92 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(77,182,172,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge93 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(96,125,139,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge94 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(210,145,255,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge95 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(0,191,255,0.90);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge96 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(178,102,255,0.90);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge97 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,122,168,0.90);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge98 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,145,0,0.92);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge99 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(139,35,35,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge100 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,143,177,0.90);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge101 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(194,24,91,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge102 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(255,128,171,0.92);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge103 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(35,73,144,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge104 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(12,79,141,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge105 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(229,193,88,0.92);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge106 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(48,96,168,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge107 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(225,161,177,0.92);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge108 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(153,153,153,0.92);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge109 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(241,138,32,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge110 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(241,104,137,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge111 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(187,32,32,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge112 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(59,94,64,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge113 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(118, 24, 24, 0.953);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge114 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(176,42,42,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge115 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(17,89,51,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge116 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(181, 13, 44, 0.676);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.badge117 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(47,17,17,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-
-      /* CONTENT */
+/* CONTENT */
       .content {
         padding: 15px;
         display: flex;
@@ -1809,6 +415,8 @@
         margin: 0;
         color: #ffffff;
         line-height: 1.1;
+        min-width: 0;
+        max-width: 100%;
       }
       .BESAR {
         font-family: "Georgia", serif;
@@ -1818,11 +426,12 @@
         color: rgba(255, 255, 255, 0.48);
         font-style: italic;
         margin: 0;
+        min-width: 0;
+        max-width: 100%;
       }
       /* .YUHU {
     font-family: 'Times New Roman', Times, serif;
     font-weight: 800;
-    
 
 } */
 
@@ -1838,1659 +447,33 @@
       }
 
       /* BUTTON */
-      .btn {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #ff7b00f7;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn2 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #00e1fffc;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-      .btn3 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #ff9900;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn4 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #0800ff;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn5 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #0b0b0b;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn6 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #665918;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn7 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #71452c;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn8 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #3cff00;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn9 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #ff1e05;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn10 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #3f03a7;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn11 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #0508b3ce;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn12 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #08aaeb;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn13 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #ad0808ce;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn14 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #24780dc5;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn15 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #ff8808;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn16 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #983b05c2;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn17 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #bc44ef;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn18 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #f2ff00;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn19 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #efef44c0;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn20 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #1e30f6;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-      .btn21 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #21c7fafe;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn22 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #ff0000;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn23 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #ff9d00f4;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn24 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #0400ff;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn25 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #c514f699;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn26 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #72748e;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-
-      .btn27 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #cf12c9;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-      .btn28 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #0c0c0c;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-      .btn29 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #8400ff;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-      .btn30 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #e38707;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-      .btn31 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #ff00e6;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-      .btn32 {
-        display: inline-block;
-        margin-top: auto;
-        padding: 10px 15px;
-        background-color: #f8f400;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
-      .btn33 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #00e0ff;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn34 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #ff6f00;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn35 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #ff8000d9;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn36 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #6eff00;
-  color: black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn37 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #ff2b6e;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn38 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #ffb347;
-  color: black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn39 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #ff6600;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn40 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #4da6ff;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn41 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #00ffaa;
-  color: black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn42 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#00cfff;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn43 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #ff003c;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn44 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#8b5a2b;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-.btn45{
-  display:inline-block;
-  margin-top:auto;
-  padding:10px 15px;
-  background-color:#4a90e2;
-  color:white;
-  text-decoration:none;
-  border-radius:6px;
-}
-
-/* WINNING TICKET */
-.btn46{
-  display:inline-block;
-  margin-top:auto;
-  padding:10px 15px;
-  background-color:#ff7a00;
-  color:white;
-  text-decoration:none;
-  border-radius:6px;
-}
-
+      /* WINNING TICKET */
 /* HISHI AKEBONO */
-.btn47{
-  display:inline-block;
-  margin-top:auto;
-  padding:10px 15px;
-  background-color:#ff4d6d;
-  color:white;
-  text-decoration:none;
-  border-radius:6px;
-}
-
 /* TWIN TURBO */
-.btn48{
-  display:inline-block;
-  margin-top:auto;
-  padding:10px 15px;
-  background-color:#00cfff;
-  color:white;
-  text-decoration:none;
-  border-radius:6px;
-}
-
 /* BIWA HAYAHIDE */
-.btn49{
-  display:inline-block;
-  margin-top:auto;
-  padding:10px 15px;
-  background-color:#7a5cff;
-  color:white;
-  text-decoration:none;
-  border-radius:6px;
-}
-
 /* ASTON MACHAN */
-.btn50{
-  display:inline-block;
-  margin-top:auto;
-  padding:10px 15px;
-  background-color:#ff66b3;
-  color:white;
-  text-decoration:none;
-  border-radius:6px;
-}
-
-.btn51 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#505050;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
 /* SYMBOLI KRIS S — dark silver elite */
 
-.btn52 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff7db8;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
 /* TOSEN JORDAN — gyaru pink */
 
-.btn53 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#6f63d9;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
 /* MEJIRO DOBER — cool violet */
 
-.btn54 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#b38cff;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
 /* MEJIRO RAMONU — royal lavender */
 
-.btn55 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#d8b84e;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
 /* MEJIRO BRIGHT — sleepy gold */
 
-.btn56 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#73d7f5;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
+/* BUTTON HOVER */
+      /* SYMBOLI KRIS S */
 
-.btn57 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ffb6c1;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn58 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#9b15aa;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn59 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#a00808b8;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn60 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#9009bd;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn61 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#4a4a4a;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn62 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#78dcff;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn63 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#00aaff;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn64 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#b4ffdc;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn65 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#78ffb4;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn66 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#8b0000;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn67 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#5a5a5a;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn68 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#8b5a2b;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn69 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#00bfff;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn70 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff944d;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn71 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff4fa3;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn72 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#bdbdbd;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn73 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff8c00;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn74 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#7a0000;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn75 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#9b59ff;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn76 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#5b0000;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn77 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#4f6f9f;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn78 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#8fd8ff;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn79 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#5f5f5f;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn80 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff8fbd;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn81 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#4e79a7;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn82 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ffd54f;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn83 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#c8a2ff;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn84 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff9966;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn85 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff5c8a;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn86 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#00aaff;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn87 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#8a6cff;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn88 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff6b35;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn89 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#4caf50;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn90 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff5722;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn91 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ffb74d;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn92 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#4db6ac;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn93 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#607d8b;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn94 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#d291ff;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn95 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#00bfff;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn96 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#b266ff;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn97 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff7aa8;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn98 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff9100;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn99 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#8b2323;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn100 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff8fb1;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn101 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#c2185b;
-  color:white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn102,
-.btn103,
-.btn104,
-.btn105,
-.btn106,
-.btn107,
-.btn108,
-.btn109,
-.btn110,
-.btn111,
-.btn112,
-.btn113,
-.btn114,
-.btn115,
-.btn116,
-.btn117 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color:#ff80ab;
-  color:black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn103 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #234990;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn104 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #0c4f8d;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn105 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #e5c158;
-  color: black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn106 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #3060a8;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn107 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #e1a1b1;
-  color: black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn108 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #999999;
-  color: black;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn109 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #f18a20;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn110 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #f16889;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn111 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #bb2020;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn112 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #3b5e40;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn113 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #161e38;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn114 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #b02a2a;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn115 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #115933;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn116 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #152f6b;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn117 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #2f1111;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-
-      /* BUTTON HOVER */
-      .btn:hover {
-        background-color: #ea8b16d0;
-      }
-      .btn2:hover {
-        background-color: #16c7eac4;
-      }
-      .btn3:hover {
-        background-color: #ff9900;
-      }
-      .btn4:hover {
-        background-color: #0d20ed;
-      }
-      .btn5:hover {
-        background-color: #070707b6;
-      }
-      .btn6:hover {
-        background-color: #83d14ab6;
-      }
-
-      .btn7:hover {
-        background-color: #71452c;
-      }
-
-      .btn8:hover {
-        background-color: #40ff00;
-      }
-      .btn9:hover {
-        background-color: #ff1e05;
-      }
-
-      .btn10:hover {
-        background-color: #4c0390;
-      }
-      .btn11:hover {
-        background-color: #120fb0b8;
-      }
-
-      .btn12:hover {
-        background-color: #10ffef;
-      }
-
-      .btn13:hover {
-        background-color: #9a0606a5;
-      }
-
-      .btn14:hover {
-        background-color: #1cff077d;
-      }
-
-      .btn15:hover {
-        background-color: #ff9808;
-      }
-
-      .btn16:hover {
-        background-color: #ab590cb3;
-      }
-
-      .btn17:hover {
-        background-color: #e867ff;
-      }
-
-      .btn18:hover {
-        background-color: #ffff67;
-      }
-
-      .btn19:hover {
-        background-color: #c7d85adb;
-      }
-
-      .btn20:hover {
-        background-color: #212cfa;
-      }
-
-      .btn21:hover {
-        background-color: #21c7fafe;
-      }
-
-      .btn22:hover {
-        background-color: #fa21214e;
-      }
-
-      .btn23:hover {
-        background-color: #dea216a8;
-      }
-
-      .btn24:hover {
-        background-color: #0a0f80d4;
-      }
-
-      .btn25:hover {
-        background-color: #c514f699;
-      }
-
-      .btn26:hover {
-        background-color: #b4b3eb;
-      }
-      .btn27:hover {
-        background-color: #ff3ae5;
-      }
-      .btn28:hover {
-        background-color: #ff0000;
-      }
-
-      .btn29:hover {
-        background-color: #7b09fd;
-      }
-
-      .btn30:hover {
-        background-color: #ff6f00cf;
-      }
-
-      .btn31:hover {
-        background-color: #fb0df3;
-      }
-      .btn32:hover {
-        background-color: #f6ff00;
-      }
-      .btn33:hover {
-  background-color: #00e0ff;
-}
-
-.btn34:hover {
-  background-color: #ff7300;
-}
-
-.btn35:hover {
-  background-color: #fa7f1acf;
-}
-
-.btn36:hover {
-  background-color: #6eff00;
-}
-
-.btn37:hover {
-  background-color: #ff2b6e;
-}
-
-.btn38:hover {
-  background-color: #ffb347;
-}
-
-.btn39:hover {
-  background-color: #ff6600;
-}
-
-.btn40:hover {
-  background-color: #4da6ff;
-}
-
-.btn41:hover {
-  background-color: #00ffaa;
-}
-
-.btn42:hover{
-  background-color:#0099cc;
-}
-
-.btn43:hover {
-  background-color: #ff003c;
-}
-
-.btn44:hover {
-  background-color:#6b3f1d;
-  color: black;
-}
-
-.btn44:hover {
-  background-color:#6b3f1d;
-  color:black;
-}
-
-.btn45:hover {
-  background-color:#3f5a8a;
-  color:white;
-}
-
-.btn46:hover {
-  background-color:#8a5a2f;
-  color:white;
-}
-
-.btn47:hover {
-  background-color:#b8860b;
-  color:black;
-}
-
-.btn48:hover {
-  background-color:#00bfff;
-  color:black;
-}
-
-.btn49:hover {
-  background-color:#4b6cb7;
-  color:white;
-}
-
-.btn50:hover {
-  background-color:#ff69b4;
-  color:black;
-}
-
-.btn51:hover {
-  background-color:#7a7a7a;
-  color:white;
-}
-/* SYMBOLI KRIS S */
-
-.btn52:hover {
-  background-color:#ff9ccc;
-  color:black;
-}
 /* TOSEN JORDAN */
 
-.btn53:hover {
-  background-color:#9b8cff;
-  color:black;
-}
 /* MEJIRO DOBER */
 
-.btn54:hover {
-  background-color:#d2b6ff;
-  color:black;
-}
 /* MEJIRO RAMONU */
 
-.btn55:hover {
-  background-color:#ffe27a;
-  color:black;
-}
 /* MEJIRO BRIGHT */
 
-.btn56:hover {
-  background-color:#a8eeff;
-  color:black;
-}
-.btn57:hover {
-  background-color:#ffd1dc;
-  color:black;
-}
-
-.btn58:hover {
-  background-color:#eb09ff;
-  color:black;
-}
-
-.btn59:hover {
-  background-color:#ef0909;
-  color:black;
-}
-
-.btn60:hover {
-  background-color:#d1a8ff;
-  color:black;
-}
-
-.btn61:hover {
-  background-color:#7a7a7a;
-  color:white;
-}
-
-.btn62:hover {
-  background-color:#b8f0ff;
-  color:black;
-}
-
-.btn63:hover {
-  background-color:#5cc8ff;
-  color:black;
-}
-
-.btn64:hover {
-  background-color:#d8fff0;
-  color:black;
-}
-
-.btn65:hover {
-  background-color:#b8ffd8;
-  color:black;
-}
-
-.btn66:hover {
-  background-color:#c40000;
-  color:white;
-}
-
-.btn67:hover {
-  background-color:#9f9f9f;
-  color:black;
-}
-
-.btn68:hover {
-  background-color:#c58a52;
-  color:black;
-}
-
-.btn69:hover {
-  background-color:#7fe1ff;
-  color:black;
-}
-
-.btn70:hover {
-  background-color:#ffc285;
-  color:black;
-}
-
-.btn71:hover {
-  background-color:#ff8cc6;
-  color:black;
-}
-
-.btn72:hover {
-  background-color:#e0e0e0;
-  color:black;
-}
-
-.btn73:hover {
-  background-color:#ffc266;
-  color:black;
-}
-
-.btn74:hover {
-  background-color:#b30000;
-  color:white;
-}
-
-.btn75:hover {
-  background-color:#c8a2ff;
-  color:black;
-}
-
-.btn76:hover {
-  background-color:#8b0000;
-  color:white;
-}
-
-.btn77:hover {
-  background-color:#8fb3e0;
-  color:black;
-}
-.btn78:hover {
-  background-color:#c9efff;
-  color:black;
-}
-
-.btn79:hover {
-  background-color:#8a8a8a;
-  color:white;
-}
-
-.btn80:hover {
-  background-color:#ffc2da;
-  color:black;
-}
-
-.btn81:hover {
-  background-color:#7ea6d1;
-  color:black;
-}
-
-.btn82:hover {
-  background-color:#ffe58f;
-  color:black;
-}
-
-.btn83:hover {
-  background-color:#e2ccff;
-  color:black;
-}
-
-.btn84:hover {
-  background-color:#ffc29e;
-  color:black;
-}
-
-.btn85:hover {
-  background-color:#ff9fba;
-  color:white;
-}
-
-.btn86:hover {
-  background-color:#66d1ff;
-  color:white;
-}
-
-.btn87:hover {
-  background-color:#b7a3ff;
-  color:white;
-}
-
-.btn88:hover {
-  background-color:#ff9a73;
-  color:white;
-}
-
-.btn89:hover {
-  background-color:#81d485;
-  color:white;
-}
-
-.btn90:hover {
-  background-color:#ff8a65;
-  color:white;
-}
-
-.btn91:hover {
-  background-color:#ffd180;
-  color:black;
-}
-
-.btn92:hover {
-  background-color:#80cbc4;
-  color:white;
-}
-
-.btn93:hover {
-  background-color:#90a4ae;
-  color:white;
-}
-
-.btn94:hover {
-  background-color:#e0b3ff;
-  color:white;
-}
-
-.btn95:hover {
-  background-color:#66d9ff;
-  color:white;
-}
-
-.btn96:hover {
-  background-color:#d1a3ff;
-  color:white;
-}
-
-.btn97:hover {
-  background-color:#ffb3cc;
-  color:white;
-}
-
-.btn98:hover {
-  background-color:#ffc04d;
-  color:black;
-}
-
-.btn99:hover {
-  background-color:#b33b3b;
-  color:white;
-}
-
-.btn100:hover {
-  background-color:#ffc1d5;
-  color:black;
-}
-
-.btn101:hover {
-  background-color:#e91e63;
-  color:white;
-}
-
-.btn102:hover {
-  background-color:#ffb3cc;
-  color:black;
-}
-
-      /* ANIMATION KEYFRAMES */
+/* ANIMATION KEYFRAMES */
       @keyframes fadeUp {
         from {
           opacity: 0;
@@ -3557,234 +540,9 @@
         .content p {
           font-size: 12px;
         }
-        .btn,
-        .btn2,
-        .btn3,
-        .btn4,
-        .btn5,
-        .btn6,
-        .btn7,
-        .btn8,
-        .btn9,
-        .btn10,
-        .btn11,
-        .btn12,
-        .btn13,
-        .btn14,
-        .btn15,
-        .btn16,
-        .btn17,
-        .btn18,
-        .btn19,
-        .btn20,
-        .btn21,
-        .btn22,
-        .btn23,
-        .btn24,
-        .btn25,
-        .btn26,
-        .btn27,
-        .btn28 
-        .btn29 
-        .btn30 
-        .btn31 
-        .btn32
-        .btn33,
-        .btn34,
-        .btn35,
-        .btn36,
-        .btn37,
-        .btn38,
-        .btn39,
-        .btn40,
-        .btn41,
-        .btn42,
-        .btn43,
-        .btn44
-        .btn45,
-.btn46,
-.btn47,
-.btn48,
-.btn49,
-.btn50
-.btn51
-.btn52
-.btn53
-.btn54
-.btn55
-.btn56
-.btn57
-.btn58
-.btn59
-.btn60
-.btn61
-.btn62
-.btn63
-.btn64
-.btn65
-.btn66
-.btn67
-.btn68
-.btn69
-.btn70
-.btn71
-.btn72
-.btn73
-.btn74
-.btn75
-.btn76
-.btn77
-.btn78
-.btn79
-.btn80
-.btn81
-.btn82
-.btn83
-.btn84
-.btn85
-.btn86
-.btn87
-.btn88
-.btn89
-.btn90
-.btn91
-.btn92
-.btn93
-.btn94
-.btn95
-.btn96
-.btn97
-.btn98
-.btn99
-.btn100
-.btn101
-.btn102
-.btn103
-.btn104
-.btn105
-.btn106
-.btn107
-.btn108
-.btn109
-.btn110
-.btn111
-.btn112
-.btn113
-.btn114
-.btn115
-.btn116
-.btn117
- {
-          font-size: 13px;
-          padding: 10px 12px;
+        .btn { font-size: 13px; padding: 10px 12px; }
+        .badge { font-size: 11px; padding: 4px 8px; }
         }
-        .badge,
-        .badge2,
-        .badge3,
-        .badge4,
-        .badge5,
-        .badge6,
-        .badge7,
-        .badge8,
-        .badge9,
-        .badge10,
-        .badge11,
-        .badge12,
-        .badge13,
-        .badge14,
-        .badge15,
-        .badge16,
-        .badge17,
-        .badge18,
-        .badge19,
-        .badge20,
-        .badge21,
-        .badge22,
-        .badge23,
-        .badge24,
-        .badge25,
-        .badge26,
-        .badge27,
-        .badge28,
-        .badge29,
-        .badge30,
-        .badge31,
-        .badge32
-        .badge33,
-        .badge34,
-        .badge35,
-        .badge36,
-        .badge37,
-        .badge38,
-        .badge39,
-        .badge40,
-        .badge41,
-        .badge42,
-        .badge43,
-        .badge44
-        .badge45,
-.badge46,
-.badge47,
-.badge48,
-.badge49,
-.badge50
-.badge51
-.badge52
-.badge53
-.badge54
-.badge55
-.badge56
-.badge57
-.badge58
-.badge59
-.badge60
-.badge61
-.badge62
-.badge63
-.badge64
-.badge65
-.badge66
-.badge67
-.badge68
-.badge69
-.badge70 
-.badge71 
-.badge72
-.badge73
-.badge74
-.badge75
-.badge76
-.badge77
-.badge78
-.badge79
-.badge80
-.badge81
-.badge82
-.badge83
-.badge84
-.badge85
-.badge86
-.badge87
-.badge88
-.badge89
-.badge90
-.badge91
-.badge92
-.badge93
-.badge94
-.badge95
-.badge96
-.badge97
-.badge98
-.badge99
-.badge100
-.badge101
-.badge102
- {
-          font-size: 11px;
-          padding: 4px 8px;
-        }
-      }
 
       @media screen and (max-width: 480px) {
         .header {
@@ -3805,132 +563,10 @@
         .card-inner img {
           height: 180px;
         }
-        .btn,
-        .btn2,
-        .btn3,
-        .btn4,
-        .btn5,
-        .btn6,
-        .btn7,
-        .btn8,
-        .btn9,
-        .btn10,
-        .btn11,
-        .btn12,
-        .btn13,
-        .btn14,
-        .btn15,
-        .btn16,
-        .btn17,
-        .btn18,
-        .btn19,
-        .btn20,
-        .btn21,
-        .btn22,
-        .btn23,
-        .btn24,
-        .btn25,
-        .btn26,
-        .btn27,
-        .btn28 
-        .btn29 
-        .btn30 
-        .btn31 
-        .btn32
-        .btn33,
-.btn34,
-.btn35,
-.btn36,
-.btn37,
-.btn38,
-.btn39,
-.btn40,
-.btn41,
-.btn42,
-.btn43,
-.btn44,
-.btn45,
-.btn46,
-.btn47,
-.btn48,
-.btn49,
-.btn50,
-.btn51,
-.btn52,
-.btn53,
-.btn54,
-.btn55,
-.btn56,
-.btn57,
-.btn58,
-.btn59,
-.btn60,
-.btn61,
-.btn62,
-.btn63,
-.btn64,
-.btn65,
-.btn66,
-.btn67,
-.btn68,
-.btn69,
-.btn70,
-.btn71,
-.btn72,
-.btn73,
-.btn74,
-.btn75,
-.btn76,
-.btn77,
-.btn78,
-.btn79,
-.btn80,
-.btn81,
-.btn82,
-.btn83,
-.btn84,
-.btn85,
-.btn86,
-.btn87,
-.btn88,
-.btn89,
-.btn90,
-.btn91,
-.btn92,
-.btn93,
-.btn94,
-.btn95,
-.btn96,
-.btn97,
-.btn98,
-.btn99,
-.btn100,
-.btn101,
-.btn102,
-.btn103,
-.btn104,
-.btn105,
-.btn106,
-.btn107,
-.btn108,
-.btn109,
-.btn110,
-.btn111,
-.btn112,
-.btn113,
-.btn114,
-.btn115,
-.btn116,
-.btn117 {
-          display: block;
-          width: 100%;
-          box-sizing: border-box;
-          text-align: center;
+        .btn { display: block; width: 100%; box-sizing: border-box; text-align: center; }
         }
-      }
 
-
-      /* FILTER MENU */
+/* FILTER MENU */
 
 .filter-menu{
   position: relative;
@@ -3993,7 +629,6 @@
   background: rgba(255,255,255,0.95);
 
 }
-
 
 .search-box input:focus {
   border-color: #900600;
@@ -4088,7 +723,6 @@
       }
       /* LOADER */
 
-
 #loader h2 {
   color: white;
   margin-top: 20px;
@@ -4114,7 +748,6 @@
   100% {
     transform: rotate(360deg);
   }
-  
 
 }
 /* CHARACTER MODAL */
@@ -4375,7 +1008,7 @@
 
   border-radius: 50px;
 
-  background: rgba(255,255,255,0.15);
+  background: rgba(20,10,10,0.85);
 
   backdrop-filter: blur(10px);
 
@@ -4388,7 +1021,7 @@
   transition: 0.3s;
 
   box-shadow:
-    0 0 15px rgba(255,255,255,0.2);
+    0 4px 18px rgba(0,0,0,0.45);
 
 }
 
@@ -4397,7 +1030,7 @@
   transform: scale(1.08);
 
   background:
-    rgba(255,255,255,0.25);
+    rgba(40,20,20,0.9);
 
 }
 .favorite-btn{
@@ -4538,16 +1171,16 @@
 }
 .support-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
   padding: 24px 20px 48px;
   max-width: 1440px;
   margin: 0 auto;
 }
-@media (max-width: 1100px) { .support-grid { grid-template-columns: repeat(3,1fr); } }
-@media (max-width: 780px)  { .support-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 1100px) { .support-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 780px)  { .support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 480px)  {
-  .support-grid { grid-template-columns: repeat(2,1fr); gap: 10px; padding: 14px 12px 32px; }
+  .support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 14px 12px 32px; }
   .support-card img, .support-card .support-no-img { height: 140px; }
   .support-info { padding: 7px 8px 10px; gap: 5px; }
   .support-info h3 { font-size: 9.5px; letter-spacing: 0.4px; }
@@ -4947,64 +1580,7 @@
   color: #1a0d33;
 }
 
-    
 /* NEW CARDS FROM 118 */
-
-.badge118 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(233,107,142,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn118 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #e96b8e;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn118:hover {
-  background-color: #bd315c;
-  transform: scale(1.05);
-}
-
-.badge119 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(89,65,155,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn119 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #59419b;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn119:hover {
-  background-color: #382963;
-  transform: scale(1.05);
-}
 
 /* ── PEDIGREE MODAL ────────────────────────── */
 .pedigree-modal {
@@ -5137,724 +1713,6 @@
   line-height: 1.6;
   opacity: 0.8;
 }
-.badge120 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(96,197,198,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn120 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #60c5c6;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn120:hover {
-  background-color: #306263;
-  transform: scale(1.05);
-}
-
-.badge121 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(235,140,101,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn121 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #eb8c65;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn121:hover {
-  background-color: #754632;
-  transform: scale(1.05);
-}
-
-.badge122 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(35,88,137,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn122 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #235889;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn122:hover {
-  background-color: #112c44;
-  transform: scale(1.05);
-}
-
-.badge123 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(80,10,18,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn123 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #111a43;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn123:hover {
-  background-color: #080d21;
-  transform: scale(1.05);
-}
-
-.badge124 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(53,43,43,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn124 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #352b2b;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn124:hover {
-  background-color: #1a1515;
-  transform: scale(1.05);
-}
-
-.badge125 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(215,142,178,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn125 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #d78eb2;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn125:hover {
-  background-color: #6b4759;
-  transform: scale(1.05);
-}
-
-.badge126 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(201,58,94,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn126 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: rgba(201,58,94,0.92);
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn126:hover {
-  background-color: #381c1c;
-  transform: scale(1.05);
-}
-
-.badge127 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(0,229,255,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn127 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #153965;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn127:hover {
-  background-color: #0a1c32;
-  transform: scale(1.05);
-}
-
-.badge128 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(162,56,46,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn128 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #a2382e;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn128:hover {
-  background-color: #511c17;
-  transform: scale(1.05);
-}
-
-.badge129 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(52,76,128,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn129 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #344c80;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn129:hover {
-  background-color: #1a2640;
-  transform: scale(1.05);
-}
-
-.badge130 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(200,40,40,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn130 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #c82828;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn130:hover {
-  background-color: #641414;
-  transform: scale(1.05);
-}
-
-.badge131 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(41,95,70,0.92);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-
-.btn131 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #295f46;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.btn131:hover {
-  background-color: #142f23;
-  transform: scale(1.05);
-}
-
-
-.badge132 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(0,188,212,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn132 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #00BCD4;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn132:hover {
-  background-color: #0097a7;
-  transform: scale(1.05);
-}
-
-.badge133 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(27,58,32,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn133 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #1b3a20;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn133:hover {
-  background-color: #122615;
-  transform: scale(1.05);
-}
-
-.badge134 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(101,67,33,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn134 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #654321;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn134:hover {
-  background-color: #4a3118;
-  transform: scale(1.05);
-}
-
-.badge135 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(211,47,47,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn135 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #d32f2f;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn135:hover {
-  background-color: #b71c1c;
-  transform: scale(1.05);
-}
-
-.badge136 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(25,118,210,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn136 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #1976d2;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn136:hover {
-  background-color: #0d47a1;
-  transform: scale(1.05);
-}
-
-.badge137 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(123,31,162,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn137 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #7b1fa2;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn137:hover {
-  background-color: #008080;
-  transform: scale(1.05);
-}
-
-.badge138 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(3,169,244,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn138 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #03a9f4;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn138:hover {
-  background-color: #0288d1;
-  transform: scale(1.05);
-}
-
-.badge139 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(13,71,161,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn139 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #0d47a1;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn139:hover {
-  background-color: #002171;
-  transform: scale(1.05);
-}
-
-.badge140 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(56,142,60,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn140 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #388e3c;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn140:hover {
-  background-color: #1b5e20;
-  transform: scale(1.05);
-}
-
-.badge141 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(230,81,0,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn141 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #e65100;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn141:hover {
-  background-color: #bf360c;
-  transform: scale(1.05);
-}
-
-.badge142 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(129,199,132,0.92);
-  color:black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn142 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #81c784;
-  color: black;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn142:hover {
-  background-color: #388e3c;
-  transform: scale(1.05);
-}
-
-.badge143 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(0,0,128,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn143 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #000080;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn143:hover {
-  background-color: #000066;
-  transform: scale(1.05);
-}
-
-.badge144 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(0,128,128,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn144 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #008080;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn144:hover {
-  background-color: #004d4d;
-  transform: scale(1.05);
-}
-
-.badge145 {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:rgba(107,142,35,0.92);
-  color:white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-}
-.btn145 {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 15px;
-  background-color: #6b8e23;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.btn145:hover {
-  background-color: #4e6a1a;
-  transform: scale(1.05);
-}
-
-
 /* ---- MOBILE TWEAKS ---- */
 @media (max-width: 768px) {
   /* Header adjustments */
@@ -5969,13 +1827,6 @@
 
   <body>
 
-    
-
-
-
-  </div>
-
-</div>
 <div id="particles-js"></div>
     <div class="header">
       <div class="LOGO">
@@ -6055,7 +1906,6 @@
     placeholder="Search character..."
   />
 </div>
-  
 
 <div class="daily-character">
 
@@ -6069,10 +1919,8 @@
 
 </div>
 
-
-
-    <div class="container">
-      <div class="card"
+<div class="container">
+      <div class="card" style="--accent:#ffd700"
 
 data-name="AGNES TACHYON"
 data-category="mile"
@@ -6114,7 +1962,7 @@ data-color="#ffd700"
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#4da6ff"
 
 data-name="CHERVAL GRAND"
 data-category="long"
@@ -6136,7 +1984,7 @@ data-desc="A runner who keeps moving forward despite every hardship."
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge2">LONG</div>
+          <div class="badge">LONG</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/58/9b/a1/589ba14665b14d37af179f438a9abc2f.jpg"
           />
           <div class="overlay">
@@ -6148,14 +1996,14 @@ data-desc="A runner who keeps moving forward despite every hardship."
             <a
               href="https://umamusu.wiki/Cheval_Grand"
               target="_blank"
-              class="btn2"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#ff7b00"
 
 data-name="T.M OPERA O"
 data-category="medium"
@@ -6178,7 +2026,7 @@ data-color="#ff7b00"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge3">MEDIUM</div>
+          <div class="badge">MEDIUM</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/a9/7c/bf/a97cbf297f61499e5e04ea0909bd6ed6.jpg"
           />
           <div class="overlay">
@@ -6190,14 +2038,14 @@ data-color="#ff7b00"
             <a
               href="https://umamusu.wiki/T.M._Opera_O"
               target="_blank"
-              class="btn3"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#dfe6ff"
 
 data-name="OGURI CAP"
 data-category="medium"
@@ -6220,7 +2068,7 @@ data-color="#dfe6ff"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge4">MEDIUM</div>
+          <div class="badge">MEDIUM</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/1b/21/65/1b2165100ae622a7530dfbca384e9df6.jpg" />
           <div class="overlay">
   <span>VIEW CHARACTER</span>
@@ -6231,14 +2079,14 @@ data-color="#dfe6ff"
             <a
               href="https://umamusu.wiki/Oguri_Cap"
               target="_blank"
-              class="btn4"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-<div class="card"
+<div class="card" style="--accent:#8a8a8a"
 
 data-name="MANHATTAN CAFE"
 data-category="long"
@@ -6261,7 +2109,7 @@ data-color="#8a8a8a"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge5">LONG</div>
+          <div class="badge">LONG</div>
           <img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaQdOCbOYK3DmfGnMBVdOs2rSFOJJdt-0AZw&s"
           />
           <div class="overlay">
@@ -6273,14 +2121,14 @@ data-color="#8a8a8a"
             <a
               href="https://umamusu.wiki/Manhattan_Cafe"
               target="_blank"
-              class="btn5"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#4dff88"
 
 data-name="DREAM JOURNEY"
 data-category="long"
@@ -6302,7 +2150,7 @@ data-color="#4dff88"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge6">LONG</div>
+          <div class="badge">LONG</div>
           <img loading="lazy" src="https://pbs.twimg.com/media/Gu4kxZpWwAALu4d.jpg" />
           <div class="overlay">
   <span>VIEW CHARACTER</span>
@@ -6313,14 +2161,14 @@ data-color="#4dff88"
             <a
               href="https://umamusu.wiki/Dream_Journey"
               target="_blank"
-              class="btn6"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#00d9ff"
 
 data-name="TOKAI TEIO"
 data-category="medium"
@@ -6343,7 +2191,7 @@ data-color="#00d9ff"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge7">MEDIUM</div>
+          <div class="badge">MEDIUM</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/74/90/51/749051d6f3b30e1873bb60da12d2ec13.jpg"
           />
           <div class="overlay">
@@ -6355,14 +2203,14 @@ data-color="#00d9ff"
             <a
               href="https://umamusu.wiki/Tokai_Teio"
               target="_blank"
-              class="btn7"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#59ffb4"
 
 data-name="SILENT SUZUKA"
 data-category="mile"
@@ -6385,7 +2233,7 @@ data-color="#59ffb4"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge8">MILE</div>
+          <div class="badge">MILE</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/60/b6/95/60b6959e8bf5abdca347afb980ec4fde.jpg"
           />
           <div class="overlay">
@@ -6397,14 +2245,14 @@ data-color="#59ffb4"
             <a
               href="https://umamusu.wiki/Silent_Suzuka"
               target="_blank"
-              class="btn8"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#ff2b2b"
 
 data-name="GOLD SHIP"
 data-category="long"
@@ -6427,7 +2275,7 @@ data-color="#ff2b2b"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge9">LONG</div>
+          <div class="badge">LONG</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/37/9c/bc/379cbc718fed159dd476f268d01b03d0.jpg"
           />
           <div class="overlay">
@@ -6439,14 +2287,14 @@ data-color="#ff2b2b"
             <a
               href="https://umamusu.wiki/Gold_Ship"
               target="_blank"
-              class="btn9"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#ffaa00"
 
 data-name="FOREVER YOUNG"
 data-category="long"
@@ -6468,7 +2316,7 @@ data-color="#ffaa00"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge10">LONG</div>
+          <div class="badge">LONG</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/d8/55/36/d85536bbf6460e4e1e9949cac27c1554.jpg"
           />
           <div class="overlay">
@@ -6480,14 +2328,14 @@ data-color="#ffaa00"
             <a
               href="https://umamusu.wiki/Forever_Young"
               target="_blank"
-              class="btn10"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#5b5bff"
 
 data-name="RICE SHOWER"
 data-category="long"
@@ -6509,7 +2357,7 @@ data-color="#5b5bff"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge11">LONG</div>
+          <div class="badge">LONG</div>
           <img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiowfEtLtfPnVw9URN4r0Aak_u0n0oacF6ug&s"
           />
           <div class="overlay">
@@ -6518,14 +2366,14 @@ data-color="#5b5bff"
           <div class="content">
             <h3>RICE SHOWER</h3>
             <p>Quiet steps, strong heart—Rice Shower never stops</p>
-            <a href="https://umamusu.wiki/Rice_Shower" target="_blank" class="btn11"
+            <a href="https://umamusu.wiki/Rice_Shower" target="_blank" class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#00cfff"
 
 data-name="FUJI KISEKI"
 data-category="mile"
@@ -6547,7 +2395,7 @@ data-color="#00cfff"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge12">MILE</div>
+          <div class="badge">MILE</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/96/b9/65/96b96577f40bdd700a5b4005195b0fe8.jpg"
           />
           <div class="overlay">
@@ -6559,14 +2407,14 @@ data-color="#00cfff"
             <a
               href="https://umamusu.wiki/Fuji_Kiseki"
               target="_blank"
-              class="btn12"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#ff6a3d"
 
 data-name="KITASAN BLACK"
 data-category="long"
@@ -6577,7 +2425,6 @@ data-stamina="SS"
 data-power="A"
 data-wit="A"
 data-date="10 March"
-
 
 data-quote="Never stopping, even when the path gets tough"
 
@@ -6590,7 +2437,7 @@ data-color="#ff6a3d"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge13">LONG</div>
+          <div class="badge">LONG</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/29/53/c1/2953c1fdf845b7bf16d796a3ebbb09de.jpg"
           />
           <div class="overlay">
@@ -6602,14 +2449,14 @@ data-color="#ff6a3d"
             <a
               href="https://umamusu.wiki/Kitasan_Black"
               target="_blank"
-              class="btn13"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#00d084"
 
 data-name="SATONO DIAMOND"
 data-category="long"
@@ -6619,7 +2466,6 @@ data-stamina="SS"
 data-power="A"
 data-wit="SS"
 data-date="30 January"
-
 
 data-quote="Small steps, big dreams, never giving up"
 
@@ -6632,7 +2478,7 @@ data-color="#00d084"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge14">LONG</div>
+          <div class="badge">LONG</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/25/de/fb/25defb4d3a59cdfb09286597e8dfed29.jpg"
           />
           <div class="overlay">
@@ -6644,14 +2490,14 @@ data-color="#00d084"
             <a
               href="https://umamusu.wiki/Satono_Diamond"
               target="_blank"
-              class="btn14"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#ffbf00"
 
 data-name="STAY GOLD"
 data-category="long"
@@ -6673,7 +2519,7 @@ data-color="#ffbf00"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge15">LONG</div>
+          <div class="badge">LONG</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/a3/28/83/a328837afccf3945f34f9928f0f19eb7.jpg"
           />
           <div class="overlay">
@@ -6685,14 +2531,14 @@ data-color="#ffbf00"
             <a
               href="https://umamusu.wiki/Stay_Gold"
               target="_blank"
-              class="btn15"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#198754"
 
 data-name="SYMBOLY RUDOLF"
 data-category="medium"
@@ -6702,7 +2548,6 @@ data-stamina="SS"
 data-power="SS"
 data-wit="SS"
 data-date="13 March"
-
 
 data-quote="Strength built from discipline and absolute focus"
 
@@ -6715,7 +2560,7 @@ data-color="#198754"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge16">MEDIUM</div>
+          <div class="badge">MEDIUM</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/80/33/dd/8033ddf509a889ff42f390309d829996.jpg"
           />
           <div class="overlay">
@@ -6727,14 +2572,14 @@ data-color="#198754"
             <a
               href="https://umamusu.wiki/Symboli_Rudolf"
               target="_blank"
-              class="btn16"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#ff3399"
 
 data-name="AGNES DIGITAL"
 data-category="mile"
@@ -6744,7 +2589,6 @@ data-stamina="B"
 data-power="A"
 data-wit="A"
 data-date="15 May"
-
 
 data-quote="Unpredictable speed, driven by pure passion"
 
@@ -6757,7 +2601,7 @@ data-color="#ff3399"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge17">MILE</div>
+          <div class="badge">MILE</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/2b/dd/5a/2bdd5aef8aeaea7a425ad27ca9365ddf.jpg"
           />
           <div class="overlay">
@@ -6769,14 +2613,14 @@ data-color="#ff3399"
             <a
               href="https://umamusu.wiki/Agnes_Digital"
               target="_blank"
-              class="btn17"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#e5ff00"
 
 data-name="JUNGLE POCKET"
 data-category="medium"
@@ -6798,7 +2642,7 @@ data-color="#e5ff00"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge18">MEDIUM</div>
+          <div class="badge">MEDIUM</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/cc/ae/39/ccae3951a4c47c54db43c1c1f116c4b1.jpg"
           />
           <div class="overlay">
@@ -6810,14 +2654,14 @@ data-color="#e5ff00"
             <a
               href="https://umamusu.wiki/Jungle_Pocket"
               target="_blank"
-              class="btn18"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#f0e68c"
 
 data-name="NARITA TOP ROAD"
 data-category="long"
@@ -6827,7 +2671,6 @@ data-stamina="SS"
 data-power="A"
 data-wit="S"
 data-date="4 April"
-
 
 data-quote="A steady heart that never loses sight of the goal"
 
@@ -6840,7 +2683,7 @@ data-color="#f0e68c"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge19">LONG</div>
+          <div class="badge">LONG</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/ee/82/59/ee8259190036d7a04370e41f4f6b742d.jpg"
           />
           <div class="overlay">
@@ -6852,14 +2695,14 @@ data-color="#f0e68c"
             <a
               href="https://umamusu.wiki/Narita_Top_Road"
               target="_blank"
-              class="btn19"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-<div class="card"
+<div class="card" style="--accent:#1f45ff"
 
 data-name="ADMIRE VEGA"
 data-category="mile"
@@ -6881,7 +2724,7 @@ data-color="#1f45ff"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge20">MILE</div>
+          <div class="badge">MILE</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/f3/40/ba/f340baee9be5db4211e3267b81dbc839.jpg"
           />
           <div class="overlay">
@@ -6893,14 +2736,14 @@ data-color="#1f45ff"
             <a
               href="https://umamusu.wiki/Admire_Vega"
               target="_blank"
-              class="btn20"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#33d6ff"
 
 data-name="ALMOND EYE"
 data-category="mile"
@@ -6923,7 +2766,7 @@ data-color="#33d6ff"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge21">MILE</div>
+          <div class="badge">MILE</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/1b/91/e6/1b91e675ef8bb2175d9bfca499095e5d.jpg"
           />
           <div class="overlay">
@@ -6935,14 +2778,14 @@ data-color="#33d6ff"
             <a
               href="https://umamusu.wiki/Almond_Eye"
               target="_blank"
-              class="btn21"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#ff2b2b"
 
 data-name="GENTILDONNA"
 data-category="medium"
@@ -6953,7 +2796,6 @@ data-stamina="SS"
 data-power="S"
 data-wit="S"
 data-date="20 February"
-
 
 data-quote="Graceful steps hiding an unshakable will"
 
@@ -6966,7 +2808,7 @@ data-color="#ff2b2b"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge22">MEDIUM</div>
+          <div class="badge">MEDIUM</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/5e/d1/ab/5ed1ab059c0d65ba2a5e6378198c8654.jpg"
           />
           <div class="overlay">
@@ -6978,14 +2820,14 @@ data-color="#ff2b2b"
             <a
               href="https://umamusu.wiki/Gentildonna"
               target="_blank"
-              class="btn22"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#ff9a00"
 
 data-name="VODKA"
 data-category="mile"
@@ -7008,7 +2850,7 @@ data-color="#ff9a00"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge23">MILE</div>
+          <div class="badge">MILE</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/0c/02/62/0c0262665fdcb540b4e7dad6f9e3e324.jpg"
           />
           <div class="overlay">
@@ -7017,14 +2859,14 @@ data-color="#ff9a00"
           <div class="content">
             <h3>VODKA</h3>
             <p>Racing with fire, confidence, and pure energy</p>
-            <a href="https://umamusu.wiki/Vodka" target="_blank" class="btn23"
+            <a href="https://umamusu.wiki/Vodka" target="_blank" class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#2b39ff"
 
 data-name="DAIWA SCARLET"
 data-category="mile"
@@ -7047,7 +2889,7 @@ data-color="#2b39ff"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge24">MILE</div>
+          <div class="badge">MILE</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/d6/86/7a/d6867ab71bef2f0f5756196dcded916e.jpg"
           />
           <div class="overlay">
@@ -7059,14 +2901,14 @@ data-color="#2b39ff"
             <a
               href="https://umamusu.wiki/Daiwa_Scarlet"
               target="_blank"
-              class="btn24"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#e66cff"
 
 data-name="SPECIAL WEEK"
 data-category="medium"
@@ -7089,7 +2931,7 @@ data-color="#e66cff"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge25">MEDIUM</div>
+          <div class="badge">MEDIUM</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/5f/1c/d4/5f1cd4862de3250ce65b1753b47a9eb5.jpg"
           />
           <div class="overlay">
@@ -7101,14 +2943,14 @@ data-color="#e66cff"
             <a
               href="https://umamusu.wiki/Special_Week"
               target="_blank"
-              class="btn25"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#8b8ba8"
 
 data-name="SEIUN SKY"
 data-category="mile"
@@ -7118,7 +2960,6 @@ data-stamina="A"
 data-power="B"
 data-wit="SS"
 data-date="26 April"
-
 
 data-quote="Running for joy, not just for victory"
 
@@ -7131,7 +2972,7 @@ data-color="#8b8ba8"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge26">MILE</div>
+          <div class="badge">MILE</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/6b/88/26/6b8826559aec8d42ca32f6e8161935a1.jpg"
           />
           <div class="overlay">
@@ -7143,15 +2984,14 @@ data-color="#8b8ba8"
             <a
               href="https://umamusu.wiki/Seiun_Sky"
               target="_blank"
-              class="btn26"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-
-<div class="card"
+<div class="card" style="--accent:#ff00d4"
 
 data-name="NISHINO FLOWER"
 data-category="mile"
@@ -7161,7 +3001,6 @@ data-stamina="B"
 data-power="B"
 data-wit="SS"
 data-date="7 April"
-
 
 data-quote="Small and calm, but full of determination"
 
@@ -7174,7 +3013,7 @@ data-color="#ff00d4"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge27">MILE</div>
+          <div class="badge">MILE</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/89/fa/66/89fa6624d09a9c2c57db154dfba8fb5e.jpg"
           />
           <div class="overlay">
@@ -7186,13 +3025,13 @@ data-color="#ff00d4"
             <a
               href="https://umamusu.wiki/Nishino_Flower"
               target="_blank"
-              class="btn27"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
-      <div class="card"
+      <div class="card" style="--accent:#ff9d3d"
 
 data-name="IJAZAH JOKOWI"
 data-category="secret"
@@ -7214,7 +3053,7 @@ data-color="#ff9d3d"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge28">SECRET</div>
+          <div class="badge">SECRET</div>
           <img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoAfckbPxBHlsGFEUefTr_069hjXZ_iZibbw&s"
           />
           <div class="overlay">
@@ -7226,14 +3065,14 @@ data-color="#ff9d3d"
             <a
               href="https://media.suara.com/pictures/653x366/2025/05/15/69552-polemik-ijazah-jokowi.jpg"
               target="_blank"
-              class="btn28"
+              class="btn"
               >DOKSLI ASLI</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#9b30ff"
 
 data-name="MEJIRO MCQUEEN"
 data-category="long"
@@ -7255,7 +3094,7 @@ data-color="#9b30ff"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge29">LONG</div>
+          <div class="badge">LONG</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/16/06/e5/1606e5af468b24456bf697872c73161b.jpg"
           />
           <div class="overlay">
@@ -7267,15 +3106,14 @@ data-color="#9b30ff"
             <a
               href="https://umamusu.wiki/Mejiro_McQueen"
               target="_blank"
-              class="btn29"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-
-      <div class="card"
+<div class="card" style="--accent:#ff8800"
 
 data-name="MEISHO DOTO"
 data-category="medium"
@@ -7297,7 +3135,7 @@ data-color="#ff8800"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge30">MEDIUM</div>
+          <div class="badge">MEDIUM</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/30/0f/b9/300fb9e3265ed3220d0d597f8a16078a.jpg"
           />
           <div class="overlay">
@@ -7309,14 +3147,14 @@ data-color="#ff8800"
             <a
               href="https://umamusu.wiki/Meisho_Doto"
               target="_blank"
-              class="btn30"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-     <div class="card"
+     <div class="card" style="--accent:#ff00ff"
 
 data-name="HARU URARA"
 data-category="sprint"
@@ -7339,7 +3177,7 @@ data-color="#ff00ff"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge31">SPRINT</div>
+          <div class="badge">SPRINT</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/bd/44/42/bd4442a704a6c59aa13fc81671a6b1b1.jpg"
           />
           <div class="overlay">
@@ -7351,14 +3189,14 @@ data-color="#ff00ff"
             <a
               href="https://umamusu.wiki/Haru_Urara"
               target="_blank"
-              class="btn31"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
 
-      <div class="card"
+      <div class="card" style="--accent:#e6e600"
 
 data-name="BELNO LIGHT"
 data-category="mile"
@@ -7381,7 +3219,7 @@ data-color="#e6e600"
 >
         <div class="card-inner">
           <div class="favorite-btn">☆</div>
-          <div class="badge32">MILE</div>
+          <div class="badge">MILE</div>
           <img loading="lazy" src="https://i.pinimg.com/736x/ea/04/bc/ea04bc8c3317df86a15900a957b0a26e.jpg"
           />
           <div class="overlay">
@@ -7393,13 +3231,13 @@ data-color="#e6e600"
             <a
               href="https://umamusu.wiki/Belno_Light"
               target="_blank"
-              class="btn32"
+              class="btn"
               >DETAIL</a
             >
           </div>
         </div>
       </div>
-      <div class="card"
+      <div class="card" style="--accent:#6ec6ff"
 
 data-name="TAMAMO CROSS"
 data-category="medium"
@@ -7422,7 +3260,7 @@ data-color="#6ec6ff"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge33">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/fb/02/d4/fb02d49f8c7f0986d2ba30d4cdc981ab.jpg"
 />
@@ -7438,7 +3276,7 @@ data-color="#6ec6ff"
 <a
 href="https://umamusu.wiki/Tamamo_Cross"
 target="_blank"
-class="btn33"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -7446,7 +3284,7 @@ class="btn33"
 </div>
 
 <!-- MATIKANE TANHAUSER -->
-<div class="card"
+<div class="card" style="--accent:#ffcc66"
 
 data-name="MATIKANE TANHAUSER"
 data-category="long"
@@ -7469,7 +3307,7 @@ data-color="#ffcc66"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge34">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/cf/6f/21/cf6f21023462bb54ff830e3b4c8e84b0.jpg"
 />
@@ -7485,7 +3323,7 @@ data-color="#ffcc66"
 <a
 href="https://umamusu.wiki/Matikane_Tannhauser"
 target="_blank"
-class="btn34"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -7493,7 +3331,7 @@ class="btn34"
 </div>
 
 <!-- EL CONDOR PASA -->
-<div class="card"
+<div class="card" style="--accent:#ff7b00"
 
 data-name="EL CONDOR PASA"
 data-category="mile"
@@ -7516,7 +3354,7 @@ data-color="#ff7b00"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge35">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/cc/35/f8/cc35f83d99190af7c7394cf14912514b.jpg"
 />
@@ -7532,7 +3370,7 @@ data-color="#ff7b00"
 <a
 href="https://umamusu.wiki/El_Condor_Pasa"
 target="_blank"
-class="btn35"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -7540,7 +3378,7 @@ class="btn35"
 </div>
 
 <!-- GRASS WONDER -->
-<div class="card"
+<div class="card" style="--accent:#00d084"
 
 data-name="GRASS WONDER"
 data-category="medium"
@@ -7563,7 +3401,7 @@ data-color="#00d084"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge36">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/b5/5e/03/b55e03cf7b1e0b7df65be37c465fe25c.jpg"
 />
@@ -7579,7 +3417,7 @@ data-color="#00d084"
 <a
 href="https://umamusu.wiki/Grass_Wonder"
 target="_blank"
-class="btn36"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -7587,7 +3425,7 @@ class="btn36"
 </div>
 
 <!-- KING HALO -->
-<div class="card"
+<div class="card" style="--accent:#ff2b6e"
 
 data-name="KING HALO"
 data-category="sprint"
@@ -7610,7 +3448,7 @@ data-color="#ff2b6e"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge37">SPRINT</div>
+<div class="badge">SPRINT</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/0a/84/61/0a84610bc7d606cfb21b93c6d83a610b.jpg"
 />
@@ -7626,7 +3464,7 @@ data-color="#ff2b6e"
 <a
 href="https://umamusu.wiki/King_Halo"
 target="_blank"
-class="btn37"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -7634,7 +3472,7 @@ class="btn37"
 </div>
 
 <!-- SUPER CREEK -->
-<div class="card"
+<div class="card" style="--accent:#ffd6a5"
 
 data-name="SUPER CREEK"
 data-category="long"
@@ -7657,7 +3495,7 @@ data-color="#ffd6a5"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge38">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/4f/88/70/4f8870df3e5518ce6f150a41172b63d5.jpg"
 />
@@ -7673,7 +3511,7 @@ data-color="#ffd6a5"
 <a
 href="https://umamusu.wiki/Super_Creek"
 target="_blank"
-class="btn38"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -7681,7 +3519,7 @@ class="btn38"
 </div>
 
 <!-- DANTSU FLAME -->
-<div class="card"
+<div class="card" style="--accent:#ff6600"
 
 data-name="DANTSU FLAME"
 data-category="sprint"
@@ -7704,7 +3542,7 @@ data-color="#ff6600"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge39">SPRINT</div>
+<div class="badge">SPRINT</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/2d/11/93/2d1193103b2bd89b29069046c0fdc559.jpg"
 />
@@ -7720,7 +3558,7 @@ data-color="#ff6600"
 <a
 href="https://umamusu.wiki/Dantsu_Flame"
 target="_blank"
-class="btn39"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -7728,7 +3566,7 @@ class="btn39"
 </div>
 
 <!-- MR CB -->
-<div class="card"
+<div class="card" style="--accent:#16a085"
 
 data-name="MR C.B."
 data-category="medium"
@@ -7751,7 +3589,7 @@ data-color="#16a085"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge40">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/2a/b8/12/2ab8129d833e93e829fd2a29e38f13ea.jpg"
 />
@@ -7767,7 +3605,7 @@ data-color="#16a085"
 <a
 href="https://umamusu.wiki/Mr._C.B."
 target="_blank"
-class="btn40"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -7775,7 +3613,7 @@ class="btn40"
 </div>
 
 <!-- MEJIRO PALMER -->
-<div class="card"
+<div class="card" style="--accent:#00ffaa"
 
 data-name="MEJIRO PALMER"
 data-category="sprint"
@@ -7798,7 +3636,7 @@ data-color="#00ffaa"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge41">SPRINT</div>
+<div class="badge">SPRINT</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/10/47/13/10471320c1a080c146199e4972923b04.jpg"
 />
@@ -7814,16 +3652,14 @@ data-color="#00ffaa"
 <a
 href="https://umamusu.wiki/Mejiro_Palmer"
 target="_blank"
-class="btn41"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div> 
 
-
-
-<div class="card"
+<div class="card" style="--accent:#00cfff"
 
 data-name="DAITAKU HELIOS"
 data-category="mile"
@@ -7847,7 +3683,7 @@ data-color="#ffcc00"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge42">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/9b/f2/b9/9bf2b923266344942fbf89284b53dcd5.jpg"
 />
@@ -7863,7 +3699,7 @@ data-color="#ffcc00"
 <a
 href="https://umamusu.wiki/Daitaku_Helios"
 target="_blank"
-class="btn42"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -7871,7 +3707,7 @@ class="btn42"
 </div>
 
 <!-- DAIICHI RUBY -->
-<div class="card"
+<div class="card" style="--accent:#ff003c"
 
 data-name="DAICHI RUBY"
 data-category="sprint"
@@ -7894,7 +3730,7 @@ data-color="#ff003c"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge43">SPRINT</div>
+<div class="badge">SPRINT</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/b1/17/da/b117dadaa2504f3f1df904b8771858e7.jpg"
 />
@@ -7910,7 +3746,7 @@ data-color="#ff003c"
 <a
 href="https://umamusu.wiki/Daichi_Ruby"
 target="_blank"
-class="btn43"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -7918,7 +3754,7 @@ class="btn43"
 </div>
 
 <!-- YAE NO MUTEKI -->
-<div class="card"
+<div class="card" style="--accent:#ffffff"
 
 data-name="YAE NO MUTEKI"
 data-category="medium"
@@ -7941,7 +3777,7 @@ data-color="#ffffff"
 >
 <div class="card-inner">
 <div class="favorite-btn">☆</div>
-<div class="badge44">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/28/84/dd/2884dd88e416c4dfac0ff122320d4389.jpg"
 />
@@ -7957,7 +3793,7 @@ data-color="#ffffff"
 <a
 href="https://umamusu.wiki/Yae_no_Muteki"
 target="_blank"
-class="btn44"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -7965,7 +3801,7 @@ class="btn44"
 </div>
 
 <!-- MIHONO BOURBON -->
-<div class="card category-medium"
+<div class="card" style="--accent:#8fb4ff"
 
 data-name="MIHONO BOURBON"
 data-category="medium"
@@ -7993,7 +3829,7 @@ data-color="#8fb4ff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge45">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/7a/91/ca/7a91caeca7275045eabbb957af9093db.jpg"
 />
@@ -8011,19 +3847,15 @@ data-color="#8fb4ff"
 <a
 href="https://umamusu.wiki/Mihono_Bourbon"
 target="_blank"
-class="btn45"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- WINING TICKET -->
-<div class="card category-medium"
+<div class="card" style="--accent:#ff7a00"
 
 data-name="WINING TICKET"
 data-category="medium"
@@ -8051,7 +3883,7 @@ data-color="#ff7a00"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge46">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/e5/b5/b5/e5b5b5559c5474876de4e1163a91b5cb.jpg"
 />
@@ -8069,19 +3901,15 @@ data-color="#ff7a00"
 <a
 href="https://umamusu.wiki/Wining_Ticket"
 target="_blank"
-class="btn46"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- HISHI AKEBONO -->
-<div class="card category-sprint"
+<div class="card" style="--accent:#ffd54f"
 
 data-name="HISHI AKEBONO"
 data-category="sprint"
@@ -8109,7 +3937,7 @@ data-color="#ffd54f"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge47">SPRINT</div>
+<div class="badge">SPRINT</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/3d/af/81/3daf81de3a637ac1fdf345e881372617.jpg"
 />
@@ -8127,19 +3955,15 @@ data-color="#ffd54f"
 <a
 href="https://umamusu.wiki/Hishi_Akebono"
 target="_blank"
-class="btn47"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- TWIN TURBO -->
-<div class="card category-medium"
+<div class="card" style="--accent:#00cfff"
 
 data-name="TWIN TURBO"
 data-category="medium"
@@ -8167,7 +3991,7 @@ data-color="#00cfff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge48">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/0e/97/81/0e9781d70c10478bea5c02876c8bf118.jpg"
 />
@@ -8185,19 +4009,15 @@ data-color="#00cfff"
 <a
 href="https://umamusu.wiki/Twin_Turbo"
 target="_blank"
-class="btn48"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- BIWA HAYAHIDE -->
-<div class="card category-long"
+<div class="card" style="--accent:#b3b3b3"
 
 data-name="BIWA HAYAHIDE"
 data-category="long"
@@ -8225,7 +4045,7 @@ data-color="#b3b3b3"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge49">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/22/86/e5/2286e5008a81275414c8a5a8b4242548.jpg"
 />
@@ -8243,19 +4063,15 @@ data-color="#b3b3b3"
 <a
 href="https://umamusu.wiki/Biwa_Hayahide"
 target="_blank"
-class="btn49"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- ASTON MACHAN -->
-<div class="card category-sprint"
+<div class="card" style="--accent:#ff69b4"
 
 data-name="ASTON MACHAN"
 data-category="sprint"
@@ -8283,7 +4099,7 @@ data-color="#ff69b4"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge50">SPRINT</div>
+<div class="badge">SPRINT</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/da/0a/68/da0a6866023d64a95abeac9952095cd4.jpg"
 />
@@ -8301,7 +4117,7 @@ data-color="#ff69b4"
 <a
 href="https://umamusu.wiki/Aston_Machan"
 target="_blank"
-class="btn50"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -8309,7 +4125,7 @@ class="btn50"
 </div>
 
 <!-- SYMBOLI KRIS S -->
-<div class="card category-medium"
+<div class="card" style="--accent:#4a4a4a"
 
 data-name="SYMBOLI KRIS S"
 data-category="medium"
@@ -8337,7 +4153,7 @@ data-color="#4a4a4a"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge51">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/a4/bc/27/a4bc27a7173b129ac5fe7bf975cc8c3c.jpg"
 />
@@ -8355,19 +4171,15 @@ data-color="#4a4a4a"
 <a
 href="https://umamusu.wiki/Symboli_Kris_S"
 target="_blank"
-class="btn51"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- TOSEN JORDAN -->
-<div class="card category-mile"
+<div class="card" style="--accent:#ff69b4"
 
 data-name="TOSEN JORDAN"
 data-category="mile"
@@ -8395,7 +4207,7 @@ data-color="#ff69b4"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge52">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/cb/80/80/cb8080631c337313553021181c288bdd.jpg"
 />
@@ -8413,19 +4225,15 @@ data-color="#ff69b4"
 <a
 href="https://umamusu.wiki/Tosen_Jordan"
 target="_blank"
-class="btn52"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- MEJIRO DOBER -->
-<div class="card category-medium"
+<div class="card" style="--accent:#7d6bff"
 
 data-name="MEJIRO DOBER"
 data-category="medium"
@@ -8453,7 +4261,7 @@ data-color="#7d6bff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge53">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/4a/8a/c6/4a8ac61cce77705d892fb7ddde568238.jpg"
 />
@@ -8471,19 +4279,15 @@ data-color="#7d6bff"
 <a
 href="https://umamusu.wiki/Mejiro_Dober"
 target="_blank"
-class="btn53"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- MEJIRO RAMONU -->
-<div class="card category-mile"
+<div class="card" style="--accent:#b08cff"
 
 data-name="MEJIRO RAMONU"
 data-category="mile"
@@ -8511,7 +4315,7 @@ data-color="#b08cff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge54">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/10/d4/a0/10d4a06347ab5708e94785003be08963.jpg"
 />
@@ -8529,19 +4333,15 @@ data-color="#b08cff"
 <a
 href="https://umamusu.wiki/Mejiro_Ramonu"
 target="_blank"
-class="btn54"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- MEJIRO BRIGHT -->
-<div class="card category-long"
+<div class="card" style="--accent:#e7c85b"
 
 data-name="MEJIRO BRIGHT"
 data-category="long"
@@ -8569,7 +4369,7 @@ data-color="#e7c85b"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge55">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/a0/c8/ca/a0c8ca2b6f11ba8c8628f7cc627974d7.jpg"
 />
@@ -8587,19 +4387,15 @@ data-color="#e7c85b"
 <a
 href="https://umamusu.wiki/Mejiro_Bright"
 target="_blank"
-class="btn55"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- MEJIRO ARDAN -->
-<div class="card category-medium"
+<div class="card" style="--accent:#7fdfff"
 
 data-name="MEJIRO ARDAN"
 data-category="medium"
@@ -8627,7 +4423,7 @@ data-color="#7fdfff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge56">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/0f/ac/6d/0fac6d0ce987c6058c75c3aa65e96df0.jpg"
 />
@@ -8645,7 +4441,7 @@ data-color="#7fdfff"
 <a
 href="https://umamusu.wiki/Mejiro_Ardan"
 target="_blank"
-class="btn56"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -8653,7 +4449,7 @@ class="btn56"
 </div>
 
 <!-- SAKURA CHIYONO O -->
-<div class="card category-medium"
+<div class="card" style="--accent:#ff7da1"
 
 data-name="SAKURA CHIYONO O"
 data-category="medium"
@@ -8681,7 +4477,7 @@ data-color="#ff7da1"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge57">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/99/fb/0f/99fb0fad50927f5c1dded8c3c64dbb71.jpg"
 />
@@ -8699,19 +4495,15 @@ data-color="#ff7da1"
 <a
 href="https://umamusu.wiki/Sakura_Chiyono_O"
 target="_blank"
-class="btn57"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- SAKURA BAKUSHIN O -->
-<div class="card category-sprint"
+<div class="card" style="--accent:#c77dff"
 
 data-name="SAKURA BAKUSHIN O"
 data-category="sprint"
@@ -8739,7 +4531,7 @@ data-color="#c77dff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge58">SPRINT</div>
+<div class="badge">SPRINT</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/4f/67/69/4f6769860284c4e56893f7cab159e311.jpg"
 />
@@ -8757,19 +4549,15 @@ data-color="#c77dff"
 <a
 href="https://umamusu.wiki/Sakura_Bakushin_O"
 target="_blank"
-class="btn58"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- MARUZENSKY -->
-<div class="card category-mile"
+<div class="card" style="--accent:#c40000"
 
 data-name="MARUZENSKY"
 data-category="mile"
@@ -8797,7 +4585,7 @@ data-color="#c40000"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge59">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/c8/a9/76/c8a976a3946c3a6b1d66708a393f0e6e.jpg"
 />
@@ -8815,19 +4603,15 @@ data-color="#c40000"
 <a
 href="https://umamusu.wiki/Maruzensky"
 target="_blank"
-class="btn59"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- ORFEVRE -->
-<div class="card category-long"
+<div class="card" style="--accent:#d4af37"
 
 data-name="ORFEVRE"
 data-category="long"
@@ -8855,7 +4639,7 @@ data-color="#d4af37"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge60">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/37/e4/28/37e4288c0f91ae99cb10794a532fe3e6.jpg"
 />
@@ -8873,14 +4657,14 @@ data-color="#d4af37"
 <a
 href="https://umamusu.wiki/Orfevre"
 target="_blank"
-class="btn60"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-<div class="card category-long"
+<div class="card" style="--accent:#8b5cff"
 
 data-name="FENOMENO"
 data-category="long"
@@ -8908,7 +4692,7 @@ data-color="#8b5cff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge61">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/53/89/30/5389303a218e92586056191042369c0e.jpg"
 />
@@ -8926,19 +4710,15 @@ data-color="#8b5cff"
 <a
 href="https://umamusu.wiki/Fenomeno"
 target="_blank"
-class="btn61"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- KRAFT -->
-<div class="card category-mile"
+<div class="card" style="--accent:#1fc98a"
 
 data-name="RHEIN KRAFT"
 data-category="mile"
@@ -8966,7 +4746,7 @@ data-color="#1fc98a"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge62">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/d9/9c/1c/d99c1ce13644a11f5ea5e3cba25ce8e1.jpg"
 />
@@ -8984,19 +4764,15 @@ data-color="#1fc98a"
 <a
 href="https://umamusu.wiki/Rhein_Kraft"
 target="_blank"
-class="btn62"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- SMART FALCON -->
-<div class="card category-mile"
+<div class="card" style="--accent:#ff69b4"
 
 data-name="SMART FALCON"
 data-category="mile"
@@ -9024,7 +4800,7 @@ data-color="#ff69b4"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge63">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/a5/46/8c/a5468c7ff3400e099af0b152f74ad5c3.jpg"
 />
@@ -9042,19 +4818,15 @@ data-color="#ff69b4"
 <a
 href="https://umamusu.wiki/Smart_Falcon"
 target="_blank"
-class="btn63"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- INARI ONE -->
-<div class="card category-medium"
+<div class="card" style="--accent:#ffb347"
 
 data-name="INARI ONE"
 data-category="medium"
@@ -9082,7 +4854,7 @@ data-color="#ffb347"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge64">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/81/05/cd/8105cdc4682efda431abd841adef9332.jpg"
 />
@@ -9100,19 +4872,15 @@ data-color="#ffb347"
 <a
 href="https://umamusu.wiki/Inari_One"
 target="_blank"
-class="btn64"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- FINE MOTION -->
-<div class="card category-medium"
+<div class="card" style="--accent:#ffd54d"
 
 data-name="FINE MOTION"
 data-category="medium"
@@ -9140,7 +4908,7 @@ data-color="#ffd54d"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge65">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/39/89/14/3989144784a0fcdfaddd998ec25e578e.jpg"
 />
@@ -9158,7 +4926,7 @@ data-color="#ffd54d"
 <a
 href="https://umamusu.wiki/Fine_Motion"
 target="_blank"
-class="btn65"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -9166,7 +4934,7 @@ class="btn65"
 </div>
 
 <!-- AIR GROOVE -->
-<div class="card category-medium"
+<div class="card" style="--accent:#f5f2fa"
 
 data-name="AIR GROOVE"
 data-category="medium"
@@ -9190,7 +4958,7 @@ data-color="#f5f2fa"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge66">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/c8/ff/d6/c8ffd69d21087c0ca48b3a70a2a02af1.jpg"
 />
@@ -9208,19 +4976,15 @@ data-color="#f5f2fa"
 <a
 href="https://umamusu.wiki/Air_Groove"
 target="_blank"
-class="btn66"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- EISHIN FLASH -->
-<div class="card category-medium"
+<div class="card" style="--accent:#8a8a8a"
 
 data-name="EISHIN FLASH"
 data-category="medium"
@@ -9248,7 +5012,7 @@ data-color="#8a8a8a"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge67">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/9e/57/c3/9e57c36553d3bf09353a4577b5ae31f4.jpg"
 />
@@ -9266,19 +5030,15 @@ data-color="#8a8a8a"
 <a
 href="https://umamusu.wiki/Eishin_Flash"
 target="_blank"
-class="btn67"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- NICE NATURE -->
-<div class="card category-medium"
+<div class="card" style="--accent:#a56b3f"
 
 data-name="NICE NATURE"
 data-category="medium"
@@ -9306,7 +5066,7 @@ data-color="#a56b3f"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge68">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/f3/8a/51/f38a510c3655e2621047bc7e26d6c601.jpg"
 />
@@ -9324,19 +5084,15 @@ data-color="#a56b3f"
 <a
 href="https://umamusu.wiki/Nice_Nature"
 target="_blank"
-class="btn68"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- INES FUJIN -->
-<div class="card category-mile"
+<div class="card" style="--accent:#00bfff"
 
 data-name="INES FUJIN"
 data-category="mile"
@@ -9364,7 +5120,7 @@ data-color="#00bfff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge69">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/49/3e/f4/493ef4ceceb62cc62b612781e4f3bbae.jpg"
 />
@@ -9382,19 +5138,15 @@ data-color="#00bfff"
 <a
 href="https://umamusu.wiki/Ines_Fujin"
 target="_blank"
-class="btn69"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- MAYANO TOP GUN -->
-<div class="card category-long"
+<div class="card" style="--accent:#ff944d"
 
 data-name="MAYANO TOP GUN"
 data-category="long"
@@ -9422,7 +5174,7 @@ data-color="#ff944d"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge70">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/fb/5f/fb/fb5ffb774f3d63a023c737bb54be0c67.jpg"
 />
@@ -9440,7 +5192,7 @@ data-color="#ff944d"
 <a
 href="https://umamusu.wiki/Mayano_Top_Gun"
 target="_blank"
-class="btn70"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -9448,7 +5200,7 @@ class="btn70"
 </div>
 
 <!-- BUENA VISTA -->
-<div class="card category-mile"
+<div class="card" style="--accent:#ff69b4"
 
 data-name="BUENA VISTA"
 data-category="mile"
@@ -9476,7 +5228,7 @@ data-color="#ff69b4"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge71">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/4f/45/d6/4f45d69abdc44fa4f21d10c5d2011315.jpg"
 />
@@ -9494,19 +5246,15 @@ data-color="#ff69b4"
 <a
 href="https://umamusu.wiki/Buena_Vista"
 target="_blank"
-class="btn71"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- CESARIO -->
-<div class="card category-medium"
+<div class="card" style="--accent:#c0c0c0"
 
 data-name="CESARIO"
 data-category="medium"
@@ -9534,7 +5282,7 @@ data-color="#c0c0c0"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge72">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/44/7d/72/447d72bf6f5a885b4d76bec61d3a0aef.jpg"
 />
@@ -9552,19 +5300,15 @@ data-color="#c0c0c0"
 <a
 href="https://umamusu.wiki/Cesario"
 target="_blank"
-class="btn72"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- TAIKI SHUTTLE -->
-<div class="card category-mile"
+<div class="card" style="--accent:#ff9d00"
 
 data-name="TAIKI SHUTTLE"
 data-category="mile"
@@ -9592,7 +5336,7 @@ data-color="#ff9d00"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge73">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/16/d7/ea/16d7ea32fd758420b4315b366aa9fea1.jpg"
 />
@@ -9610,19 +5354,15 @@ data-color="#ff9d00"
 <a
 href="https://umamusu.wiki/Taiki_Shuttle"
 target="_blank"
-class="btn73"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- HISHI AMAZON -->
-<div class="card category-medium"
+<div class="card" style="--accent:#8b0000"
 
 data-name="HISHI AMAZON"
 data-category="medium"
@@ -9650,7 +5390,7 @@ data-color="#8b0000"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge74">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/cd/3a/42/cd3a424de2fe3e3464b378a461ce0100.jpg"
 />
@@ -9668,19 +5408,15 @@ data-color="#8b0000"
 <a
 href="https://umamusu.wiki/Hishi_Amazon"
 target="_blank"
-class="btn74"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- SWEEP TOSHO -->
-<div class="card category-mile"
+<div class="card" style="--accent:#b266ff"
 
 data-name="SWEEP TOSHO"
 data-category="mile"
@@ -9708,7 +5444,7 @@ data-color="#b266ff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge75">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/3d/ff/44/3dff44541b09e1cedb9cec1c55d724c0.jpg"
 />
@@ -9726,7 +5462,7 @@ data-color="#b266ff"
 <a
 href="https://umamusu.wiki/Sweep_Tosho"
 target="_blank"
-class="btn75"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -9734,7 +5470,7 @@ class="btn75"
 </div>
 
 <!-- NARITA BRIAN -->
-<div class="card category-long"
+<div class="card" style="--accent:#8b0000"
 
 data-name="NARITA BRIAN"
 data-category="long"
@@ -9762,7 +5498,7 @@ data-color="#8b0000"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge76">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/b2/d5/14/b2d5140f7f8819d62a686ecc37524f72.jpg"
 />
@@ -9780,19 +5516,15 @@ data-color="#8b0000"
 <a
 href="https://umamusu.wiki/Narita_Brian"
 target="_blank"
-class="btn76"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- NARITA TAISHIN -->
-<div class="card category-long"
+<div class="card" style="--accent:#5f7ea8"
 
 data-name="NARITA TAISHIN"
 data-category="long"
@@ -9820,7 +5552,7 @@ data-color="#5f7ea8"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge77">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/ef/44/06/ef4406f4e9c46fa987fc7254ea0df149.jpg"
 />
@@ -9838,7 +5570,7 @@ data-color="#5f7ea8"
 <a
 href="https://umamusu.wiki/Narita_Taishin"
 target="_blank"
-class="btn77"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -9846,7 +5578,7 @@ class="btn77"
 </div>
 
 <!-- YUKINO BIJIN -->
-<div class="card category-mile"
+<div class="card" style="--accent:#8fd8ff"
 
 data-name="YUKINO BIJIN"
 data-category="mile"
@@ -9874,7 +5606,7 @@ data-color="#8fd8ff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge78">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/28/c8/aa/28c8aa4253d1b26e10e5fb99f98aab76.jpg"
 />
@@ -9892,19 +5624,15 @@ data-color="#8fd8ff"
 <a
 href="https://umamusu.wiki/Yukino_Bijin"
 target="_blank"
-class="btn78"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- MEJIRO RYAN -->
-<div class="card category-medium"
+<div class="card" style="--accent:#707070"
 
 data-name="MEJIRO RYAN"
 data-category="medium"
@@ -9932,7 +5660,7 @@ data-color="#707070"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge79">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/54/d1/63/54d16372e404e76e8a11d7d86d8300a2.jpg"
 />
@@ -9950,19 +5678,15 @@ data-color="#707070"
 <a
 href="https://umamusu.wiki/Mejiro_Ryan"
 target="_blank"
-class="btn79"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- CURREN CHAN -->
-<div class="card category-sprint"
+<div class="card" style="--accent:#ff8fbd"
 
 data-name="CURREN CHAN"
 data-category="sprint"
@@ -9990,7 +5714,7 @@ data-color="#ff8fbd"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge80">SPRINT</div>
+<div class="badge">SPRINT</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/ad/d0/af/add0af810757b90ef164a99ae62d3cfe.jpg"
 />
@@ -10008,19 +5732,15 @@ data-color="#ff8fbd"
 <a
 href="https://umamusu.wiki/Curren_Chan"
 target="_blank"
-class="btn80"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- AIR SHAKUR -->
-<div class="card category-medium"
+<div class="card" style="--accent:#5d8aa8"
 
 data-name="AIR SHAKUR"
 data-category="medium"
@@ -10048,7 +5768,7 @@ data-color="#5d8aa8"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge81">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/33/5b/a1/335ba17e0c2bbff1dbb868acc6a8bfec.jpg"
 />
@@ -10066,19 +5786,15 @@ data-color="#5d8aa8"
 <a
 href="https://umamusu.wiki/Air_Shakur"
 target="_blank"
-class="btn81"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- GOLD CITY -->
-<div class="card category-mile"
+<div class="card" style="--accent:#ffd54f"
 
 data-name="GOLD CITY"
 data-category="mile"
@@ -10106,7 +5822,7 @@ data-color="#ffd54f"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge82">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/4a/5a/a4/4a5aa46b24e8633e90c4e433da36b4f2.jpg"
 />
@@ -10124,7 +5840,7 @@ data-color="#ffd54f"
 <a
 href="https://umamusu.wiki/Gold_City"
 target="_blank"
-class="btn82"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -10132,7 +5848,7 @@ class="btn82"
 </div>
 
 <!-- SEEKING THE PEARL -->
-<div class="card category-mile"
+<div class="card" style="--accent:#c8a2ff"
 
 data-name="SEEKING THE PEARL"
 data-category="mile"
@@ -10160,7 +5876,7 @@ data-color="#c8a2ff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge83">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/e6/6e/1c/e66e1c34760e94968a01099f4b963a73.jpg"
 />
@@ -10178,19 +5894,15 @@ data-color="#c8a2ff"
 <a
 href="https://umamusu.wiki/Seeking_the_Pearl"
 target="_blank"
-class="btn83"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- MARVELOUS SUNDAY -->
-<div class="card category-long"
+<div class="card" style="--accent:#ff9966"
 
 data-name="MARVELOUS SUNDAY"
 data-category="long"
@@ -10218,7 +5930,7 @@ data-color="#ff9966"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge84">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/09/80/cc/0980cc2aa0d000ee210cc8f8c3d50f27.jpg"
 />
@@ -10236,17 +5948,15 @@ data-color="#ff9966"
 <a
 href="https://umamusu.wiki/Marvelous_Sunday"
 target="_blank"
-class="btn84"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
 <!-- KAWAKAMI PRINCESS -->
-<div class="card category-medium"
+<div class="card" style="--accent:#ff69b4"
 
 data-name="KAWAKAMI PRINCESS"
 data-category="medium"
@@ -10274,7 +5984,7 @@ data-color="#ff69b4"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge85">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/08/37/a8/0837a81343a11f057cbbff1e3cda638b.jpg"
 />
@@ -10292,7 +6002,7 @@ data-color="#ff69b4"
 <a
 href="https://umamusu.wiki/Kawakami_Princess"
 target="_blank"
-class="btn85"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -10300,7 +6010,7 @@ class="btn85"
 </div>
 
 <!-- SHINKO WIND -->
-<div class="card category-sprint"
+<div class="card" style="--accent:#4db8ff"
 
 data-name="SHINKO WIND"
 data-category="sprint"
@@ -10328,7 +6038,7 @@ data-color="#4db8ff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge86">SPRINT</div>
+<div class="badge">SPRINT</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/4b/7e/ff/4b7effbc392dcfb5879439b7bf8274ad.jpg"
 />
@@ -10346,7 +6056,7 @@ data-color="#4db8ff"
 <a
 href="https://umamusu.wiki/Shinko_Wind"
 target="_blank"
-class="btn86"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -10354,7 +6064,7 @@ class="btn86"
 </div>
 
 <!-- ZENNO ROB ROY -->
-<div class="card category-long"
+<div class="card" style="--accent:#8b5a2b"
 
 data-name="ZENNO ROB ROY"
 data-category="long"
@@ -10382,7 +6092,7 @@ data-color="#8b5a2b"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge87">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/6f/ec/e1/6fece126717dcee061e5dd802685d72b.jpg"
 />
@@ -10400,7 +6110,7 @@ data-color="#8b5a2b"
 <a
 href="https://umamusu.wiki/Zenno_Rob_Roy"
 target="_blank"
-class="btn87"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -10408,7 +6118,7 @@ class="btn87"
 </div>
 
 <!-- NAKAYAMA FESTA -->
-<div class="card category-medium"
+<div class="card" style="--accent:#cc0000"
 
 data-name="NAKAYAMA FESTA"
 data-category="medium"
@@ -10436,7 +6146,7 @@ data-color="#cc0000"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge88">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/da/c9/2b/dac92bc5ec1e8902092cb2bd087ba9ca.jpg"
 />
@@ -10454,7 +6164,7 @@ data-color="#cc0000"
 <a
 href="https://umamusu.wiki/Nakayama_Festa"
 target="_blank"
-class="btn88"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -10462,7 +6172,7 @@ class="btn88"
 </div>
 
 <!-- BAMBOO MEMORY -->
-<div class="card category-mile"
+<div class="card" style="--accent:#2e8b57"
 
 data-name="BAMBOO MEMORY"
 data-category="mile"
@@ -10490,7 +6200,7 @@ data-color="#2e8b57"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge89">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/18/6d/0b/186d0b16b14efc942d47312e4c0504e8.jpg"
 />
@@ -10508,15 +6218,14 @@ data-color="#2e8b57"
 <a
 href="https://umamusu.wiki/Bamboo_Memory"
 target="_blank"
-class="btn89"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-<div class="card category-sprint"
+<div class="card" style="--accent:#ff5722"
 
 data-name="BIKO PEGASUS"
 data-category="sprint"
@@ -10544,7 +6253,7 @@ data-color="#ff5722"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge90">SPRINT</div>
+<div class="badge">SPRINT</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/ba/ee/3c/baee3ca28b19c492ac591452453f16ca.jpg"
 />
@@ -10562,14 +6271,14 @@ data-color="#ff5722"
 <a
 href="https://umamusu.wiki/Biko_Pegasus"
 target="_blank"
-class="btn90"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-<div class="card category-long"
+<div class="card" style="--accent:#ffb74d"
 
 data-name="MATIKANE FUKUKITARU"
 data-category="long"
@@ -10597,7 +6306,7 @@ data-color="#ffb74d"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge91">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/09/31/b3/0931b3c9ad0f67f99a8cd06af73b920b.jpg"
 />
@@ -10615,14 +6324,14 @@ data-color="#ffb74d"
 <a
 href="https://umamusu.wiki/Matikane_Fukukitaru"
 target="_blank"
-class="btn91"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-<div class="card category-medium"
+<div class="card" style="--accent:#4db6ac"
 
 data-name="IKUNO DICTUS"
 data-category="medium"
@@ -10650,7 +6359,7 @@ data-color="#4db6ac"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge92">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/13/3b/39/133b39a5d5ebb4f7f10d6e292d8e38b6.jpg"
 />
@@ -10668,14 +6377,14 @@ data-color="#4db6ac"
 <a
 href="https://umamusu.wiki/Ikuno_Dictus"
 target="_blank"
-class="btn92"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-<div class="card category-medium"
+<div class="card" style="--accent:#607d8b"
 
 data-name="SIRIUS SYMBOLI"
 data-category="medium"
@@ -10703,7 +6412,7 @@ data-color="#607d8b"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge93">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/31/65/aa/3165aaabf229b2eb05cb67101c740be2.jpg"
 />
@@ -10721,14 +6430,14 @@ data-color="#607d8b"
 <a
 href="https://umamusu.wiki/Sirius_Symboli"
 target="_blank"
-class="btn93"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-<div class="card category-mile"
+<div class="card" style="--accent:#d291ff"
 
 data-name="LITTLE COCON"
 data-category="mile"
@@ -10756,7 +6465,7 @@ data-color="#d291ff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge94">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://umamusu.wiki/w/images/6/66/Game_Asset_chara_stand_2003_200301.png"
 />
@@ -10774,7 +6483,7 @@ data-color="#d291ff"
 <a
 href="https://umamusu.wiki/Little_Cocon"
 target="_blank"
-class="btn94"
+class="btn"
 >DETAIL</a>
 
 </div>
@@ -10782,7 +6491,7 @@ class="btn94"
 </div>
 
 <!-- TRANSCEND -->
-<div class="card category-mile"
+<div class="card" style="--accent:#00bfff"
 
 data-name="TRANSCEND"
 data-category="mile"
@@ -10810,7 +6519,7 @@ data-color="#00bfff"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge95">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/30/cc/1f/30cc1fec4fde29d425ba6f9ee78eaf03.jpg"
 />
@@ -10828,19 +6537,15 @@ data-color="#00bfff"
 <a
 href="https://umamusu.wiki/Transcend"
 target="_blank"
-class="btn95"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- STILL IN LOVE -->
-<div class="card category-long"
+<div class="card" style="--accent:#d84a6a"
 
 data-name="STILL IN LOVE"
 data-category="long"
@@ -10867,7 +6572,7 @@ data-color="#d84a6a"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge96">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/3b/fb/35/3bfb35c4fa92baf5d319bba1a68abfa2.jpg"
 />
@@ -10885,19 +6590,15 @@ data-color="#d84a6a"
 <a
 href="https://umamusu.wiki/Still_in_Love"
 target="_blank"
-class="btn96"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- ONLY LOVE YOU -->
-<div class="card category-mile"
+<div class="card" style="--accent:#ff7aa8"
 
 data-name="ONLY LOVE YOU"
 data-category="mile"
@@ -10925,7 +6626,7 @@ data-color="#ff7aa8"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge97">MILE</div>
+<div class="badge">MILE</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/61/96/29/619629dbb91894264934056090ec66ce.jpg"
 />
@@ -10943,19 +6644,15 @@ data-color="#ff7aa8"
 <a
 href="https://umamusu.wiki/Only_Love_You"
 target="_blank"
-class="btn97"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- CALSTONE LIGHT O -->
-<div class="card category-sprint"
+<div class="card" style="--accent:#ffb347"
 
 data-name="CALSTONE LIGHT O"
 data-category="sprint"
@@ -10983,7 +6680,7 @@ data-color="#ffb347"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge98">SPRINT</div>
+<div class="badge">SPRINT</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/ac/68/2e/ac682e3aedf14fc3bc168f7841ba38d5.jpg"
 />
@@ -11001,19 +6698,15 @@ data-color="#ffb347"
 <a
 href="https://umamusu.wiki/Calstone_Light_O"
 target="_blank"
-class="btn98"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- TANINO GIMLET -->
-<div class="card category-medium"
+<div class="card" style="--accent:#8b2323"
 
 data-name="TANINO GIMLET"
 data-category="medium"
@@ -11041,7 +6734,7 @@ data-color="#8b2323"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge99">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/b8/99/e5/b899e5de3f45385fb12f564e50bde72c.jpg"
 />
@@ -11059,16 +6752,15 @@ data-color="#8b2323"
 <a
 href="https://umamusu.wiki/Tanino_Gimlet"
 target="_blank"
-class="btn99"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
 <!-- SAKURA LAUREL -->
-<div class="card category-long"
+<div class="card" style="--accent:#ff8fb1"
 
 data-name="SAKURA LAUREL"
 data-category="long"
@@ -11096,7 +6788,7 @@ data-color="#ff8fb1"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge100">LONG</div>
+<div class="badge">LONG</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/fc/fb/cf/fcfbcf09fd1cf9535f3a081c6343cd51.jpg"
 />
@@ -11114,19 +6806,15 @@ data-color="#ff8fb1"
 <a
 href="https://umamusu.wiki/Sakura_Laurel"
 target="_blank"
-class="btn100"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- ROSE KINGDOM -->
-<div class="card category-medium"
+<div class="card" style="--accent:#c2185b"
 
 data-name="ROSE KINGDOM"
 data-category="medium"
@@ -11154,7 +6842,7 @@ data-color="#c2185b"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge101">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/6b/e8/7c/6be87c16e16fd12d87412d54bb9d5280.jpg"
 />
@@ -11172,19 +6860,15 @@ data-color="#c2185b"
 <a
 href="https://umamusu.wiki/Rose_Kingdom"
 target="_blank"
-class="btn101"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-
-
-
-
 <!-- SAKURA CHITOSE O -->
-<div class="card category-medium"
+<div class="card" style="--accent:#ff80ab"
 
 data-name="SAKURA CHITOSE O"
 data-category="medium"
@@ -11212,7 +6896,7 @@ data-color="#ff80ab"
 
 <div class="favorite-btn">☆</div>
 
-<div class="badge102">MEDIUM</div>
+<div class="badge">MEDIUM</div>
 
 <img loading="lazy" src="https://i.pinimg.com/736x/42/6b/09/426b09f0b3063c9f7f32a19db7e89f53.jpg"
 />
@@ -11230,14 +6914,14 @@ data-color="#ff80ab"
 <a
 href="https://umamusu.wiki/Sakura_Chitose_O"
 target="_blank"
-class="btn102"
+class="btn"
 >DETAIL</a>
 
 </div>
 </div>
 </div>
 
-        <div class="card category-medium"
+        <div class="card" style="--accent:#234990"
 data-name="ADMIRE GROOVE"
 data-category="medium"
 data-voice="voices/admiregroove.mp3"
@@ -11254,7 +6938,7 @@ data-color="#234990"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge103">MEDIUM</div>
+            <div class="badge">MEDIUM</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/50/cb/8b/50cb8ba6dc56a8bb3083e08ddbbeca59.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11262,12 +6946,12 @@ data-color="#234990"
             <div class="content">
               <h3>ADMIRE GROOVE</h3>
               <p>Groove to the rhythm of victory.</p>
-              <a href="https://umamusu.wiki/Admire_Groove" target="_blank" class="btn103">DETAIL</a>
+              <a href="https://umamusu.wiki/Admire_Groove" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-medium"
+        <div class="card" style="--accent:#0c4f8d"
 data-name="AIR MESSIAH"
 data-category="medium"
 data-voice="voices/airmessiah.mp3"
@@ -11284,7 +6968,7 @@ data-color="#0c4f8d"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge104">MEDIUM</div>
+            <div class="badge">MEDIUM</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/b1/c7/96/b1c796327d1eef7b2e4d7b940fe685ec.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11292,12 +6976,12 @@ data-color="#0c4f8d"
             <div class="content">
               <h3>AIR MESSIAH</h3>
               <p>A messiah born of the sky, soaring ever higher.</p>
-              <a href="https://umamusu.wiki/Air_Messiah" target="_blank" class="btn104">DETAIL</a>
+              <a href="https://umamusu.wiki/Air_Messiah" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-sprint"
+        <div class="card" style="--accent:#e5c158"
 data-name="BELIEVE"
 data-category="sprint"
 data-voice="voices/believe.mp3"
@@ -11314,7 +6998,7 @@ data-color="#e5c158"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge105">SHORT</div>
+            <div class="badge">SHORT</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/9e/11/cd/9e11cd6835f6d4680419a3ead823e8d5.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11322,12 +7006,12 @@ data-color="#e5c158"
             <div class="content">
               <h3>BELIEVE</h3>
               <p>Believe in the sprint that leads to glory.</p>
-              <a href="https://umamusu.wiki/Believe" target="_blank" class="btn105">DETAIL</a>
+              <a href="https://umamusu.wiki/Believe" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-long"
+        <div class="card" style="--accent:#3060a8"
 data-name="BLAST ONEPIECE"
 data-category="long"
 data-voice="voices/blastonepiece.mp3"
@@ -11344,7 +7028,7 @@ data-color="#3060a8"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge106">LONG</div>
+            <div class="badge">LONG</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/a3/32/5c/a3325c36af3b3cc5810b2061948167da.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11352,12 +7036,12 @@ data-color="#3060a8"
             <div class="content">
               <h3>BLAST ONEPIECE</h3>
               <p>A blast of power that shatters all expectations.</p>
-              <a href="https://umamusu.wiki/Blast_Onepiece" target="_blank" class="btn106">DETAIL</a>
+              <a href="https://umamusu.wiki/Blast_Onepiece" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-mile"
+        <div class="card" style="--accent:#e1a1b1"
 data-name="BUBBLE GUM FELLOW"
 data-category="mile"
 data-voice="voices/bubblegumfellow.mp3"
@@ -11374,7 +7058,7 @@ data-color="#e1a1b1"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge107">MILE</div>
+            <div class="badge">MILE</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/d7/82/5c/d7825cd30bd4f7ea555e79023b3fc26e.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11382,12 +7066,12 @@ data-color="#e1a1b1"
             <div class="content">
               <h3>BUBBLE GUM FELLOW</h3>
               <p>Pop the bubble of doubt with unstoppable speed.</p>
-              <a href="https://umamusu.wiki/Bubble_Gum_Fellow" target="_blank" class="btn107">DETAIL</a>
+              <a href="https://umamusu.wiki/Bubble_Gum_Fellow" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-long"
+        <div class="card" style="--accent:#999999"
 data-name="CHRONO GENESIS"
 data-category="long"
 data-voice="voices/chronogenesis.mp3"
@@ -11404,7 +7088,7 @@ data-color="#999999"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge108">LONG</div>
+            <div class="badge">LONG</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/9b/b5/7a/9bb57a56de0ddb34791a59df13343f85.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11412,12 +7096,12 @@ data-color="#999999"
             <div class="content">
               <h3>CHRONO GENESIS</h3>
               <p>Rewriting the genesis of champions with every stride.</p>
-              <a href="https://umamusu.wiki/Chrono_Genesis" target="_blank" class="btn108">DETAIL</a>
+              <a href="https://umamusu.wiki/Chrono_Genesis" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-dirt"
+        <div class="card" style="--accent:#f18a20"
 data-name="COPANO RICKEY"
 data-category="dirt"
 data-voice="voices/copanorickey.mp3"
@@ -11434,7 +7118,7 @@ data-color="#f18a20"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge109">DIRT</div>
+            <div class="badge">DIRT</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/d2/60/a3/d260a31d12460e33ce1521827d6afc49.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11442,12 +7126,12 @@ data-color="#f18a20"
             <div class="content">
               <h3>COPANO RICKEY</h3>
               <p>Luck is on my side, let the feng shui guide the way!</p>
-              <a href="https://umamusu.wiki/Copano_Rickey" target="_blank" class="btn109">DETAIL</a>
+              <a href="https://umamusu.wiki/Copano_Rickey" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-long"
+        <div class="card" style="--accent:#f16889"
 data-name="CURREN BOUQUETD'OR"
 data-category="long"
 data-voice="voices/currenbouquetdor.mp3"
@@ -11464,7 +7148,7 @@ data-color="#f16889"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge110">LONG</div>
+            <div class="badge">LONG</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/6c/50/30/6c503081d0ea033d6b10fedb4f2b13c9.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11472,12 +7156,12 @@ data-color="#f16889"
             <div class="content">
               <h3>CURREN BOUQUETD'OR</h3>
               <p>A golden bouquet for the one who graces the turf.</p>
-              <a href="https://umamusu.wiki/Curren_Bouquetd%27or" target="_blank" class="btn110">DETAIL</a>
+              <a href="https://umamusu.wiki/Curren_Bouquetd%27or" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-mile"
+        <div class="card" style="--accent:#bb2020"
 data-name="DARING HEART"
 data-category="mile"
 data-voice="voices/daringheart.mp3"
@@ -11494,7 +7178,7 @@ data-color="#bb2020"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge111">MILE</div>
+            <div class="badge">MILE</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/9c/4d/69/9c4d693c161fe9c5c020d43f35c90af0.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11502,12 +7186,12 @@ data-color="#bb2020"
             <div class="content">
               <h3>DARING HEART</h3>
               <p>A daring heart fears no distance.</p>
-              <a href="https://umamusu.wiki/Daring_Heart" target="_blank" class="btn111">DETAIL</a>
+              <a href="https://umamusu.wiki/Daring_Heart" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-medium"
+        <div class="card" style="--accent:#3b5e40"
 data-name="DARING TACT"
 data-category="medium"
 data-voice="voices/daringtact.mp3"
@@ -11524,7 +7208,7 @@ data-color="#3b5e40"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge112">MEDIUM</div>
+            <div class="badge">MEDIUM</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/b8/ea/08/b8ea0813b732ebb05bd5a83bfb5c531d.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11532,12 +7216,12 @@ data-color="#3b5e40"
             <div class="content">
               <h3>DARING TACT</h3>
               <p>Unyielding tactics forged by a Triple Crown determination.</p>
-              <a href="https://umamusu.wiki/Daring_Tact" target="_blank" class="btn112">DETAIL</a>
+              <a href="https://umamusu.wiki/Daring_Tact" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-medium"
+        <div class="card" style="--accent:#f1f1f1"
 data-name="DURAMENTE"
 data-category="medium"
 data-voice="voices/duramente.mp3"
@@ -11554,7 +7238,7 @@ data-color="#f1f1f1"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge113">MEDIUM</div>
+            <div class="badge">MEDIUM</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/76/a0/20/76a0201215e58f017d415039b3b93fdf.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11562,12 +7246,12 @@ data-color="#f1f1f1"
             <div class="content">
               <h3>DURAMENTE</h3>
               <p>Play it loud, play it tough—a harsh and beautiful melody.</p>
-              <a href="https://umamusu.wiki/Duramente" target="_blank" class="btn113">DETAIL</a>
+              <a href="https://umamusu.wiki/Duramente" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-sprint"
+        <div class="card" style="--accent:#b02a2a"
 data-name="DURANDAL"
 data-category="sprint"
 data-voice="voices/durandal.mp3"
@@ -11584,7 +7268,7 @@ data-color="#b02a2a"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge114">SHORT</div>
+            <div class="badge">SHORT</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/87/60/36/876036c165d5e9f7f09c5127b8acef3d.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11592,12 +7276,12 @@ data-color="#b02a2a"
             <div class="content">
               <h3>DURANDAL</h3>
               <p>A holy sword cutting through the final stretch.</p>
-              <a href="https://umamusu.wiki/Durandal" target="_blank" class="btn114">DETAIL</a>
+              <a href="https://umamusu.wiki/Durandal" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-long"
+        <div class="card" style="--accent:#115933"
 data-name="EPIPHANEIA"
 data-category="long"
 data-voice="voices/epiphaneia.mp3"
@@ -11614,7 +7298,7 @@ data-color="#115933"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge115">LONG</div>
+            <div class="badge">LONG</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/80/62/16/806216698a6a617ba93e6d0ecebb3aa2.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11622,12 +7306,12 @@ data-color="#115933"
             <div class="content">
               <h3>EPIPHANEIA</h3>
               <p>A sudden revelation of absolute strength.</p>
-              <a href="https://umamusu.wiki/Epiphaneia" target="_blank" class="btn115">DETAIL</a>
+              <a href="https://umamusu.wiki/Epiphaneia" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-dirt"
+        <div class="card" style="--accent:#152f6b"
 data-name="ESPOIR CITY"
 data-category="dirt"
 data-voice="voices/espoircity.mp3"
@@ -11644,7 +7328,7 @@ data-color="#152f6b"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge116">DIRT</div>
+            <div class="badge">DIRT</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/58/7e/12/587e12c56bb3c4507969949573e2cd3a.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11652,12 +7336,12 @@ data-color="#152f6b"
             <div class="content">
               <h3>ESPOIR CITY</h3>
               <p>The city of hope gleams brightest on the dirt.</p>
-              <a href="https://umamusu.wiki/Espoir_City" target="_blank" class="btn116">DETAIL</a>
+              <a href="https://umamusu.wiki/Espoir_City" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card category-dirt"
+        <div class="card" style="--accent:#fff3e8"
 data-name="FURIOSO"
 data-category="dirt"
 data-voice="voices/furioso.mp3"
@@ -11674,7 +7358,7 @@ data-color="#fff3e8"
 >
           <div class="card-inner">
             <div class="favorite-btn">☆</div>
-            <div class="badge117">DIRT</div>
+            <div class="badge">DIRT</div>
             <img loading="lazy" src="https://i.pinimg.com/736x/03/f1/30/03f13003f2ae61cccb841841a6d86b73.jpg" />
             <div class="overlay">
               <span>VIEW CHARACTER</span>
@@ -11682,12 +7366,12 @@ data-color="#fff3e8"
             <div class="content">
               <h3>FURIOSO</h3>
               <p>Furious power thundering across the sand.</p>
-              <a href="https://umamusu.wiki/Furioso" target="_blank" class="btn117">DETAIL</a>
+              <a href="https://umamusu.wiki/Furioso" target="_blank" class="btn">DETAIL</a>
             </div>
           </div>
         </div>
 
-        <div class="card"
+        <div class="card" style="--accent:#e96b8e"
 data-name="FUSAICHI PANDORA"
 data-category="medium"
 data-voice="voices/fusaichipandora.mp3"
@@ -11704,7 +7388,7 @@ data-color="#e96b8e"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge118">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/cc/fe/56/ccfe560c25dbf571106fb4a9e2239762.jpg" />
 
@@ -11716,13 +7400,13 @@ data-color="#e96b8e"
       <h3>FUSAICHI PANDORA</h3>
       <p>A genius who plays by her own rules.</p>
 
-      <a href="https://umamusu.wiki/Fusaichi_Pandora" target="_blank" class="btn118">DETAIL</a>
+      <a href="https://umamusu.wiki/Fusaichi_Pandora" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#59419b"
 data-name="GRAN ALEGRIA"
 data-category="mile"
 data-voice="voices/granalegria.mp3"
@@ -11739,7 +7423,7 @@ data-color="#59419b"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge119">MILE</div>
+    <div class="badge">MILE</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/20/64/c3/2064c395a55fab2db408722d1626263d.jpg" />
 
@@ -11751,13 +7435,13 @@ data-color="#59419b"
       <h3>GRAN ALEGRIA</h3>
       <p>I will prove my strength on the grandest stage.</p>
 
-      <a href="https://umamusu.wiki/Gran_Alegria" target="_blank" class="btn119">DETAIL</a>
+      <a href="https://umamusu.wiki/Gran_Alegria" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#60c5c6"
 data-name="HISHI MIRACLE"
 data-category="long"
 data-voice="voices/hishimiracle.mp3"
@@ -11774,7 +7458,7 @@ data-color="#60c5c6"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge120">LONG</div>
+    <div class="badge">LONG</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/ac/1d/90/ac1d90188f815363e308cfb8c6a4da11.jpg" />
 
@@ -11786,13 +7470,13 @@ data-color="#60c5c6"
       <h3>HISHI MIRACLE</h3>
       <p>Miracles happen when you believe, even if you take it easy.</p>
 
-      <a href="https://umamusu.wiki/Hishi_Miracle" target="_blank" class="btn120">DETAIL</a>
+      <a href="https://umamusu.wiki/Hishi_Miracle" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#eb8c65"
 data-name="HOKKO TARUMAE"
 data-category="dirt"
 data-voice="voices/hokkotarumae.mp3"
@@ -11809,7 +7493,7 @@ data-color="#eb8c65"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge121">DIRT</div>
+    <div class="badge">DIRT</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/8b/87/51/8b87518083528c8d4e6c5b5e8819d31b.jpg" />
 
@@ -11821,13 +7505,13 @@ data-color="#eb8c65"
       <h3>HOKKO TARUMAE</h3>
       <p>Bringing Tomakomai's charm to the whole world!</p>
 
-      <a href="https://umamusu.wiki/Hokko_Tarumae" target="_blank" class="btn121">DETAIL</a>
+      <a href="https://umamusu.wiki/Hokko_Tarumae" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#235889"
 data-name="K.S. MIRACLE"
 data-category="short"
 data-voice="voices/ksmiracle.mp3"
@@ -11844,7 +7528,7 @@ data-color="#235889"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge122">SHORT</div>
+    <div class="badge">SHORT</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/c8/91/37/c891370fd2917f1fae27ec35896f9067.jpg" />
 
@@ -11856,13 +7540,13 @@ data-color="#235889"
       <h3>K.S. MIRACLE</h3>
       <p>Every run is a miracle I cherish with all my heart.</p>
 
-      <a href="https://umamusu.wiki/K.S._Miracle" target="_blank" class="btn122">DETAIL</a>
+      <a href="https://umamusu.wiki/K.S._Miracle" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#c1122f"
 data-name="KATSURAGI ACE"
 data-category="medium"
 data-voice="voices/katsuragiace.mp3"
@@ -11879,7 +7563,7 @@ data-color="#c1122f"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge123">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/5d/09/d6/5d09d6c1729262b302f307f8ff656f18.jpg" />
 
@@ -11891,13 +7575,13 @@ data-color="#c1122f"
       <h3>KATSURAGI ACE</h3>
       <p>A brilliant ace that defies expectations.</p>
 
-      <a href="https://umamusu.wiki/Katsuragi_Ace" target="_blank" class="btn123">DETAIL</a>
+      <a href="https://umamusu.wiki/Katsuragi_Ace" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#352b2b"
 data-name="LOGOTYPE"
 data-category="mile"
 data-voice="voices/logotype.mp3"
@@ -11914,7 +7598,7 @@ data-color="#352b2b"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge124">MILE</div>
+    <div class="badge">MILE</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/a0/99/c8/a099c8448552d351426c1568952c08c7.jpg" />
 
@@ -11926,13 +7610,13 @@ data-color="#352b2b"
       <h3>LOGOTYPE</h3>
       <p>Leaving my mark with unquestionable strength.</p>
 
-      <a href="https://umamusu.wiki/Logotype" target="_blank" class="btn124">DETAIL</a>
+      <a href="https://umamusu.wiki/Logotype" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#d78eb2"
 data-name="LUCKY LILAC"
 data-category="medium"
 data-voice="voices/luckylilac.mp3"
@@ -11949,7 +7633,7 @@ data-color="#d78eb2"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge125">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/e4/e7/23/e4e72388492519f5effdd55fc6df825e.jpg" />
 
@@ -11961,13 +7645,13 @@ data-color="#d78eb2"
       <h3>LUCKY LILAC</h3>
       <p>A blooming lilac that carries the luck of the draw.</p>
 
-      <a href="https://umamusu.wiki/Lucky_Lilac" target="_blank" class="btn125">DETAIL</a>
+      <a href="https://umamusu.wiki/Lucky_Lilac" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#713838"
 data-name="MARCHE LORRAINE"
 data-category="dirt"
 data-voice="voices/marchelorraine.mp3"
@@ -11984,7 +7668,7 @@ data-color="#713838"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge126">DIRT</div>
+    <div class="badge">DIRT</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/77/87/9a/77879a47b96b49d037462f1e4b9641d0.jpg" />
 
@@ -11996,13 +7680,13 @@ data-color="#713838"
       <h3>MARCHE LORRAINE</h3>
       <p>Taking on the world, one dirt track at a time.</p>
 
-      <a href="https://umamusu.wiki/Marche_Lorraine" target="_blank" class="btn126">DETAIL</a>
+      <a href="https://umamusu.wiki/Marche_Lorraine" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#00fff0"
 data-name="NEO UNIVERSE"
 data-category="medium"
 data-voice="voices/neouniverse.mp3"
@@ -12019,7 +7703,7 @@ data-color="#00fff0"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge127">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/47/4e/2e/474e2e0aa03b2de91abf7878797348fc.jpg" />
 
@@ -12031,13 +7715,13 @@ data-color="#00fff0"
       <h3>NEO UNIVERSE</h3>
       <p>I can see the entire universe through my eyes.</p>
 
-      <a href="https://umamusu.wiki/Neo_Universe" target="_blank" class="btn127">DETAIL</a>
+      <a href="https://umamusu.wiki/Neo_Universe" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#d94b70"
 data-name="NO REASON"
 data-category="medium"
 data-voice="voices/noreason.mp3"
@@ -12054,7 +7738,7 @@ data-color="#d94b70"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge128">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/a6/87/0d/a6870d1b95d5e83e85b40eac7882b45c.jpg" />
 
@@ -12066,13 +7750,13 @@ data-color="#d94b70"
       <h3>NO REASON</h3>
       <p>I don't need a reason to win.</p>
 
-      <a href="https://umamusu.wiki/No_Reason" target="_blank" class="btn128">DETAIL</a>
+      <a href="https://umamusu.wiki/No_Reason" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#eef6ff"
 data-name="NORTH FLIGHT"
 data-category="mile"
 data-voice="voices/northflight.mp3"
@@ -12089,7 +7773,7 @@ data-color="#eef6ff"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge129">MILE</div>
+    <div class="badge">MILE</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/b3/d0/05/b3d00594677026ea11766e8afe0d499b.jpg" />
 
@@ -12101,13 +7785,13 @@ data-color="#eef6ff"
       <h3>NORTH FLIGHT</h3>
       <p>A beautiful flight that rules the mile.</p>
 
-      <a href="https://umamusu.wiki/North_Flight" target="_blank" class="btn129">DETAIL</a>
+      <a href="https://umamusu.wiki/North_Flight" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#c82828"
 data-name="RED DESIRE"
 data-category="medium"
 data-voice="voices/reddesire.mp3"
@@ -12124,7 +7808,7 @@ data-color="#c82828"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge130">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/68/67/f9/6867f90bbb21b13cdb5f20c4cf2cd58f.jpg" />
 
@@ -12136,13 +7820,13 @@ data-color="#c82828"
       <h3>RED DESIRE</h3>
       <p>My blazing desire outshines all rivals.</p>
 
-      <a href="https://umamusu.wiki/Red_Desire" target="_blank" class="btn130">DETAIL</a>
+      <a href="https://umamusu.wiki/Red_Desire" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-<div class="card"
+<div class="card" style="--accent:#295f46"
 data-name="ROYCE AND ROYCE"
 data-category="medium"
 data-voice="voices/royceandroyce.mp3"
@@ -12159,7 +7843,7 @@ data-color="#295f46"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge131">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
 
     <img loading="lazy" src="https://i.pinimg.com/736x/ae/ab/e3/aeabe3f082bd81a0e0e2fe0334fb8c6c.jpg" />
 
@@ -12171,14 +7855,13 @@ data-color="#295f46"
       <h3>ROYCE AND ROYCE</h3>
       <p>Perseverance that stands the test of time.</p>
 
-      <a href="https://umamusu.wiki/Royce_and_Royce" target="_blank" class="btn131">DETAIL</a>
+      <a href="https://umamusu.wiki/Royce_and_Royce" target="_blank" class="btn">DETAIL</a>
 
     </div>
   </div>
 </div>
 
-        
-<div class="card"
+<div class="card" style="--accent:#00BCD4"
 data-name="SAMSON BIG"
 data-category="long"
 data-voice=""
@@ -12195,7 +7878,7 @@ data-color="#00BCD4"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge132">LONG</div>
+    <div class="badge">LONG</div>
     <img loading="lazy" src="https://i.pinimg.com/736x/48/e8/2e/48e82ec63a597399558136acd3f1103d.jpg" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12203,11 +7886,11 @@ data-color="#00BCD4"
     <div class="content">
       <h3>SAMSON BIG</h3>
       <p>I'll be a BIG Umamusume!</p>
-      <a href="https://umamusu.wiki/Samson_Big" target="_blank" class="btn132">DETAIL</a>
+      <a href="https://umamusu.wiki/Samson_Big" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#1b3a20"
 data-name="SATONO CROWN"
 data-category="medium"
 data-voice=""
@@ -12224,7 +7907,7 @@ data-color="#1b3a20"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge133">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
     <img loading="lazy" src="https://i.pinimg.com/736x/c8/70/64/c870649f5d785e221fd332b93255dbc5.jpg" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12232,11 +7915,11 @@ data-color="#1b3a20"
     <div class="content">
       <h3>SATONO CROWN</h3>
       <p>I will secure the crown for the Satono family.</p>
-      <a href="https://umamusu.wiki/Satono_Crown" target="_blank" class="btn133">DETAIL</a>
+      <a href="https://umamusu.wiki/Satono_Crown" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#654321"
 data-name="SOUNDS OF EARTH"
 data-category="long"
 data-voice=""
@@ -12253,7 +7936,7 @@ data-color="#654321"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge134">LONG</div>
+    <div class="badge">LONG</div>
     <img loading="lazy" src="https://i.pinimg.com/736x/b6/e4/c6/b6e4c6c0890285be2406efbb1c4bf1e3.jpg" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12261,11 +7944,11 @@ data-color="#654321"
     <div class="content">
       <h3>SOUNDS OF EARTH</h3>
       <p>The symphony of the earth resonates in my run.</p>
-      <a href="https://umamusu.wiki/Sounds_of_Earth" target="_blank" class="btn134">DETAIL</a>
+      <a href="https://umamusu.wiki/Sounds_of_Earth" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#d32f2f"
 data-name="TAP DANCE CITY"
 data-category="medium"
 data-voice=""
@@ -12282,7 +7965,7 @@ data-color="#d32f2f"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge135">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
     <img loading="lazy" src="https://i.pinimg.com/736x/9a/f9/03/9af90303c4e49623fccfe95edd70cac7.jpg" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12290,11 +7973,11 @@ data-color="#d32f2f"
     <div class="content">
       <h3>TAP DANCE CITY</h3>
       <p>Feel the rhythm of the tap dance on the turf!</p>
-      <a href="https://umamusu.wiki/Tap_Dance_City" target="_blank" class="btn135">DETAIL</a>
+      <a href="https://umamusu.wiki/Tap_Dance_City" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#1976d2"
 data-name="TSURUMARU TSUYOSHI"
 data-category="medium"
 data-voice=""
@@ -12311,7 +7994,7 @@ data-color="#1976d2"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge136">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
     <img loading="lazy" src="https://i.pinimg.com/736x/cf/16/fd/cf16fdd24e52e7e91ed1e25bffe79039.jpg" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12319,11 +8002,11 @@ data-color="#1976d2"
     <div class="content">
       <h3>TSURUMARU TSUYOSHI</h3>
       <p>With strength and grace, I aim for the top.</p>
-      <a href="https://umamusu.wiki/Tsurumaru_Tsuyoshi" target="_blank" class="btn136">DETAIL</a>
+      <a href="https://umamusu.wiki/Tsurumaru_Tsuyoshi" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#7b1fa2"
 data-name="VERXINA"
 data-category="mile"
 data-voice=""
@@ -12340,7 +8023,7 @@ data-color="#7b1fa2"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge137">MILE</div>
+    <div class="badge">MILE</div>
     <img loading="lazy" src="https://i.pinimg.com/736x/46/bb/ab/46bbabca9b83acb11de4323bf091f301.jpg" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12348,11 +8031,11 @@ data-color="#7b1fa2"
     <div class="content">
       <h3>VERXINA</h3>
       <p>A brilliant performance requires a brilliant stage.</p>
-      <a href="https://umamusu.wiki/Verxina" target="_blank" class="btn137">DETAIL</a>
+      <a href="https://umamusu.wiki/Verxina" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#03a9f4"
 data-name="VIVLOS"
 data-category="medium"
 data-voice=""
@@ -12369,7 +8052,7 @@ data-color="#03a9f4"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge138">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
     <img loading="lazy" src="https://i.pinimg.com/736x/15/f7/af/15f7af28895bf1d80346b056de14757c.jpg" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12377,11 +8060,11 @@ data-color="#03a9f4"
     <div class="content">
       <h3>VIVLOS</h3>
       <p>Let's sparkle and shine on the world stage!</p>
-      <a href="https://umamusu.wiki/Vivlos" target="_blank" class="btn138">DETAIL</a>
+      <a href="https://umamusu.wiki/Vivlos" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#0d47a1"
 data-name="VICTOIRE PISA"
 data-category="medium"
 data-voice=""
@@ -12398,7 +8081,7 @@ data-color="#0d47a1"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge139">MEDIUM</div>
+    <div class="badge">MEDIUM</div>
     <img loading="lazy" src="https://i.pinimg.com/736x/d0/34/12/d03412d9b22e9be67acdf942d167d2ca.jpg" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12406,11 +8089,11 @@ data-color="#0d47a1"
     <div class="content">
       <h3>VICTOIRE PISA</h3>
       <p>Victory is my only destination.</p>
-      <a href="https://umamusu.wiki/Victoire_Pisa" target="_blank" class="btn139">DETAIL</a>
+      <a href="https://umamusu.wiki/Victoire_Pisa" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#388e3c"
 data-name="WIN VARIATION"
 data-category="long"
 data-voice=""
@@ -12427,7 +8110,7 @@ data-color="#388e3c"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge140">LONG</div>
+    <div class="badge">LONG</div>
     <img loading="lazy" src="https://gametora.com/images/umamusume/characters/chara_stand_1117_111701.png" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12435,11 +8118,11 @@ data-color="#388e3c"
     <div class="content">
       <h3>WIN VARIATION</h3>
       <p>Every variation of the race leads to my win.</p>
-      <a href="https://umamusu.wiki/Win_Variation" target="_blank" class="btn140">DETAIL</a>
+      <a href="https://umamusu.wiki/Win_Variation" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#e65100"
 data-name="WONDER ACUTE"
 data-category="dirt"
 data-voice=""
@@ -12456,7 +8139,7 @@ data-color="#e65100"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge141">DIRT</div>
+    <div class="badge">DIRT</div>
     <img loading="lazy" src="https://i.pinimg.com/736x/ca/6e/26/ca6e265afa65404b669fcde75994c0aa.jpg" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12464,11 +8147,11 @@ data-color="#e65100"
     <div class="content">
       <h3>WONDER ACUTE</h3>
       <p>A wonder that acute senses can bring.</p>
-      <a href="https://umamusu.wiki/Wonder_Acute" target="_blank" class="btn141">DETAIL</a>
+      <a href="https://umamusu.wiki/Wonder_Acute" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#81c784"
 data-name="YAMANIN ZEPHYR"
 data-category="short"
 data-voice=""
@@ -12485,7 +8168,7 @@ data-color="#81c784"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge142">SHORT</div>
+    <div class="badge">SHORT</div>
     <img loading="lazy" src="https://i.pinimg.com/736x/41/10/8a/41108a15aa7fb19c699d6028d2afc01a.jpg" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12493,11 +8176,11 @@ data-color="#81c784"
     <div class="content">
       <h3>YAMANIN ZEPHYR</h3>
       <p>Like a gentle zephyr, I will breeze past you.</p>
-      <a href="https://umamusu.wiki/Yamanin_Zephyr" target="_blank" class="btn142">DETAIL</a>
+      <a href="https://umamusu.wiki/Yamanin_Zephyr" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#000080"
 data-name="RULERSHIP"
 data-category="long"
 data-voice=""
@@ -12514,7 +8197,7 @@ data-color="#000080"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge143">LONG</div>
+    <div class="badge">LONG</div>
     <img loading="lazy" src="https://staticdelivery.nexusmods.com/mods/6119/images/thumbnails/12913/12913-1776235991-180081416.png" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12522,11 +8205,11 @@ data-color="#000080"
     <div class="content">
       <h3>RULERSHIP</h3>
       <p>To rule the turf is my royal duty.</p>
-      <a href="https://umamusu.wiki/Rulership" target="_blank" class="btn143">DETAIL</a>
+      <a href="https://umamusu.wiki/Rulership" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#008080"
 data-name="KISEKI"
 data-category="long"
 data-voice=""
@@ -12543,7 +8226,7 @@ data-color="#008080"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge144">LONG</div>
+    <div class="badge">LONG</div>
     <img loading="lazy" src="https://i.pinimg.com/736x/18/f0/c6/18f0c609dd9ac3ca83cc79a0bd7b5f73.jpg" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
@@ -12551,11 +8234,11 @@ data-color="#008080"
     <div class="content">
       <h3>KISEKI</h3>
       <p>A miracle waiting to unfold.</p>
-      <a href="https://umamusu.wiki/Kiseki" target="_blank" class="btn144">DETAIL</a>
+      <a href="https://umamusu.wiki/Kiseki" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
-<div class="card"
+<div class="card" style="--accent:#6b8e23"
 data-name="DON QUIXOTE"
 data-category="secret"
 data-voice=""
@@ -12572,30 +8255,23 @@ data-color="#6b8e23"
 >
   <div class="card-inner">
     <div class="favorite-btn">☆</div>
-    <div class="badge145">SECRET</div>
+    <div class="badge">SECRET</div>
     <img loading="lazy" src="https://i.ytimg.com/vi/701to1fST70/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCMPpn4BLow746JQbZ7tAG3YNryOQ" />
     <div class="overlay">
       <span>VIEW CHARACTER</span>
     </div>
     <div class="content">
       <h3>DON QUIXOTE</h3>
-      <p>Too much sanity may be madness, and maddest of all is to see life as it is, not as it should be.</p>
-      <a href="https://limbuscompany.fandom.com/wiki/Don_Quixote" target="_blank" class="btn145">DETAIL</a>
+      <p>“¡Por alcanzar la estrella inalcanzable!”
+          "To reach the unreachable star!"</p>
+      <a href="https://limbuscompany.fandom.com/wiki/Don_Quixote" target="_blank" class="btn">DETAIL</a>
     </div>
   </div>
 </div>
 
+</div>
 
-    </div>
-
-    
-    
-
-    
-
-
-
-    <!-- PAGINATION -->
+<!-- PAGINATION -->
     <div class="pagination"></div>
 
     </div><!-- end #page-characters -->
@@ -13714,19 +9390,11 @@ data-color="#6b8e23"
       </div><!-- end .support-grid -->
     </div><!-- end #page-starblossom -->
 
-
-
-
-    
-
-    <!-- CHARACTER MODAL -->
-
+<!-- CHARACTER MODAL -->
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
-
-
-    <script>
+<script>
 (function () {
 
   var PER_PAGE = 8;
@@ -14138,7 +9806,6 @@ particlesJS("particles-js", {
   retina_detect: true
 });
 
-
 </script>
 
 <!-- MUSIC BUTTON -->
@@ -14256,9 +9923,8 @@ musicBtn.addEventListener("click", function () {
     music.pause();
     musicBtn.innerHTML = "🎵 Play Music";
     isPlaying = false;
-    
 
-  }
+}
     
 });
 
@@ -14323,9 +9989,8 @@ if(card.dataset.color){
     "0 0 20px " + card.dataset.color;
 
 }
-      
 
-    modalQuote.textContent =
+modalQuote.textContent =
       card.dataset.quote;
 
     modalDesc.textContent =
@@ -15234,7 +10899,6 @@ randomCharacter.name;
 document.getElementById("dailyQuote").textContent =
 randomCharacter.quote;
 
-
 });
 
 /* ── PAGE TAB SWITCH ─────────────────── */
@@ -15359,11 +11023,7 @@ function initSupportImgs() {
 
 </script>
 
-
 </div>
-
-
-
 
 <script>
 
@@ -15454,8 +11114,6 @@ menuToggle.addEventListener("click",()=>{
   filterDropdown.classList.toggle("show");
 
 });
-
-
 
 </script>
 
