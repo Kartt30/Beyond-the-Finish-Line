@@ -8273,6 +8273,81 @@ data-color="#6b8e23"
   </div>
 </div>
 
+
+<!-- EFFORIA -->
+<div class="card" style="--accent:#2d6b4f"
+data-name="EFFORIA"
+data-category="medium"
+data-voice=""
+data-bg="linear-gradient(135deg,#1f5c3f,#0a2318)"
+data-speed="SS"
+data-stamina="A"
+data-power="SS"
+data-wit="B"
+data-date="Unknown"
+
+data-quote="I don't wait for my chance. I take the lead and never look back."
+
+data-img="https://media.gametora.com/umamusume/supports/full/small/30311.png"
+
+data-desc="An aggressive front-runner whose commanding early pace overwhelms the entire field before anyone else can react."
+
+data-color="#4ade80"
+
+>
+  <div class="card-inner">
+    <div class="favorite-btn">☆</div>
+    <div class="badge">MEDIUM</div>
+    <img loading="lazy" src="https://i.ytimg.com/vi/C2HQec4RhHw/sddefault.jpg" />
+    <div class="overlay">
+      <span>VIEW CHARACTER</span>
+    </div>
+    <div class="content">
+      <h3>EFFORIA</h3>
+      <p>I don't wait for my chance. I take the lead and never look back.</p>
+      <a href="https://umamusu.wiki/Efforia" target="_blank" class="btn">DETAIL</a>
+    </div>
+  </div>
+</div>
+
+<!-- PHALAENOPSIS -->
+<div class="card" style="--accent:#e8b4d8"
+
+data-name="PHALAENOPSIS"
+data-category="long"
+data-voice=""
+data-bg="linear-gradient(135deg,#e8b4d8,#4a1f3d)"
+data-speed="B"
+data-stamina="S"
+data-power="A"
+data-wit="SS"
+data-date="Unknown"
+
+data-quote="A quiet bloom carries the strongest roots."
+
+data-img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8KbWdWPBI43HmsM9l7J5icc_QupoBnZhmLR169ho1LJHYr74eSWKDswnD&s=10"
+
+data-desc="A graceful and composed racer whose calm elegance conceals the resilience that would one day be passed down to a legendary bloodline."
+
+data-color="#e8b4d8"
+
+>
+  <div class="card-inner">
+    <div class="favorite-btn">☆</div>
+    <div class="badge">LONG</div>
+    <img loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8KbWdWPBI43HmsM9l7J5icc_QupoBnZhmLR169ho1LJHYr74eSWKDswnD&s=10" />
+    <div class="overlay">
+      <span>VIEW CHARACTER</span>
+    </div>
+    <div class="content">
+      <h3>PHALAENOPSIS</h3>
+      <p>A quiet bloom carries the strongest roots.</p>
+      <a href="https://umamusu.wiki/Phalaenopsis" target="_blank" class="btn">DETAIL</a>
+    </div>
+  </div>
+</div>
+</div>
+
 </div>
 
 <!-- PAGINATION -->
@@ -9414,9 +9489,7 @@ data-color="#6b8e23"
   }
 
   function totalPages() {
-    return isMobile()
-      ? Math.ceil(allCards().length / PER_PAGE)
-      : 1;
+    return Math.ceil(allCards().length / PER_PAGE);
   }
 
   function goTo(p) {
@@ -9428,19 +9501,12 @@ data-color="#6b8e23"
 
     cards.forEach(function(card, i) {
 
-      if (!isMobile()) {
+      var start = (page - 1) * PER_PAGE;
 
-        card.style.display = "";
-
-      } else {
-
-        var start = (page - 1) * PER_PAGE;
-
-        card.style.display =
-          i >= start && i < start + PER_PAGE
-            ? ""
-            : "none";
-      }
+      card.style.display =
+        i >= start && i < start + PER_PAGE
+          ? ""
+          : "none";
 
     });
 
@@ -9456,8 +9522,6 @@ data-color="#6b8e23"
     var t = totalPages();
 
     nav.innerHTML = "";
-
-    if (!isMobile()) return;
 
     function makeBtn(label, target, active, disabled) {
 
